@@ -14,7 +14,7 @@ Planning to migrate to Web + SQL architecture
 
 Project Structure Description
 The following are all core modules. Modules that are in the project files but not listed below are still under testing or old code
-tenkitsune/
+天狐修炼纪/
 ├── README.md
 ├── requirements.txt
 ├── synthesis_recipe.txt            # create the new product in the game by material
