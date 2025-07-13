@@ -1,139 +1,140 @@
-project introduction
-This is a turn-based RPG game built on Python tkinter. Currently, basic functions have been implemented, including:
-Graph-based map mobile system
-Complete RPG combat system
-Plot system and its branches
-Separation of front-end and back-end logic
-Expandable DLC module
-DLC traits have been completed
+# 天狐修炼纪 (Tianhu Cultivation Chronicle)
 
-Current Status
-The game logic has been completed and the main functions have passed the test
-The plot is not yet complete
-Planning to migrate to Web + SQL architecture
+This is a turn-based RPG game built using Python and Tkinter. The game currently includes the following core features:
 
-Project Structure Description
-The following are all core modules. Modules that are in the project files but not listed below are still under testing or old code
-天狐修炼纪/
+- Graph-based map navigation system
+- Complete RPG combat system
+- Plot system with branching narratives
+- Separation of front-end and back-end logic
+- Expandable DLC module with completed DLC traits
+
+## Current Status
+- **Game Logic**: Core functionality implemented and tested.
+- **Plot**: Still under development, not yet complete.
+- **Future Migration**: Planning to transition to a Web + SQL architecture.
+
+## Project Structure
+Below is the structure of the core modules. Files not listed are either under testing or deprecated.
+
+tenkitsune/
 ├── README.md
 ├── requirements.txt
-├── synthesis_recipe.txt            # create the new product in the game by material
-├── api.py                          # Still under development
-├── game_engine.py                  # Still under development
-├── run.py                          # here for staring
-├── main.py                         # here is main programme
+├── synthesis_recipe.txt            # Defines crafting recipes for in-game items
+├── api.py                          # API module (under development)
+├── game_engine.py                  # Game engine (under development)
+├── run.py                          # Entry point to start the game
+├── main.py                         # Main program logic
 ├── all/
-│   ├── __init__.py
-│   ├── dlcmanager.py
-│   ├── gamestate.py
-│   ├── load.py
-│   ├── synthesis_recipes.py
-│   └── transfer.py
-├── chapter/                        # here is story data
-├── common/                         # the each module and ui implementation
+│   ├── init.py
+│   ├── dlcmanager.py               # Manages DLC content
+│   ├── gamestate.py                # Tracks game state
+│   ├── load.py                     # Handles loading of game data
+│   ├── synthesis_recipes.py        # Manages crafting system
+│   └── transfer.py                 # Data transfer utilities
+├── chapter/                        # Story data and plot content
+├── common/                         # Core modules and UI implementations
 │   ├── character/
-│   │   ├── __init__.py
-│   │   ├── ally.py
-│   │   ├── boss.py
-│   │   ├── enemy.py
-│   │   └── player.py
+│   │   ├── init.py
+│   │   ├── ally.py                 # Ally character logic
+│   │   ├── boss.py                 # Boss character logic
+│   │   ├── enemy.py                # Enemy character logic
+│   │   └── player.py               # Player character logic
 │   ├── interact/
-│   │   ├── __init__.py
-│   │   ├── dungeon_interact.py
-│   │   ├── map_interact.py
-│   │   └── npc_interact.py
+│   │   ├── init.py
+│   │   ├── dungeon_interact.py     # Dungeon interaction logic
+│   │   ├── map_interact.py         # Map interaction logic
+│   │   └── npc_interact.py         # NPC interaction logic
 │   ├── interface/
-│   │   ├── __init__.py
-│   │   ├── bag_interface.py
-│   │   ├── cultivation_interface.py
-│   │   ├── dungeon_interface.py
-│   │   ├── lottery_interface.py
-│   │   ├── map_interface.py
-│   │   ├── market_interface.py
-│   │   ├── npc_interface.py
-│   │   ├── synthesis_interface.py
-│   │   └── task_interface.py
+│   │   ├── init.py
+│   │   ├── bag_interface.py        # Inventory UI
+│   │   ├── cultivation_interface.py # Cultivation system UI
+│   │   ├── dungeon_interface.py    # Dungeon UI
+│   │   ├── lottery_interface.py    # Lottery system UI
+│   │   ├── map_interface.py        # Map UI
+│   │   ├── market_interface.py     # Market UI
+│   │   ├── npc_interface.py        # NPC interaction UI
+│   │   ├── synthesis_interface.py  # Crafting system UI
+│   │   └── task_interface.py       # Task system UI
 │   ├── logic/
-│   │   ├── __init__.py
-│   │   ├── boss_logic_common1.py
-│   │   └── boss_logic_common2.py
+│   │   ├── init.py
+│   │   ├── boss_logic_common1.py   # Common boss logic (part 1)
+│   │   └── boss_logic_common2.py   # Common boss logic (part 2)
 │   ├── module/
-│   │   ├── __init__.py
-│   │   ├── battle.py
-│   │   ├── cultivation.py
-│   │   ├── currency.py
-│   │   ├── dungeon.py
-│   │   ├── item.py
-│   │   ├── lottery.py
-│   │   ├── map.py
-│   │   ├── market.py
-│   │   ├── musicplayer.py
-│   │   ├── npc.py
-│   │   ├── story.py
-│   │   ├── synthesis.py
-│   │   └── task.py
+│   │   ├── init.py
+│   │   ├── battle.py               # Battle system logic
+│   │   ├── cultivation.py          # Cultivation system logic
+│   │   ├── currency.py             # Currency system logic
+│   │   ├── dungeon.py              # Dungeon system logic
+│   │   ├── item.py                 # Item system logic
+│   │   ├── lottery.py              # Lottery system logic
+│   │   ├── map.py                  # Map system logic
+│   │   ├── market.py               # Market system logic
+│   │   ├── musicplayer.py          # Music playback system
+│   │   ├── npc.py                  # NPC system logic
+│   │   ├── story.py                # Story system logic
+│   │   ├── synthesis.py            # Crafting system logic
+│   │   └── task.py                 # Task system logic
 │   └── ui/
-│   │   ├── __init__.py
-│   │   ├── bagui.py
-│   │   ├── battleui.py
-│   │   ├── cultivationui.py
-│   │   ├── dungeonui.py
-│   │   ├── lotteryui.py
-│   │   ├── mapui.py
-│   │   ├── storyui.py
-│   │   └── synthesisui.py
-├── common/
+│       ├── init.py
+│       ├── bagui.py                # Inventory UI implementation
+│       ├── battleui.py             # Battle UI implementation
+│       ├── cultivationui.py        # Cultivation UI implementation
+│       ├── dungeonui.py            # Dungeon UI implementation
+│       ├── lotteryui.py            # Lottery UI implementation
+│       ├── mapui.py                # Map UI implementation
+│       ├── storyui.py              # Story UI implementation
+│       └── synthesisui.py          # Crafting UI implementation
 ├── data/
 │   ├── character/
-│   │   ├── ally.json
-│   │   ├── boss.json
-│   │   └── boss.json
+│   │   ├── ally.json               # Ally character data
+│   │   ├── boss.json               # Boss character data
+│   │   └── enemy.json              # Enemy character data
 │   ├── interact/
-│   │   ├── lottery.json
-│   │   ├── market.json
-│   │   ├── npc.json
-│   │   └── task.json
+│   │   ├── lottery.json            # Lottery system data
+│   │   ├── market.json             # Market system data
+│   │   ├── npc.json                # NPC data
+│   │   └── task.json               # Task system data
 │   ├── item/
-│   │   ├── equipment.json
-│   │   ├── material.json
-│   │   ├── medicine.json
-│   │   ├── product.json
-│   │   ├── skill.json
-│   │   └── warp.json
-│   ├── save/
+│   │   ├── equipment.json          # Equipment item data
+│   │   ├── material.json           # Crafting material data
+│   │   ├── medicine.json           # Medicine item data
+│   │   ├── product.json            # Crafted product data
+│   │   ├── skill.json              # Skill data
+│   │   └── warp.json               # Warp/teleport data
+│   ├── save/                       # Game save data
 │   └── scenario/
-│   │   ├── dungeon.json
-│   │   └── map.json
+│       ├── dungeon.json            # Dungeon scenario data
+│       └── map.json                # Map scenario data
 ├── dlc/
-│   ├── __init__.py
-│   ├── dlc_events.py
-│   │   ├── __init__.py
-│   │   └── events.py
-│   └── dlc_traits/
+│   ├── init.py
+│   ├── dlc_events/
+│   │   ├── init.py
+│   │   └── events.py               # DLC event logic
+│   └── dlc_traits/                 # DLC trait implementations
 ├── resources/
-│   ├── background/
-│   ├── cartoon/
-│   ├── commodity/
-│   ├── figure/
-│   ├── map/
-│   └── music/
+│   ├── background/                 # Background assets
+│   ├── cartoon/                    # Cartoon-style assets
+│   ├── commodity/                  # In-game commodity assets
+│   ├── figure/                     # Character figure assets
+│   ├── map/                        # Map assets
+│   └── music/                      # Music and sound assets
 └── tests/
-    ├── __init__.py
-    └── game.log
+    ├── init.py
+    └── game.log                    # Game log for testing
 
 
-Future plans
-Use Flask + HTML to implement the front-end page
-Use SQLite or other databases for archiving
-Enrich the plot and realize automatic plot management
+## Future Plans
+- Migrate the front-end to **Flask + HTML** for web-based rendering.
+- Implement **SQLite** or another database for game data storage.
+- Enrich the plot and develop an automated plot management system.
 
-Environment
-pillow 11.0.0
-pygame 2.6.1
+## Environment
+- **Pillow**: 11.0.0
+- **Pygame**: 2.6.1
 
-How to use
-click the run.py to play the game
+## How to Use
+1. Ensure all dependencies in `requirements.txt` are installed.
+2. Run the game by executing `run.py`.
 
-Note
-This project is still under development, please feel free to make suggestions or participate in improvements!
-
+## Note
+This project is still under active development. Suggestions and contributions are welcome! Feel free to open issues or submit pull requests to help improve the game.
