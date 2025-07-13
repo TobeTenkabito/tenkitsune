@@ -1,4 +1,4 @@
-# 天狐修炼纪 (Tianhu Cultivation Chronicle)
+# TenKitsune Cultivation
 
 This is a turn-based RPG game built using Python and Tkinter. The game currently includes the following core features:
 
