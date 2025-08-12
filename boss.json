@@ -1,0 +1,283 @@
+{
+    "boss_library": {
+        "600001": {
+            "__class__": "Boss",
+            "number": 600001,
+            "name": "亡灵巫师",
+            "description": "萨满法师，拥有不俗的召唤能力,会治愈队友,仅供测试。",
+            "level": 10,
+            "max_hp": 2000,
+            "max_mp": 2000,
+            "hp": 2000,
+            "mp": 2000,
+            "attack": 150,
+            "defense": 120,
+            "speed": 200,
+            "crit": 10,
+            "crit_damage": 150,
+            "resistance": 5,
+            "penetration": 0,
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    310001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [
+                [
+                    110000,
+                    "random.randint(100, 500)",
+                    0.9
+                ]
+            ],
+            "exp_drops": 2000,
+            "skills": [
+                "skill_library[200002]",
+                "skill_library[240006]"
+            ],
+            "equipment": [
+                "equipment_library[432007]"
+            ],
+            "summon_list": [
+                500001,
+                500002,
+                500001
+            ],
+            "logic_module": "Attribute(value=Attribute(value=Name(id='common', ctx=Load()), attr='logic', ctx=Load()), attr='boss_logic_600001', ctx=Load())"
+        },
+        "600002": {
+            "__class__": "Boss",
+            "number": 600002,
+            "name": "神鸟青鸾",
+            "description": "在青鸾山深处的神鸟，如果驯服肯定能为玩家所用。",
+            "level": 10,
+            "max_hp": 2000,
+            "max_mp": 2000,
+            "hp": 2000,
+            "mp": 2000,
+            "attack": 150,
+            "defense": 120,
+            "speed": 200,
+            "crit": 10,
+            "crit_damage": 150,
+            "resistance": 5,
+            "penetration": 0,
+            "drops": [
+                [
+                    100057,
+                    "random.randint(1, 3)"
+                ]
+            ],
+            "chance_drops": [
+                [
+                    310002,
+                    1,
+                    0.5
+                ]
+            ],
+            "exp_drops": 2000,
+            "skills": [
+                "skill_library[220017]",
+                "skill_library[220018]"
+            ],
+            "equipment": [],
+            "summon_list": [],
+            "logic_module": "Attribute(value=Attribute(value=Name(id='common', ctx=Load()), attr='logic', ctx=Load()), attr='boss_logic_common1', ctx=Load())"
+        },
+        "600004": {
+            "__class__": "Boss",
+            "number": 600004,
+            "name": "玄武关总兵",
+            "description": "镇守玄武关的总兵，号令全军。",
+            "level": 30,
+            "max_hp": 10000,
+            "max_mp": 10000,
+            "hp": 10000,
+            "mp": 10000,
+            "attack": 400,
+            "defense": 400,
+            "speed": 200,
+            "crit": 10,
+            "crit_damage": 150,
+            "resistance": 5,
+            "penetration": 0,
+            "drops": [],
+            "chance_drops": [],
+            "exp_drops": 100,
+            "skills": [],
+            "equipment": [],
+            "summon_list": [
+                500014,
+                500015,
+                500016
+            ],
+            "logic_module": "Attribute(value=Attribute(value=Name(id='common', ctx=Load()), attr='logic', ctx=Load()), attr='boss_logic_common2', ctx=Load())"
+        },
+        "600005": {
+            "__class__": "Boss",
+            "number": 600005,
+            "name": "李玿",
+            "description": "玄王朝兵马大元帅。",
+            "level": 40,
+            "max_hp": 20000,
+            "max_mp": 20000,
+            "hp": 20000,
+            "mp": 20000,
+            "attack": 500,
+            "defense": 420,
+            "speed": 200,
+            "crit": 10,
+            "crit_damage": 150,
+            "resistance": 10,
+            "penetration": 0,
+            "drops": [],
+            "chance_drops": [],
+            "exp_drops": 100,
+            "skills": [
+                "skill_library[220019]",
+                "skill_library[220020]",
+                "skill_library[220021]"
+            ],
+            "equipment": [],
+            "summon_list": [
+                500014,
+                500015,
+                500016,
+                500017
+            ],
+            "logic_module": "Attribute(value=Attribute(value=Name(id='common', ctx=Load()), attr='logic', ctx=Load()), attr='boss_logic_600005', ctx=Load())"
+        },
+        "690000": {
+            "__class__": "Boss",
+            "number": 690000,
+            "name": "白玉",
+            "description": "你的师傅，九尾天狐，你正欲与其切磋。",
+            "level": 120,
+            "max_hp": 500000,
+            "max_mp": 1000000,
+            "hp": 500000,
+            "mp": 1000000,
+            "attack": 5000,
+            "defense": 2000,
+            "speed": 200,
+            "crit": 100,
+            "crit_damage": 150,
+            "resistance": 30,
+            "penetration": 0,
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [
+                [
+                    110000,
+                    "random.randint(100, 500)",
+                    0.9
+                ]
+            ],
+            "exp_drops": 200000,
+            "skills": [
+                "skill_library[210014]",
+                "skill_library[252001]",
+                "skill_library[252002]",
+                "skill_library[252003]"
+            ],
+            "equipment": [],
+            "summon_list": [],
+            "logic_module": "Attribute(value=Attribute(value=Name(id='common', ctx=Load()), attr='logic', ctx=Load()), attr='boss_logic_common1', ctx=Load())"
+        },
+        "690001": {
+            "__class__": "Boss",
+            "number": 690001,
+            "name": "三原天光",
+            "description": "作者",
+            "level": 100,
+            "max_hp": 500000,
+            "max_mp": 1000000,
+            "hp": 500000,
+            "mp": 1000000,
+            "attack": 2000,
+            "defense": 1000,
+            "speed": 200,
+            "crit": 100,
+            "crit_damage": 150,
+            "resistance": 60,
+            "penetration": 30,
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    150000,
+                    1
+                ]
+            ],
+            "chance_drops": [
+                [
+                    110000,
+                    "random.randint(100, 500)",
+                    0.9
+                ]
+            ],
+            "exp_drops": 200000,
+            "skills": [
+                "skill_library[200024]"
+            ],
+            "equipment": [],
+            "summon_list": [],
+            "logic_module": "Attribute(value=Attribute(value=Name(id='common', ctx=Load()), attr='logic', ctx=Load()), attr='boss_logic_common1', ctx=Load())"
+        },
+        "690003": {
+            "__class__": "Boss",
+            "number": 600003,
+            "name": "神秘商人",
+            "description": "一个普通人类。",
+            "level": 10,
+            "max_mp": 200,
+            "max_hp": 200,
+            "hp": 200,
+            "mp": 200,
+            "attack": 50,
+            "defense": 20,
+            "speed": 200,
+            "crit": 10,
+            "crit_damage": 150,
+            "resistance": 5,
+            "penetration": 0,
+            "drops": [],
+            "chance_drops": [],
+            "exp_drops": 100,
+            "skills": [],
+            "equipment": [],
+            "summon_list": [],
+            "logic_module": "Attribute(value=Attribute(value=Name(id='common', ctx=Load()), attr='logic', ctx=Load()), attr='boss_logic_common1', ctx=Load())"
+        }
+    }
+}

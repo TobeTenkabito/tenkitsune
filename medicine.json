@@ -1,0 +1,104 @@
+{
+    "medicine_library": {
+        "300001": {
+            "__class__": "Medicine",
+            "number": 300001,
+            "name": "金疮药",
+            "description": "恢复50点生命值。",
+            "quality": "普通",
+            "price": 10,
+            "quantity": 1,
+            "effect_changes": {
+                "hp": 50
+            }
+        },
+        "300002": {
+            "__class__": "Medicine",
+            "number": 300002,
+            "name": "神清丸",
+            "description": "恢复30点法力值。",
+            "quality": "普通",
+            "price": 15,
+            "quantity": 1,
+            "effect_changes": {
+                "mp": 30
+            }
+        },
+        "300003": {
+            "__class__": "Medicine",
+            "number": 300003,
+            "name": "大力丸",
+            "description": "增加10点攻击力。",
+            "quality": "普通",
+            "price": 20,
+            "quantity": 1,
+            "effect_changes": {
+                "attack": 10
+            }
+        },
+        "300004": {
+            "__class__": "Medicine",
+            "number": 300004,
+            "name": "蟠桃",
+            "description": "仙界的蟠桃，三千年一熟，回复1000hp。",
+            "quality": "史诗",
+            "price": 2000,
+            "quantity": 1,
+            "effect_changes": {
+                "hp": 1000
+            }
+        },
+        "300005": {
+            "__class__": "Medicine",
+            "number": 300005,
+            "name": "上品蟠桃",
+            "description": "仙界的蟠桃，六千年一熟，回复1500hp。",
+            "quality": "史诗",
+            "price": 4000,
+            "quantity": 1,
+            "effect_changes": {
+                "hp": 1500
+            }
+        },
+        "300006": {
+            "__class__": "Medicine",
+            "number": 300006,
+            "name": "极品蟠桃",
+            "description": "仙界的蟠桃，九千年一熟，回复2000hp。",
+            "quality": "史诗",
+            "price": 8000,
+            "quantity": 1,
+            "effect_changes": {
+                "hp": 2000
+            }
+        },
+        "300007": {
+            "__class__": "Medicine",
+            "number": 300007,
+            "name": "回天丹",
+            "description": "白骨生肉,完全恢复hp。",
+            "quality": "传说",
+            "price": 100000,
+            "quantity": 1,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": 1
+                }
+            }
+        },
+        "300008": {
+            "__class__": "Medicine",
+            "number": 300008,
+            "name": "桃花酒",
+            "description": "以白酒为基础，加入桃花。",
+            "quality": "传说",
+            "price": 100000,
+            "quantity": 1,
+            "effect_changes": {
+                "hp": 100
+            }
+        }
+    }
+}

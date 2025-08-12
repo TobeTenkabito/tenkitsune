@@ -1,0 +1,252 @@
+{
+    "task_library": {
+        "1": {
+            "__class__": "Task",
+            "number": 1,
+            "name": "任务1",
+            "description": "完成任务1",
+            "quality": "普通",
+            "repeatable": false,
+            "acceptance_conditions": [
+                {
+                    "level": 1
+                }
+            ],
+            "completion_conditions": [],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "material_library[100000]",
+                    "quantity": 10,
+                    "chance": 0.5
+                },
+                {
+                    "type": "exp",
+                    "amount": 100
+                },
+                {
+                    "type": "attribute",
+                    "attribute": "attack",
+                    "value": 2,
+                    "chance": 0.2
+                }
+            ]
+        },
+        "2": {
+            "__class__": "Task",
+            "number": 2,
+            "name": "任务2",
+            "description": "完成任务2",
+            "quality": "普通",
+            "repeatable": false,
+            "acceptance_conditions": [
+                {
+                    "level": 2
+                }
+            ],
+            "completion_conditions": [],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "material_library[100001]",
+                    "quantity": 5,
+                    "chance": 0.5
+                },
+                {
+                    "type": "exp",
+                    "amount": 200
+                },
+                {
+                    "type": "attribute",
+                    "attribute": "defense",
+                    "value": 5
+                }
+            ]
+        },
+        "3": {
+            "__class__": "Task",
+            "number": 3,
+            "name": "任务3",
+            "description": "完成任务3",
+            "quality": "普通",
+            "repeatable": false,
+            "acceptance_conditions": [],
+            "completion_conditions": [],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "material_library[100002]",
+                    "quantity": 3
+                },
+                {
+                    "type": "exp",
+                    "amount": 300
+                },
+                {
+                    "type": "attribute",
+                    "attribute": "speed",
+                    "value": 3
+                }
+            ],
+            "prerequisite_tasks": [],
+            "acceptance_logic": {
+                "OR": [
+                    {
+                        "task_completed": 1
+                    },
+                    {
+                        "task_completed": 2
+                    }
+                ]
+            }
+        },
+        "1001": {
+            "__class__": "Task",
+            "number": 1001,
+            "name": "领取例钱",
+            "description": "又到了每个月发例钱的时候，去白玉那领取例钱吧!",
+            "quality": "普通",
+            "repeatable": true,
+            "acceptance_conditions": [
+                {
+                    "level": 1,
+                    "operator": "="
+                }
+            ],
+            "completion_conditions": [
+                {
+                    "talk_to_npc": 100
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "material_library[100000]",
+                    "quantity": 100
+                }
+            ],
+            "prerequisite_tasks": [],
+            "acceptance_logic": {},
+            "source_npc": 100
+        },
+        "1002": {
+            "__class__": "Task",
+            "number": 1002,
+            "name": "接受训练",
+            "description": "白玉师傅见你近日训练有所怠惰，希望你多加训练！",
+            "quality": "普通",
+            "repeatable": true,
+            "acceptance_conditions": [
+                {
+                    "level": 1,
+                    "operator": "="
+                }
+            ],
+            "completion_conditions": [
+                {
+                    "kill": {
+                        "enemy_id": 500012,
+                        "count": 1
+                    }
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "material_library[100000]",
+                    "quantity": 100
+                },
+                {
+                    "type": "exp",
+                    "amount": 100
+                }
+            ],
+            "prerequisite_tasks": [],
+            "acceptance_logic": {},
+            "source_npc": 100
+        },
+        "1003": {
+            "__class__": "Task",
+            "number": 1003,
+            "name": "下山历练I",
+            "description": "你来到仙狐村也有好一阵子，白玉希望你能下山历练增长见识",
+            "quality": "优秀",
+            "repeatable": false,
+            "acceptance_conditions": [],
+            "completion_conditions": [
+                {
+                    "level": 11,
+                    "operator": ">"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "material_library[150003]",
+                    "quantity": 1
+                }
+            ],
+            "prerequisite_tasks": [],
+            "acceptance_logic": {},
+            "source_npc": 100
+        },
+        "1004": {
+            "__class__": "Task",
+            "number": 1004,
+            "name": "下山历练II",
+            "description": "经过上次的历练，白玉决定赠送你一把趁手的武器",
+            "quality": "优秀",
+            "repeatable": false,
+            "acceptance_conditions": [
+                {
+                    "level": 11,
+                    "operator": ">"
+                }
+            ],
+            "completion_conditions": [
+                {
+                    "level": 20,
+                    "operator": ">"
+                }
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "equipment_library[400009]",
+                    "quantity": 1
+                }
+            ],
+            "prerequisite_tasks": [
+                1003
+            ],
+            "acceptance_logic": {},
+            "source_npc": 100
+        },
+        "1010": {
+            "__class__": "Task",
+            "number": 1010,
+            "name": "伏魔山的秘密",
+            "description": "大陆东边临海处有一座大山名唤伏魔山，近期此处不太安定请,道友前去调查此处，事成之后，向天剑宗引荐你。",
+            "quality": "普通",
+            "repeatable": false,
+            "acceptance_conditions": [
+                {
+                    "level": 10
+                }
+            ],
+            "completion_conditions": [
+                {}
+            ],
+            "rewards": [
+                {
+                    "type": "item",
+                    "item": "material_library[160002]",
+                    "quantity": 1
+                }
+            ],
+            "prerequisite_tasks": [],
+            "acceptance_logic": {},
+            "source_npc": 105
+        }
+    }
+}

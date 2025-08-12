@@ -1,0 +1,2367 @@
+{
+    "skill_library": {
+        "200000": {
+            "__class__": "Skill",
+            "number": 200000,
+            "name": "炎阳炽焰",
+            "description": "强大的火系魔法，仅供测试使用",
+            "quality": "普通",
+            "price": 50,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.1
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "盈虚",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "mp",
+                            "value": -50
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "重伤",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -40
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "中毒",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -40
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "流血",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -60
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "灼烧",
+                        "type": "debuff",
+                        "duration": 2,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -20
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "凋零",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -100
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "寒冷",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "speed",
+                            "value": -20
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "冰冻",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "speed",
+                            "value": -100
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "脆弱",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": -20
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "虚弱",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "attack",
+                            "value": -20
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "镇压",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "level",
+                            "value": -10
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "眩晕",
+                        "type": "debuff",
+                        "duration": 1,
+                        "effect": {
+                            "attribute": "dizzy"
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "麻痹",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "paralysis"
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "沉默",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "silence"
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 1
+            }
+        },
+        "200001": {
+            "__class__": "Skill",
+            "number": 200001,
+            "name": "自我了断",
+            "description": "仅供测试，别想不开。",
+            "quality": "普通",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": 1
+                }
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "200002": {
+            "__class__": "Skill",
+            "number": 200002,
+            "name": "治疗术",
+            "description": "恢复单个队友的生命值.测试用。",
+            "quality": "普通",
+            "price": 50,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": -40
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "200003": {
+            "__class__": "Skill",
+            "number": 200003,
+            "name": "紫电清霜",
+            "description": "较为上乘的心法，雷冰交替攻击敌人，非寻常修士可以抵抗。\n消耗50法力，对敌方全体造成基于自身攻击倍率为0.4，0.35，0.4的三次伤害。",
+            "quality": "优秀",
+            "price": 50,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": [
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.4
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.35
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.4
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 50
+            }
+        },
+        "200004": {
+            "__class__": "Skill",
+            "number": 200004,
+            "name": "日知月仪",
+            "description": "传说中能使阴阳倒转的功法。",
+            "quality": "传说",
+            "price": 1,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": 5,
+            "effect_changes": {
+                "mp": {
+                    "source": "user",
+                    "attribute": "max_mp",
+                    "multiplier": 0.4
+                },
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": 0.2
+                }
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "200011": {
+            "__class__": "Skill",
+            "number": 200011,
+            "name": "万剑归宗",
+            "description": "达到人剑合一的大能方可使用，是人间的至高武学，威力非同寻常,但使用后会消耗大量真元。",
+            "quality": "精良",
+            "price": 1000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": [
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.4
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.4
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.4
+                    },
+                    100
+                ]
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "200013": {
+            "__class__": "Skill",
+            "number": 200013,
+            "name": "先天阳炎剑阵",
+            "description": "借用羲和之火炼化出来的剑阵，威力非同小可",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 3.3
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "阳炎灼骨",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -1000
+                        },
+                        "chance": 0.8
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 200,
+                "hp": 800
+            }
+        },
+        "200014": {
+            "__class__": "Skill",
+            "number": 200014,
+            "name": "金罡天魔功",
+            "description": "将大量金罡晶炼化后修得的功法，为天下之至坚。",
+            "quality": "传说",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": 3,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": 0.25
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "金刚不灭",
+                        "type": "buff",
+                        "duration": 4,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": 1200
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "金罡天魔功",
+                        "type": "buff",
+                        "duration": 1,
+                        "effect": {
+                            "attribute": "resistance",
+                            "value": 80
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 1000
+            }
+        },
+        "200016": {
+            "__class__": "Skill",
+            "number": 200016,
+            "name": "天切五闪",
+            "description": "平心静气，向目标斩出五斩。造成高额伤害。",
+            "quality": "精良",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": [
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 1.5
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.5
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.8
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 2
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 160
+            }
+        },
+        "200017": {
+            "__class__": "Skill",
+            "number": 200017,
+            "name": "红莲业火",
+            "description": "就让这业火，焚烧殆尽！",
+            "quality": "精良",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.7
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "业炎",
+                        "type": "debuff",
+                        "duration": 4,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -500
+                        },
+                        "chance": 0.9
+                    }
+                ]
+            },
+            "cost": {
+                "hp": 200
+            }
+        },
+        "200018": {
+            "__class__": "Skill",
+            "number": 200018,
+            "name": "幽冥寒冰",
+            "description": "给我冻住！",
+            "quality": "精良",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.7
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "幽寒",
+                        "type": "debuff",
+                        "duration": 4,
+                        "effect": {
+                            "attribute": "mp",
+                            "value": -400
+                        },
+                        "chance": 0.9
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 180
+            }
+        },
+        "200019": {
+            "__class__": "Skill",
+            "number": 200019,
+            "name": "锁骨缚灵诀",
+            "description": "来自阴冥地府的功法，能锁魂夺魄，对修士有极大伤害，极小概率斩杀。\n消耗480点法力，对敌方单体造成基于自身攻击倍率为5的伤害，有5%的概率斩杀目标。\n可以使用20次。",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": 20,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 5
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "斩杀",
+                        "type": "debuff",
+                        "duration": 1,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -99999999
+                        },
+                        "chance": 0.05
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "200020": {
+            "__class__": "Skill",
+            "number": 200020,
+            "name": "摄魂迷心大法",
+            "description": "'你该听我的'，'你该听我的'——某个声音如是说。",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "摄魂",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "paralysis"
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 400
+            }
+        },
+        "200021": {
+            "__class__": "Skill",
+            "number": 200021,
+            "name": "逍遥游",
+            "description": "有所待则不逍遥：至人无己，神人无功，圣人无名。",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "逍遥",
+                        "type": "buff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "speed",
+                            "value": 1000
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 400
+            }
+        },
+        "200023": {
+            "__class__": "Skill",
+            "number": 200023,
+            "name": "封神破灵指",
+            "description": "直击元神的一击，威力非同小可。",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 6
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "封印",
+                        "type": "debuff",
+                        "duration": 2,
+                        "effect": {
+                            "attribute": "silence"
+                        },
+                        "chance": 0.7
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 400
+            }
+        },
+        "200024": {
+            "__class__": "Skill",
+            "number": 200024,
+            "name": "湮灭方程",
+            "description": "比较难解释粒子物理对修仙界产生的影响，反正能造成极高伤害。\n消耗1200点法力，对敌方单体造成基于自身攻击倍率为13的伤害，并有50%概率附加(-5000生命)湮灭持续1回合。",
+            "quality": "传说",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 13
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "湮灭",
+                        "type": "debuff",
+                        "duration": 1,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -5000
+                        },
+                        "chance": 0.5
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 1200
+            }
+        },
+        "200028": {
+            "__class__": "Skill",
+            "number": 200028,
+            "name": "天地同寿",
+            "description": "毁天灭地的自杀剑招。\n消耗自身最大生命值的1/3，对敌方单体造成基于自身攻击倍率为10的伤害。",
+            "quality": "史诗",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 10
+                }
+            },
+            "cost": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": 0.33
+                }
+            }
+        },
+        "200029": {
+            "__class__": "Skill",
+            "number": 200029,
+            "name": "太上忘情诀",
+            "description": "太上忘情。",
+            "quality": "精良",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "忘情",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "dizzy"
+                        },
+                        "chance": 0.5
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "200030": {
+            "__class__": "Skill",
+            "number": 200030,
+            "name": "龙吟破天",
+            "description": "召唤龙魂力量发出龙吟，震慑并削弱敌人的防御力。\n消耗100点法力，对敌方单体造成基于自身攻击的3.2倍伤害，并有50%概率添加击破(-100防御)持续3回合",
+            "quality": "精良",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 3.2
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "击破",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": -100
+                        },
+                        "chance": 0.5
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "200031": {
+            "__class__": "Skill",
+            "number": 200031,
+            "name": "雷劫九重天",
+            "description": "召唤天雷从九天之上降下，对全体敌人造成毁灭性打击。\n消耗640点法力与200点生命，造成9次为数值3000的固伤,有50%概率附加麻痹。",
+            "quality": "史诗",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": [
+                    3000,
+                    3000,
+                    3000,
+                    3000,
+                    3000,
+                    3000,
+                    3000,
+                    3000,
+                    3000
+                ],
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "麻痹",
+                        "type": "debuff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "paralysis"
+                        },
+                        "chance": 0.5
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 640,
+                "hp": 200
+            }
+        },
+        "200032": {
+            "__class__": "Skill",
+            "number": 200032,
+            "name": "洪荒化功诀",
+            "description": "他强任他强，清风拂山岗。他横任他横，明月照大江。\n消耗100点法力，对敌方单体造成基于目标攻击倍率为3.2的伤害。\n只能使用6次。",
+            "quality": "精良",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": 6,
+            "effect_changes": {
+                "hp": {
+                    "source": "target",
+                    "attribute": "attack",
+                    "multiplier": 3.2
+                }
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "200033": {
+            "__class__": "Skill",
+            "number": 200033,
+            "name": "崩石碎岳",
+            "description": "动用山河之力，对场上无差别攻击，能崩山碎石！\n消耗400点法力和最大生命值的10%，对敌方单体交替造成基于自身攻击倍率为0.1和0.2的总计20次攻击，从第17次开始，倍率为0.5。\n只能使用20次。",
+            "quality": "史诗",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": 20,
+            "effect_changes": {
+                "hp": [
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.1
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.1
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.1
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.1
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.1
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.1
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.1
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.1
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.2
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.5
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.5
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.5
+                    },
+                    {
+                        "source": "user",
+                        "attribute": "attack",
+                        "multiplier": 0.5
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 400,
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": 0.1
+                }
+            }
+        },
+        "251005": {
+            "__class__": "Skill",
+            "number": 251005,
+            "name": "九转重阳功",
+            "description": "将重阳功修练至登峰造极，拥有至高生命之术,遇强则强。\n消耗1600点法力，恢复自身最大生命值的20%，对敌方全体造成其最大生命值15%的真实伤害，并造成8100点固伤。\n只能使用5次。",
+            "quality": "神器",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": 5,
+            "effect_changes": {
+                "hp": [
+                    {
+                        "source": "target",
+                        "attribute": "max_hp",
+                        "multiplier": 0.15
+                    },
+                    8100
+                ]
+            },
+            "cost": {
+                "mp": 1600,
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": -0.2
+                }
+            }
+        },
+        "251004": {
+            "__class__": "Skill",
+            "number": 251004,
+            "name": "七转重阳功",
+            "description": "重阳功修炼至大乘，能无视仙佛身上金光。\n消耗800点法力，恢复自身最大生命值的10%，对敌方全体造成基于自身最大生命值3倍的真实伤害，并造成4900点固伤",
+            "quality": "传说",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": [
+                    {
+                        "source": "user",
+                        "attribute": "max_hp",
+                        "multiplier": 3
+                    },
+                    4900
+                ]
+            },
+            "cost": {
+                "mp": 800,
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": -0.1
+                }
+            }
+        },
+        "251003": {
+            "__class__": "Skill",
+            "number": 251003,
+            "name": "五转重阳功",
+            "description": "重阳功修炼更进一步，攻击能力更强\n消耗300点法力，恢复自身最大生命值的5%，对敌方单体造成基于自身最大生命值5倍的真实伤害，并造成5000点固伤。",
+            "quality": "史诗",
+            "price": 10000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": [
+                    {
+                        "source": "user",
+                        "attribute": "max_hp",
+                        "multiplier": 5
+                    },
+                    5000
+                ]
+            },
+            "cost": {
+                "mp": 300,
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": -0.05
+                }
+            }
+        },
+        "251002": {
+            "__class__": "Skill",
+            "number": 251002,
+            "name": "三转重阳功",
+            "description": "进阶后的重阳功，不仅有益于气血，而且相比先前拥有了攻击敌人的能力。\n消耗100点法力，回复400点生命，对敌方单体造成基于自身最大生命值倍率为2.4的真实伤害。",
+            "quality": "精良",
+            "price": 1,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": 2.4
+                }
+            },
+            "cost": {
+                "mp": 100,
+                "hp": -400
+            }
+        },
+        "251001": {
+            "__class__": "Skill",
+            "number": 251001,
+            "name": "重阳功",
+            "description": "白玉传授给白夙的基本功法，拥有增强体质，抵御寒物的作用。\n消耗15点法力，回复自身当前生命的10%",
+            "quality": "优秀",
+            "price": 1,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "hp",
+                    "multiplier": -0.1
+                }
+            },
+            "cost": {
+                "mp": 15
+            }
+        },
+        "252005": {
+            "__class__": "Skill",
+            "number": 252005,
+            "name": "钟灵狐影",
+            "description": "传说九尾天狐将天地灵气汇聚一处，灵力源源不绝，能幻化大千世界，是天狐一族最强奥义。\n消耗1000点法力使自身所有基础属性增强，同时获得一定回血回蓝持续永久。\n只能发动一次。",
+            "quality": "神器",
+            "price": 10000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": 1,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·回血",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": 1000
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·回魔",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "mp",
+                            "value": 500
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·攻击",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "attack",
+                            "value": 500
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·防御",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": 400
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·速度",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "speed",
+                            "value": 200
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·暴击",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "crit",
+                            "value": 20
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·暴伤",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "crit_damage",
+                            "value": 40
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·抵抗",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "resistance",
+                            "value": 5
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "钟灵狐影·穿透",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "penetration",
+                            "value": 5
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 1000,
+                "hp": {
+                    "source": "user",
+                    "attribute": "hp",
+                    "multiplier": 0.5
+                }
+            }
+        },
+        "252004": {
+            "__class__": "Skill",
+            "number": 252004,
+            "name": "天狐九变",
+            "description": "传说九尾天狐能解放神力，以幻影尾的形式存在，每多一条，战斗力倍增几重。可短时间内极大幅提高战斗力。\n消耗640点法力和当前生命值的40%，获得天狐九变·攻击(+1000攻击)天狐九变·暴击(+100暴击)天狐九变·爆伤(+100爆伤)持续2回合\n只能发动2次。",
+            "quality": "传说",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": 2,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "天狐九变·攻击",
+                        "type": "buff",
+                        "duration": 2,
+                        "effect": {
+                            "attribute": "attack",
+                            "value": 1000
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "天狐九变·暴击",
+                        "type": "buff",
+                        "duration": 2,
+                        "effect": {
+                            "attribute": "crit",
+                            "value": 100
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "天狐九变·暴伤",
+                        "type": "buff",
+                        "duration": 2,
+                        "effect": {
+                            "attribute": "crit_damage",
+                            "value": 100
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 640,
+                "hp": {
+                    "source": "user",
+                    "attribute": "hp",
+                    "multiplier": 0.4
+                }
+            }
+        },
+        "252003": {
+            "__class__": "Skill",
+            "number": 252003,
+            "name": "妖狐千魅",
+            "description": "英雄难过美人关。\n消耗400点法力，70%概率对敌方单体施加魅惑(无法行动)2回合",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "魅惑",
+                        "type": "debuff",
+                        "duration": 2,
+                        "effect": {
+                            "attribute": "dizzy"
+                        },
+                        "chance": 0.7
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 400
+            }
+        },
+        "252002": {
+            "__class__": "Skill",
+            "number": 252002,
+            "name": "狐影连连",
+            "description": "嗖~\n消耗100点法力，对敌方单体造成基于自身攻击倍率为5的伤害。",
+            "quality": "精良",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 5
+                }
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "252001": {
+            "__class__": "Skill",
+            "number": 252001,
+            "name": "青狐参天",
+            "description": "天狐一族修行的基础功法。\n消耗25点法力，恢复自身最大生命值的15%",
+            "quality": "优秀",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": -0.15
+                }
+            },
+            "cost": {
+                "mp": 25
+            }
+        },
+        "253005": {
+            "__class__": "Skill",
+            "number": 253005,
+            "name": "道威无极剑阵",
+            "description": "天剑宗剑阵之一，达到剑随意动、心与剑合的最高境界。剑招已不拘于形，而在于心念，剑气如无极般无边无际，包罗万象。\n消耗640点法力，对敌方全体造成基于自身攻击倍率为4的伤害，并附加剑阵神威(-1000防御)5回合",
+            "quality": "神器",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 4
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "剑阵神威",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": -1000
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 640
+            }
+        },
+        "253004": {
+            "__class__": "Skill",
+            "number": 253004,
+            "name": "太元归墟剑",
+            "description": "天剑宗剑招之一，剑意可无形无质，却如天雷般瞬间爆发，一击毙敌。\n消耗540点法力，对敌方单体造成基于自身攻击倍率为7的伤害。并附加归墟剑气(-9000生命)持续1回合",
+            "quality": "传说",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 7
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "归墟剑气",
+                        "type": "debuff",
+                        "duration": 1,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -9000
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 540
+            }
+        },
+        "253003": {
+            "__class__": "Skill",
+            "number": 253003,
+            "name": "云龙上阳诀",
+            "description": "天剑宗内功之一，迅捷如龙，身形如幻，剑法变幻莫测，速度越快效果越好。\n消耗320点法力，对敌方全体造成基于自身速度倍率为10的伤害。",
+            "quality": "史诗",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "speed",
+                    "multiplier": 10
+                }
+            },
+            "cost": {
+                "mp": 320
+            }
+        },
+        "253002": {
+            "__class__": "Skill",
+            "number": 253002,
+            "name": "三玄剑阵",
+            "description": "天剑宗基础剑阵之一，能对成群的敌人造成伤害。\n消耗100点法力，对敌方全体造成基于自身防御倍率为2.5的伤害。",
+            "quality": "精良",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "defense",
+                    "multiplier": 2.5
+                }
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "253001": {
+            "__class__": "Skill",
+            "number": 253001,
+            "name": "青莲剑心",
+            "description": "天剑宗最基础的心法，只有明白为何执剑方可执剑。\n消耗25法力，获得青莲剑心·攻击(+100点攻击)与青莲剑心·防御(+50点防御)持续3回合。",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "青莲剑心·攻击",
+                        "type": "buff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "attack",
+                            "value": 100
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "青莲剑心·防御",
+                        "type": "buff",
+                        "duration": 3,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": 50
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 25
+            }
+        },
+        "254005": {
+            "__class__": "Skill",
+            "number": 254005,
+            "name": "寰魔归灵",
+            "description": "以自身灵体为载，炼化寰宇之内的魔气魔灵为己所用，其神威之大，毁天灭地，但易遭反噬。\n提高使用者当前攻击的100%，获得万魔灭身(每回合-960生命)永久。\n只能使用1次。",
+            "quality": "神器",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": 1,
+            "effect_changes": {
+                "attack": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "万魔灭身",
+                        "type": "debuff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -960
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "254004": {
+            "__class__": "Skill",
+            "number": 254004,
+            "name": "终焉镇魂曲",
+            "description": "弹奏来自魔界的镇魂曲，对敌方修为和神识造成毁灭性打击\n消耗800点法力，对敌方全体减少其10%最大生命并附加死灭(-500生命)永久，有60%概率附加镇魂(无法行动)2回合\n只能使用1次",
+            "quality": "传说",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": 1,
+            "effect_changes": {
+                "max_hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": -0.1
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "镇魂",
+                        "type": "debuff",
+                        "duration": 2,
+                        "effect": {
+                            "attribute": "dizzy"
+                        },
+                        "chance": 0.6
+                    },
+                    {
+                        "action": "add",
+                        "name": "死灭",
+                        "type": "debuff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -500
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 800
+            }
+        },
+        "254003": {
+            "__class__": "Skill",
+            "number": 254003,
+            "name": "虚魔神光",
+            "description": "释放来自魔界的神光，被照射者修为大损。\n消耗500点法力，对敌方全体减少15点抗性\n只能使用1次",
+            "quality": "史诗",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": 1,
+            "effect_changes": {
+                "resistance": -15
+            },
+            "cost": {
+                "mp": 500
+            }
+        },
+        "254002": {
+            "__class__": "Skill",
+            "number": 254002,
+            "name": "阴阳魔雷",
+            "description": "魔气汇聚，召唤阴阳雷对目标造成毁灭性打击。\n消耗180点法力，对敌方全体造成基于自身攻击倍率1.6的伤害，并削弱其当前防御的7%",
+            "quality": "精良",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.6
+                },
+                "defense": {
+                    "source": "target",
+                    "attribute": "defense",
+                    "multiplier": -0.07
+                }
+            },
+            "cost": {
+                "mp": 180
+            }
+        },
+        "254001": {
+            "__class__": "Skill",
+            "number": 254001,
+            "name": "噬魂魔气",
+            "description": "召唤魔气环绕自身，使自身战斗能力大幅提高。\n消耗100点法力和50点生命，提高自身8%暴击\n只能使用3次",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": 3,
+            "effect_changes": {
+                "crit": 8
+            },
+            "cost": {
+                "mp": 100,
+                "hp": 50
+            }
+        },
+        "200012": {
+            "__class__": "Skill",
+            "number": 200012,
+            "name": "灵犀一剑",
+            "description": "天剑宗不传之秘，乃世间至妙剑术。",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 5
+                }
+            },
+            "cost": {
+                "mp": 400
+            }
+        },
+        "210010": {
+            "__class__": "Skill",
+            "number": 210010,
+            "name": "明镜止水",
+            "description": "白业的上乘心法，非洞虚者不能用，能清除一切不利状态。",
+            "quality": "史诗",
+            "price": 50,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": -0.1
+                },
+                "buff": [
+                    {
+                        "action": "remove",
+                        "type": "debuff"
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 20
+            }
+        },
+        "210013": {
+            "__class__": "Skill",
+            "number": 210013,
+            "name": "空灵玄虚剑",
+            "quality": "传说",
+            "description": "袁逸功法集大成者，其于千岩瀑布下参悟十年所得。",
+            "price": 1,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 5
+                }
+            },
+            "cost": {
+                "mp": 1000
+            }
+        },
+        "210014": {
+            "__class__": "Skill",
+            "number": 210014,
+            "name": "真·天狐九变",
+            "quality": "传说",
+            "description": "白玉将天狐九变修炼至登峰造极，将神力压缩，爆发出惊人的战斗力。",
+            "price": 1,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 6
+                }
+            },
+            "cost": {
+                "mp": 1000
+            }
+        },
+        "220001": {
+            "__class__": "Skill",
+            "number": 220001,
+            "name": "魔源喷涌",
+            "description": "boss技能，魔力如源头活水般生生不息。恢复最大魔力的80%。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "mp": {
+                    "source": "user",
+                    "attribute": "max_mp",
+                    "multiplier": 0.8
+                }
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "220002": {
+            "__class__": "Skill",
+            "number": 220002,
+            "name": "万尘聚灵功",
+            "description": "boss技能，吸收天地灵气恢复自身生命。恢复最大生命的30%。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "max_hp",
+                    "multiplier": 0.3
+                }
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "220003": {
+            "__class__": "Skill",
+            "number": 220003,
+            "name": "绝地反击I",
+            "description": "boss技能，在血量低的时候触发，小幅提升能力。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "绝地反击I·攻",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "attack",
+                            "value": 100
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击I·防",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": 50
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击I·速",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "speed",
+                            "value": 20
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击I·暴击",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "crit",
+                            "value": 5
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击I·暴伤",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "crit_damage",
+                            "value": 50
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "220004": {
+            "__class__": "Skill",
+            "number": 220004,
+            "name": "绝地反击II",
+            "description": "boss技能，在血量低的时候触发，中幅提升能力。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "绝地反击II·攻",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "attack",
+                            "value": 400
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击II·防",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": 100
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击II·速",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "speed",
+                            "value": 50
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击II·暴击",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "crit",
+                            "value": 10
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击II·暴伤",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "crit_damage",
+                            "value": 50
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "220005": {
+            "__class__": "Skill",
+            "number": 220005,
+            "name": "绝地反击III",
+            "description": "boss技能，在血量低的时候触发，大幅提升能力。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "绝地反击III·攻",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "attack",
+                            "value": 800
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击III·防",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "defense",
+                            "value": 300
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击III·速",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "speed",
+                            "value": 50
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击III·暴击",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "crit",
+                            "value": 10
+                        },
+                        "chance": 1
+                    },
+                    {
+                        "action": "add",
+                        "name": "绝地反击III·暴伤",
+                        "type": "buff",
+                        "duration": 999,
+                        "effect": {
+                            "attribute": "crit_damage",
+                            "value": 50
+                        },
+                        "chance": 1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 0
+            }
+        },
+        "220015": {
+            "__class__": "Skill",
+            "number": 220015,
+            "name": "太虚紫电",
+            "description": "来自天道的闪电，能最直接的对修士造成伤害。",
+            "quality": "传说",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "mp",
+                    "multiplier": 4
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "紫电寂灭",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "mp",
+                            "value": -1000
+                        },
+                        "chance": 0.5
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 1000
+            }
+        },
+        "220016": {
+            "__class__": "Skill",
+            "number": 220016,
+            "name": "十六万寒霜剑阵",
+            "description": "将龙珠的力量与毕生绝学相融，虽鬼神弗能御。",
+            "quality": "神器",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 8
+                },
+                "buff": [
+                    {
+                        "action": "add",
+                        "name": "极度深寒",
+                        "type": "debuff",
+                        "duration": 5,
+                        "effect": {
+                            "attribute": "speed",
+                            "value": -200
+                        },
+                        "chance": 0.8
+                    },
+                    {
+                        "action": "add",
+                        "name": "神魂俱灭",
+                        "type": "debuff",
+                        "duration": 1,
+                        "effect": {
+                            "attribute": "hp",
+                            "value": -5000
+                        },
+                        "chance": 0.1
+                    }
+                ]
+            },
+            "cost": {
+                "mp": 2000
+            }
+        },
+        "220017": {
+            "__class__": "Skill",
+            "number": 220017,
+            "name": "神鸟争鸣",
+            "description": "青鸾释放铮铮之音，使精神高度集中。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "user",
+            "frequency": null,
+            "effect_changes": {
+                "attack": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 0.3
+                }
+            },
+            "cost": {
+                "mp": 200
+            }
+        },
+        "220018": {
+            "__class__": "Skill",
+            "number": 220018,
+            "name": "鸾御天舞",
+            "description": "青鸾飞身起舞，对敌人造成打击。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.2
+                }
+            },
+            "cost": {
+                "mp": 200
+            }
+        },
+        "220019": {
+            "__class__": "Skill",
+            "number": 220019,
+            "name": "鱼鳞之阵",
+            "description": "挥舞令旗鼓舞全军，摆成鱼鳞之阵，使全军暴击增加。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "crit": {
+                    "source": "user",
+                    "attribute": "crit",
+                    "multiplier": 0.2
+                }
+            },
+            "cost": {
+                "mp": 200
+            }
+        },
+        "220020": {
+            "__class__": "Skill",
+            "number": 220020,
+            "name": "鹤翼之阵",
+            "description": "挥舞令旗鼓舞全军，摆成鹤翼之阵，使全军速度增加。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "crit": {
+                    "source": "user",
+                    "attribute": "crit",
+                    "multiplier": 0.2
+                }
+            },
+            "cost": {
+                "mp": 200
+            }
+        },
+        "220021": {
+            "__class__": "Skill",
+            "number": 220021,
+            "name": "分进合击",
+            "description": "挥舞令旗鼓舞全军，让军队分批依次攻击，造成大量伤害。",
+            "quality": "普通",
+            "price": 1000000,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 4
+                }
+            },
+            "cost": {
+                "mp": 200
+            }
+        },
+        "240003": {
+            "__class__": "Skill",
+            "number": 230003,
+            "name": "拳打脚踢",
+            "description": "最基础的肉搏，虽然看起来不华丽，但是十分有用，攻击造成1.1倍基于攻击力伤害。",
+            "quality": "普通",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.1
+                }
+            },
+            "cost": {
+                "mp": 20
+            }
+        },
+        "240006": {
+            "__class__": "Skill",
+            "number": 230006,
+            "name": "乱砍",
+            "description": "挥舞手中武器向前方乱砍，是最基本的招式，威力和范围虽然大但是容易伤到自己,对敌方全体造成攻击力1.2倍伤害",
+            "quality": "普通",
+            "price": 50,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 0.9
+                }
+            },
+            "cost": {
+                "hp": 100,
+                "mp": 30
+            }
+        },
+        "240005": {
+            "__class__": "Skill",
+            "number": 230005,
+            "name": "乱石穿空",
+            "description": "别看技能名字很华丽，其实就是丢石头。",
+            "quality": "普通",
+            "price": 50,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 0.8
+                }
+            },
+            "cost": {
+                "mp": 15
+            }
+        },
+        "240009": {
+            "__class__": "Skill",
+            "number": 230009,
+            "name": "御剑术",
+            "description": "初级修仙者都会的御剑术，是最基本的招式，在降妖除魔方面拥有不俗的表现。",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.8
+                }
+            },
+            "cost": {
+                "mp": 20
+            }
+        },
+        "240010": {
+            "__class__": "Skill",
+            "number": 240010,
+            "name": "雁行有序",
+            "description": "玄武军的基础战法，能有效防御敌人进攻。",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "defense": {
+                    "source": "user",
+                    "attribute": "defense",
+                    "multiplier": 0.2
+                }
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "240011": {
+            "__class__": "Skill",
+            "number": 240011,
+            "name": "天雨乱箭",
+            "description": "玄武军弩手齐刷刷放箭。",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.2
+                }
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "240012": {
+            "__class__": "Skill",
+            "number": 240012,
+            "name": "全面冲锋",
+            "description": "玄武军骑兵发起冲锋！",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.5
+                }
+            },
+            "cost": {
+                "mp": 100
+            }
+        },
+        "240013": {
+            "__class__": "Skill",
+            "number": 240013,
+            "name": "神武战阵",
+            "description": "神武军的战阵，攻守兼备。",
+            "quality": "精良",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "all",
+            "frequency": null,
+            "effect_changes": {
+                "hp": {
+                    "source": "user",
+                    "attribute": "attack",
+                    "multiplier": 1.6
+                }
+            },
+            "cost": {
+                "mp": 100,
+                "hp": -200
+            }
+        }
+    }
+}

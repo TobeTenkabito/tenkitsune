@@ -1,0 +1,1092 @@
+{
+    "map_library": {
+        "0": {
+            "__class__": "Map",
+            "number": 0,
+            "name": "洞天福地",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "1": {
+            "__class__": "Map",
+            "number": 1,
+            "name": "仙狐村",
+            "description": "传说世外桃源之外，有一个宁静的村庄，天狐一族世世代代居住于此。",
+            "adjacent_maps": {
+                "2": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [
+                "npc_library[100]",
+                "npc_library[101]",
+                "npc_library[102]"
+            ],
+            "battles": [
+                [
+                    "enemy_library[500012]",
+                    "enemy_library[500001]"
+                ]
+            ],
+            "collectible_items": {},
+            "dungeons": [
+                "dungeon_library[10002]"
+            ],
+            "passport": null
+        },
+        "2": {
+            "__class__": "Map",
+            "number": 2,
+            "name": "桃花源",
+            "description": "其境清幽，四季如春，桃花灼灼，开遍山野。\n若入其地，水声潺潺，夹岸桃花相映如霞，芳草萋萋，香气袭人。\n遥望之间，青山如黛，绿水如练，曲径通幽，不知其所终也。\n传闻此地，天地灵气汇聚，四时花鸟虫鱼，各得其乐。\n清风徐来，花瓣飘摇，恰如人间仙境。\n源头有潭，名曰云泽，水清澈见底，映日生辉，周遭灵禽栖息，彩蝶飞舞，宛如画中景致。\n故人有言：“若得桃源之境，可免红尘之扰，享世外之乐。”",
+            "adjacent_maps": {
+                "1": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "3": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "4": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [
+                [
+                    "enemy_library[500001]"
+                ]
+            ],
+            "collectible_items": {
+                "material_library[100012]": {
+                    "success_rate": 0.5,
+                    "quantity_range": 5
+                },
+                "material_library[100011]": {
+                    "success_rate": 0.5,
+                    "quantity_range": [
+                        2,
+                        3
+                    ]
+                }
+            },
+            "dungeons": [],
+            "passport": null
+        },
+        "3": {
+            "__class__": "Map",
+            "number": 3,
+            "name": "青桃镇",
+            "description": "青桃镇者，东临碧山，西倚翠岭，乃桃源之外，玄关之隅也。其镇小而秀，山水相映，桃林环绕，四时花开不谢，青翠如新。\n行至此地，古道长烟，楼阁重重，村舍鳞次栉比，隐现于桃花深处，宛若画中之景。\n镇中桃木成林，街巷曲折，石径盘旋，犹如游龙；桃花灼灼，楼宇参差，恰似凤舞。\n每至春来，桃花飘落如雨，遍地铺锦，香气氤氲，沁人心脾。",
+            "adjacent_maps": {
+                "2": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "6": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "8": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "11": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [
+                [
+                    "enemy_library[500003]"
+                ],
+                [
+                    "enemy_library[500004]"
+                ]
+            ],
+            "collectible_items": {},
+            "dungeons": [],
+            "passport": null
+        },
+        "4": {
+            "__class__": "Map",
+            "number": 4,
+            "name": "天泽",
+            "description": "天降之泽，润物无声也。位于九天之下，环山抱水，云雾缭绕，如仙境漂浮于天地之间。\n其泽广袤无垠，水天一色，湖光潋滟，山色空濛，恍若天上瑶池，难辨人间仙境。\n泽中奇峰耸立，翠林葱郁，白鹤盘旋，灵龟游弋，水鸟翔集，鱼跃水嬉，景致如画。\n四时皆景，春有百花争艳，夏有碧波荡漾，秋有红叶纷飞，冬有冰湖映月，皆为天地之灵秀所钟。\n水流轻泻，溪泉汇聚，涓涓细流，蜿蜒曲折，通向无尽之远，犹如天河下凡，泽润万物。\n日出之时，晨曦映照湖面，霞光万道，水天相接，如梦似幻；夜幕降临，群星倒映泽中，天光如昼，万籁俱寂，唯余心静神宁。\n天泽者，非凡尘之地，乃修者求道之所，得一静处，便可忘却世间忧扰，静心悟道，参透天机。",
+            "adjacent_maps": {
+                "2": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "4": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [
+                [
+                    "enemy_library[500006]"
+                ]
+            ],
+            "collectible_items": {
+                "material_library[100010]": {
+                    "success_rate": 0.5,
+                    "quantity_range": [
+                        1,
+                        5
+                    ]
+                }
+            },
+            "dungeons": [
+                "dungeon_library[10001]"
+            ],
+            "passport": null
+        },
+        "5": {
+            "__class__": "Map",
+            "number": 5,
+            "name": "青竹林",
+            "description": "天泽的尽头。",
+            "adjacent_maps": {
+                "2": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "4": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [
+                [
+                    "enemy_library[500002]"
+                ],
+                [
+                    "enemy_library[500001]"
+                ]
+            ],
+            "collectible_items": {
+                "material_library[100054]": {
+                    "success_rate": 0.5,
+                    "quantity_range": [
+                        1,
+                        5
+                    ]
+                }
+            },
+            "dungeons": [],
+            "passport": null
+        },
+        "6": {
+            "__class__": "Map",
+            "number": 6,
+            "name": "青鸾山",
+            "description": "青鸾山者，巍峨耸立于天地之间，乃凤凰栖息之所，青鸟往来之地也。\n其山峰险峻，林木茂密，青松如盖，云雾缭绕，朝夕间，霞光与云烟交织，光影变幻，宛若仙境。\n山中百鸟齐鸣，灵兽徘徊，古木参天，藤蔓交错，千年古树苍翠如玉，绿意盎然。\n青鸾山高崖叠嶂，流泉飞瀑，水声潺潺，仿佛天籁之音，常引得山中灵禽共鸣。\n山巅之上，云海翻涌，奇峰突兀，犹如仙宫隐现于云端，令人望之心驰。\n山脚则是清泉涌动，汇聚成湖，湖水清澈见底，映照出青鸾山的倒影，如镜如梦。\n四时更迭，青鸾山之景各异。春日山花烂漫，百鸟争鸣；夏季浓荫蔽日，清凉宜人；秋来红叶满山，霜染层林；冬至雪覆群峰，银装素裹。\n山中更有隐秘之地，传闻青鸾遗迹尚存，唯有缘者可得一见，窥探仙禽遗韵",
+            "adjacent_maps": {
+                "3": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "7": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": [
+                "dungeon_library[10003]"
+            ],
+            "passport": null
+        },
+        "7": {
+            "__class__": "Map",
+            "number": 7,
+            "name": "天剑宗",
+            "description": "传说天剑宗创始人陈玄昉三次不第，回乡途中精疲力尽便席地而睡。\n醒后他宣称遇到仙人，行程一路向北，穿过青鸾山来到一处池塘。\n其间青莲常开不败，陈玄昉以为钟灵之地，便于此处悟道，创立天剑宗。\n其百年之后，某年月日，于无声细雨中赫然仙逝。",
+            "adjacent_maps": {
+                "6": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [
+                "npc_library[106]"
+            ],
+            "battles": [
+                [
+                    "enemy_library[500005]"
+                ],
+                [
+                    "enemy_library[500006]"
+                ],
+                [
+                    "enemy_library[500007]"
+                ]
+            ],
+            "collectible_items": {},
+            "dungeons": [],
+            "passport": "material_library[160002]",
+            "unpasstext": "天剑宗弟子：前方何人！宗门重地不得擅闯！",
+            "passtext": "你持有通行令，被允许通过，旁边站岗的弟子宛如石人一动不动，令你惊奇。"
+        },
+        "8": {
+            "__class__": "Map",
+            "number": 8,
+            "name": "千岩瀑布",
+            "description": "飞湍瀑流争喧豗，砯崖转石万壑雷。",
+            "adjacent_maps": {
+                "3": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "9": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "10": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [
+                "npc_library[105]"
+            ],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": [],
+            "passport": null
+        },
+        "9": {
+            "__class__": "Map",
+            "number": 9,
+            "name": "红沙漠",
+            "description": "有危险。",
+            "adjacent_maps": {
+                "8": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "10": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "10": {
+            "__class__": "Map",
+            "number": 10,
+            "name": "伏魔山",
+            "description": "这里很阴森。",
+            "adjacent_maps": {
+                "8": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "9": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": [
+                "dungeon_library[10004]",
+                "dungeon_library[10005]"
+            ]
+        },
+        "11": {
+            "__class__": "Map",
+            "number": 11,
+            "name": "玄武关",
+            "description": "",
+            "adjacent_maps": {
+                "3": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "12": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [
+                [
+                    "enemy_library[500014]"
+                ],
+                [
+                    "enemy_library[500016]"
+                ],
+                [
+                    "enemy_library[500015]"
+                ]
+            ],
+            "collectible_items": {},
+            "dungeons": [],
+            "passport": "material_library[160003]",
+            "unpasstext": "玄武铁军:(架起刀墙)站住！出示通行文书！",
+            "passtext": "玄武铁军：过！"
+        },
+        "12": {
+            "__class__": "Map",
+            "number": 12,
+            "name": "皇城靖天",
+            "description": "",
+            "adjacent_maps": {
+                "11": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "13": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "14": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "15": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "16": {
+                    "distance": 20,
+                    "direction": "双向"
+                },
+                "17": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [
+                [
+                    "boss_library[600005]"
+                ]
+            ],
+            "collectible_items": {},
+            "dungeons": [
+                [
+                    "dungeon_library[10008]"
+                ],
+                [
+                    "dungeon_library[10009]"
+                ],
+                [
+                    "dungeon_library[10010]"
+                ]
+            ],
+            "passport": null,
+            "unpasstext": null,
+            "passtext": null
+        },
+        "13": {
+            "__class__": "Map",
+            "number": 13,
+            "name": "矿井",
+            "description": "",
+            "adjacent_maps": {
+                "12": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "14": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "14": {
+            "__class__": "Map",
+            "number": 14,
+            "name": "天河渡",
+            "description": "",
+            "adjacent_maps": {
+                "12": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "13": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "18": {
+                    "distance": 80,
+                    "direction": "双向"
+                },
+                "19": {
+                    "distance": 100,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": [],
+            "passport": null,
+            "unpasstext": null,
+            "passtext": null
+        },
+        "15": {
+            "__class__": "Map",
+            "number": 15,
+            "name": "真元寺",
+            "description": "",
+            "adjacent_maps": {
+                "12": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "16": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "17": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "16": {
+            "__class__": "Map",
+            "number": 16,
+            "name": "定边城",
+            "description": "",
+            "adjacent_maps": {
+                "12": {
+                    "distance": 20,
+                    "direction": "双向"
+                },
+                "15": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "17": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "17": {
+            "__class__": "Map",
+            "number": 17,
+            "name": "军营",
+            "description": "",
+            "adjacent_maps": {
+                "12": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "15": {
+                    "distance": 10,
+                    "direction": "双向"
+                },
+                "16": {
+                    "distance": 10,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "18": {
+            "__class__": "Map",
+            "number": 18,
+            "name": "苍云岛",
+            "description": "",
+            "adjacent_maps": {
+                "14": {
+                    "distance": 80,
+                    "direction": "双向"
+                },
+                "19": {
+                    "distance": 20,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "19": {
+            "__class__": "Map",
+            "number": 19,
+            "name": "流云津",
+            "description": "",
+            "adjacent_maps": {
+                "14": {
+                    "distance": 100,
+                    "direction": "双向"
+                },
+                "18": {
+                    "distance": 20,
+                    "direction": "双向"
+                }
+            },
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "20": {
+            "__class__": "Map",
+            "number": 20,
+            "name": "极北冰川",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "21": {
+            "__class__": "Map",
+            "number": 21,
+            "name": "凤鸣山",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "22": {
+            "__class__": "Map",
+            "number": 22,
+            "name": "巨木林",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "23": {
+            "__class__": "Map",
+            "number": 23,
+            "name": "灵鹤村",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "24": {
+            "__class__": "Map",
+            "number": 24,
+            "name": "镇妖塔",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "25": {
+            "__class__": "Map",
+            "number": 25,
+            "name": "无相山",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "26": {
+            "__class__": "Map",
+            "number": 26,
+            "name": "登仙台",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "27": {
+            "__class__": "Map",
+            "number": 27,
+            "name": "妙莲池",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "28": {
+            "__class__": "Map",
+            "number": 28,
+            "name": "空明寺",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "29": {
+            "__class__": "Map",
+            "number": 29,
+            "name": "青霜古道",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "30": {
+            "__class__": "Map",
+            "number": 30,
+            "name": "玉龙雪山",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "31": {
+            "__class__": "Map",
+            "number": 31,
+            "name": "靖武关",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "32": {
+            "__class__": "Map",
+            "number": 32,
+            "name": "蛮荒之地",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "33": {
+            "__class__": "Map",
+            "number": 33,
+            "name": "神魔之渊",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "34": {
+            "__class__": "Map",
+            "number": 34,
+            "name": "约什音古战场",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "35": {
+            "__class__": "Map",
+            "number": 35,
+            "name": "乱葬岗",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "36": {
+            "__class__": "Map",
+            "number": 36,
+            "name": "御法门",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "37": {
+            "__class__": "Map",
+            "number": 37,
+            "name": "参天古木",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "38": {
+            "__class__": "Map",
+            "number": 38,
+            "name": "血海",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "39": {
+            "__class__": "Map",
+            "number": 39,
+            "name": "鸣海涡流",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "40": {
+            "__class__": "Map",
+            "number": 40,
+            "name": "约什音古国",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "60": {
+            "__class__": "Map",
+            "number": 60,
+            "name": "鬼门关",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "61": {
+            "__class__": "Map",
+            "number": 61,
+            "name": "判官府",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "62": {
+            "__class__": "Map",
+            "number": 62,
+            "name": "鬼帝宫",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "63": {
+            "__class__": "Map",
+            "number": 63,
+            "name": "阎王殿",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "64": {
+            "__class__": "Map",
+            "number": 64,
+            "name": "忘川河",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "65": {
+            "__class__": "Map",
+            "number": 65,
+            "name": "奈何桥",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "66": {
+            "__class__": "Map",
+            "number": 66,
+            "name": "无间地狱",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "67": {
+            "__class__": "Map",
+            "number": 67,
+            "name": "轮回塔",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "100": {
+            "__class__": "Map",
+            "number": 100,
+            "name": "三重天",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "101": {
+            "__class__": "Map",
+            "number": 101,
+            "name": "昆仑山",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "102": {
+            "__class__": "Map",
+            "number": 102,
+            "name": "瑶池境",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "103": {
+            "__class__": "Map",
+            "number": 103,
+            "name": "九天银河",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "104": {
+            "__class__": "Map",
+            "number": 104,
+            "name": "玉虚宫",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "105": {
+            "__class__": "Map",
+            "number": 105,
+            "name": "三清殿",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "106": {
+            "__class__": "Map",
+            "number": 106,
+            "name": "琼霄海",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "107": {
+            "__class__": "Map",
+            "number": 107,
+            "name": "青瑶谷",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "108": {
+            "__class__": "Map",
+            "number": 108,
+            "name": "碧落云宫",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "109": {
+            "__class__": "Map",
+            "number": 109,
+            "name": "天镜湖",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "110": {
+            "__class__": "Map",
+            "number": 110,
+            "name": "帝宸紫微宫",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "120": {
+            "__class__": "Map",
+            "number": 120,
+            "name": "神木境",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "121": {
+            "__class__": "Map",
+            "number": 121,
+            "name": "万花林",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "122": {
+            "__class__": "Map",
+            "number": 122,
+            "name": "红霜道",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "123": {
+            "__class__": "Map",
+            "number": 123,
+            "name": "幻月泽",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "124": {
+            "__class__": "Map",
+            "number": 124,
+            "name": "幽魂荒原",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "125": {
+            "__class__": "Map",
+            "number": 125,
+            "name": "鬼影峰",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "126": {
+            "__class__": "Map",
+            "number": 126,
+            "name": "无道妖谷",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        },
+        "127": {
+            "__class__": "Map",
+            "number": 127,
+            "name": "'仙狐村'?",
+            "description": "",
+            "adjacent_maps": {},
+            "npcs": [],
+            "battles": [],
+            "collectible_items": {},
+            "dungeons": []
+        }
+    }
+}
