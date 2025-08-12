@@ -15,7 +15,7 @@ This is a turn-based RPG game built using Python and Tkinter. The game currently
 
 ## Project Structure
 Below is the structure of the core modules. Files not listed are either under testing or deprecated.
-
+'''
 tenkitsune/
 ├── README.md
 ├── requirements.txt
@@ -121,7 +121,7 @@ tenkitsune/
 └── tests/
     ├── init.py
     └── game.log                    # Game log for testing
-
+'''
 
 ## Future Plans
 - Migrate the front-end to **Flask + HTML** for web-based rendering.
@@ -137,4 +137,5 @@ tenkitsune/
 2. Run the game by executing `run.py`.
 
 ## Note
+
 This project is still under active development. Suggestions and contributions are welcome! Feel free to open issues or submit pull requests to help improve the game.
