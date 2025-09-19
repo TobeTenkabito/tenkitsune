@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天狐修炼纪</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .game-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #4f46e5;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+        .btn-option {
+            width: 100%;
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<div id="game-container" class="game-container">
+    <!-- 游戏内容将在这里渲染 -->
+</div>
+
+<script>
+    const API_BASE_URL = 'http://localhost:8000/game';
+
+    async function apiRequest(path, method, body = null) {
+        try {
+            const options = {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+            };
+            if (body) {
+                options.body = JSON.stringify(body);
+            }
+            const response = await fetch(`${API_BASE_URL}${path}`, options);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error("网络错误:", error);
+            showError("无法连接到游戏服务器。请确保后端已启动。");
+            return null;
+        }
+    }
+
+    function renderScreen(data) {
+        const container = document.getElementById('game-container');
+        let content = `<h2 class="text-3xl font-bold text-center mb-6">${data.title}</h2>`;
+
+        if (data.options) {
+            data.options.forEach(option => {
+                content += `<button class="btn btn-primary btn-option" onclick="processMainChoice(${option.id})">${option.text}</button>`;
+            });
+        }
+        container.innerHTML = content;
+    }
+
+    function showTitleScreen() {
+        apiRequest('/title', 'GET').then(data => {
+            if (data) {
+                renderScreen(data);
+            }
+        });
+    }
+
+    async function processMainChoice(choice) {
+        const data = await apiRequest('/title/choice', 'POST', { choice });
+        if (!data) return;
+
+        if (data.error) {
+            showError(data.error);
+        } else if (data.status === 'game_ended') {
+            showError(data.message);
+        } else if (data.next_screen === 'choose_slot') {
+            showSaveSlotScreen(data);
+        } else {
+            showError('未知的后端响应，无法继续。');
+        }
+    }
+
+    function showSaveSlotScreen(data) {
+        const container = document.getElementById('game-container');
+        let content = `<h2 class="text-2xl font-bold text-center mb-4">选择存档位</h2>`;
+        content += `<div class="mb-4">`;
+        data.save_slots.forEach(slot => {
+            content += `<p class="py-2">${slot.text}</p>`;
+        });
+        content += `</div>`;
+        content += `<input id="slotInput" type="number" class="w-full px-4 py-2 border rounded-md mb-4" placeholder="请输入存档编号 (1-5)" min="1" max="5">`;
+        content += `<button class="btn btn-primary w-full" onclick="processSaveSlotChoice()">确认</button>`;
+
+        container.innerHTML = content;
+    }
+
+    async function processSaveSlotChoice() {
+        const slotInput = document.getElementById('slotInput');
+        const slotNumber = parseInt(slotInput.value);
+
+        if (isNaN(slotNumber) || slotNumber < 1 || slotNumber > 5) {
+            showError("请输入1到5之间的有效数字。");
+            return;
+        }
+
+        const data = await apiRequest('/start_new', 'POST', { slot_number: slotNumber });
+        if (!data) return;
+
+        if (data.error) {
+            showError(data.error);
+        } else {
+            renderMainScreen(data);
+        }
+    }
+
+    function renderMainScreen(data) {
+        const container = document.getElementById('game-container');
+        let content = `<h2 class="text-3xl font-bold text-center mb-4">${data.title}</h2>`;
+
+        // 渲染玩家信息
+        const player = data.player_info.player;
+        content += `<div class="bg-gray-100 p-4 rounded-md mb-4">`;
+        content += `<h3 class="font-bold">玩家信息</h3>`;
+        content += `<p>姓名: ${player.name}</p>`;
+        content += `<p>等级: ${player.level}</p>`;
+        content += `<p>血量: ${player.hp} / ${player.max_hp}</p>`;
+        content += `<p>攻击力: ${player.attack}</p>`;
+        content += `</div>`;
+
+        // 渲染地图信息
+        content += `<div class="bg-gray-100 p-4 rounded-md mb-6">`;
+        content += `<h3 class="font-bold">当前位置</h3>`;
+        content += `<p>地图: ${data.player_info.map.name}</p>`;
+        content += `</div>`;
+
+        // 渲染操作按钮
+        data.actions.forEach(action => {
+            content += `<button class="btn btn-primary btn-option" onclick="processGameAction(${action.id})">${action.text}</button>`;
+        });
+
+        container.innerHTML = content;
+    }
+
+    function showError(message) {
+        const container = document.getElementById('game-container');
+        container.innerHTML = `<div class="text-center text-red-500 font-bold">${message}</div>
+                               <button class="btn btn-primary mt-4 w-full" onclick="showTitleScreen()">返回主界面</button>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', showTitleScreen);
+</script>
+
+</body>
+</html>
