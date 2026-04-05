@@ -17,7 +17,7 @@ from common.event.battle import (
     DeathEvent, ExpGainedEvent, DropEvent,
     BattleResultEvent, SummonEvent,
 )
-from common.event.system import WarningEvent, HealEvent
+from common.event.system.__init__ import WarningEvent, HealEvent
 from common.event.player import (
     LevelUpEvent, StatChangedEvent,
     ItemAddedEvent, ItemRemovedEvent,

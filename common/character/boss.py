@@ -1,8 +1,7 @@
 import copy
-import random
-from library.enemy_library import enemy_library
+from core.registry import registry
 from common.character.enemy import Enemy
-from common.battle.combatant import Combatant
+from common.event import EventBus, WarningEvent
 
 
 class Boss(Enemy):
@@ -11,7 +10,7 @@ class Boss(Enemy):
     在 Enemy 基礎上增加：
     - summon_list / logic_module（外部 AI 腳本）
     - equipment（Boss 可以有裝備）
-    - buffs 可被 abolish（置 None），代表「修為高深莫測」
+    - buff_immune 旗標：True 時免疫所有 Buff（取代舊版 buffs = None）
     """
 
     def __init__(
@@ -34,18 +33,80 @@ class Boss(Enemy):
             drops, chance_drops, exp_drops,
             skills=skills,
         )
-        # Boss 覆寫 equipment（Enemy 預設為空列表）
-        self.equipment   = equipment   if equipment   is not None else []
-        self.summon_list = summon_list if summon_list is not None else []
+        self.equipment    = equipment    if equipment    is not None else []
+        self.summon_list  = summon_list  if summon_list  is not None else []
         self.logic_module = logic_module
+
+        # Buff 免疫旗標（取代舊版 buffs = None）
+        self.buff_immune: bool = False
+
+    # ── Boss 特有：Buff 免疫 ──────────────────────────────────
+
+    def apply_buff_to_state(self, buff) -> None:
+        """
+        直接施加 Buff 物件到 battle_state。
+        buff_immune = True 時拒絕並發送警告。
+        """
+        if self.buff_immune:
+            EventBus.emit(WarningEvent(
+                message=f"【{self.name}】修為高深莫測，免疫 Buff【{buff.name}】。"
+            ))
+            return
+        self.battle_state.apply_buff(buff)
+
+    def request_buff(
+        self,
+        buff_name: str,
+        buff_type: str,
+        duration: int,
+        effect: dict,
+        source: str = "",
+        chance: float = 1.0,
+    ) -> None:
+        """覆寫：buff_immune 時直接攔截，不 emit Event。"""
+        if self.buff_immune:
+            EventBus.emit(WarningEvent(
+                message=f"【{self.name}】修為高深莫測，免疫 Buff【{buff_name}】。"
+            ))
+            return
+        super().request_buff(
+            buff_name=buff_name,
+            buff_type=buff_type,
+            duration=duration,
+            effect=effect,
+            source=source,
+            chance=chance,
+        )
+
+    def abolish_buffs(self) -> None:
+        """
+        永久免疫 Buff，並清除當前所有 Buff。
+        對應舊版 buffs = None。
+        """
+        self.battle_state.remove_all_buffs()
+        self.buff_immune = True
+
+    def refresh_buffs(self) -> None:
+        """恢復 Buff 可用狀態。"""
+        self.buff_immune = False
 
     # ── Boss 特有：召喚 ───────────────────────────────────────
 
     def summon(self) -> list[Enemy]:
-        """從 enemy_library 實例化 summon_list 中的敵人，注入 battle 引用。"""
+        """
+        從 registry 取得 'enemy' category 的模板，
+        實例化 summon_list 中的敵人並注入 battle 引用。
+        找不到模板時 emit WarningEvent 並跳過。
+        """
         summoned = []
         for enemy_id in self.summon_list:
-            template = enemy_library[enemy_id]
+            template = registry.get("enemy", enemy_id)
+            if template is None:
+                EventBus.emit(WarningEvent(
+                    message=f"【{self.name}】召喚失敗：找不到敵人模板 ID={enemy_id}。"
+                ))
+                continue
+
             new_enemy = Enemy(
                 number      = template.number,
                 name        = template.name,
@@ -71,40 +132,17 @@ class Boss(Enemy):
             summoned.append(new_enemy)
         return summoned
 
-    # ── Boss 特有：Buff 廢除 ──────────────────────────────────
-
-    def add_buff(self, new_buff):
-        """buffs 為 None 時代表此 Boss 免疫 Buff。"""
-        if self.buffs is None:
-            print("该boss修为高深莫测，无法被添加buff")
-            return
-        super().add_buff(new_buff)
-
-    def remove_buff(self, buff_name=None, buff_type=None):
-        if self.buffs is None:
-            return
-        super().remove_buff(buff_name=buff_name, buff_type=buff_type)
-
-    def remove_all_buffs(self):
-        if self.buffs is None:
-            return
-        super().remove_all_buffs()
-
-    def abolish_buffs(self):
-        """永久免疫 Buff（置 None）。"""
-        self.buffs = None
-
-    def refresh_buffs(self):
-        """恢復 Buff 可用狀態。"""
-        self.buffs = []
-
     # ── AI 行動（委託 logic_module）──────────────────────────
 
     def choose_action(self, engine) -> None:
         """
-        優先使用 logic_module.boss_logic(boss, battle)。
+        先檢查是否能行動（眩暈 / 麻痹）。
+        優先使用 logic_module.boss_logic(boss, engine)。
         沒有 logic_module 時退回普通敵人 AI。
         """
+        if not self.can_act():
+            return
+
         if self.logic_module:
             self.logic_module.boss_logic(self, engine)
         else:
@@ -139,8 +177,5 @@ class Boss(Enemy):
         )
         self._copy_base_fields(new_boss, memo)
         new_boss.logic_module = self.logic_module
-        # buffs 可能是 None（abolish 狀態），_copy_base_fields 已處理正常情況
-        # 但若原本是 None，需要覆寫回來
-        if self.buffs is None:
-            new_boss.buffs = None
+        new_boss.buff_immune  = self.buff_immune
         return new_boss

@@ -31,10 +31,9 @@ class Ally(Combatant):
         )
 
     # ── Ally 特有：use_equipment 遍歷所有裝備 ────────────────
-    # 注意：Combatant.use_equipment 是單件法寶，
-    # Ally 的行為是把所有裝備都用一遍，語義不同，故覆寫。
 
-    def use_equipment(self, target):
+    def use_equipment(self, target) -> None:
+        """遍歷所有裝備（法寶）逐一使用，語義與 Combatant 單件不同。"""
         for equip in self.equipment:
             equip.use(self, target)
 
@@ -43,11 +42,14 @@ class Ally(Combatant):
     def choose_action(self, engine) -> None:
         """
         隊友簡單 AI：
+        - 先檢查是否能行動（眩暈 / 麻痹）
         - 有技能時 50% 機率使用隨機技能
         - 否則普通攻擊隨機敵人
-        後續可替換為策略物件（Strategy Pattern）。
         """
         import random
+
+        if not self.can_act():
+            return
 
         alive_enemies = [e for e in engine.enemies if e.is_alive]
         if not alive_enemies:
@@ -69,7 +71,7 @@ class Ally(Combatant):
             self.name,
             self.description,
             self.level,
-            self.hp,       # ⚠️ 原始碼此處 hp/max_hp 順序傳反，已修正
+            self.hp,
             self.mp,
             self.max_hp,
             self.max_mp,

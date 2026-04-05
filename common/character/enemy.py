@@ -1,12 +1,11 @@
 import copy
-import uuid
 from common.battle.combatant import Combatant
 
 
 class Enemy(Combatant):
     """
     普通敵人。
-    在 Combatant 基礎上增加：掉落物、經驗值、唯一ID、module_object。
+    在 Combatant 基礎上增加：掉落物、經驗值、module_object。
     """
 
     def __init__(
@@ -26,28 +25,29 @@ class Enemy(Combatant):
             crit, crit_damage,
             resistance, penetration,
             skills=skills,
-            equipment=[],   # Enemy 無裝備欄
+            equipment=[],
         )
         self.drops        = drops
         self.chance_drops = chance_drops if chance_drops else []
         self.exp_drops    = exp_drops
 
-        # module_object 是不可深拷貝的外部模組，單獨處理
+        # 外部 AI 模組，不可深拷貝
         self.module_object = None
 
-    # ── AI 行動（子類可覆寫）─────────────────────────────────
+    # ── AI 行動 ───────────────────────────────────────────────
 
     def choose_action(self, engine) -> None:
         """
         普通敵人 AI：
+        - 先檢查是否能行動（眩暈 / 麻痹）
         - 有技能時 50% 機率使用隨機技能
         - 否則普通攻擊隨機目標
-        目前 Enemy 沒有專屬邏輯，直接執行，不返回 Action 物件。
-        後續接入 Action 系統時再封裝。
         """
         import random
 
-        # 確定可攻擊的目標陣營
+        if not self.can_act():
+            return
+
         targets = [engine.player] + engine.allies
 
         if self.battle_skills and random.random() < 0.5:
@@ -82,8 +82,6 @@ class Enemy(Combatant):
             self.exp_drops,
             copy.deepcopy(self.skills,       memo),
         )
-        # 公共字段統一由基類方法處理
         self._copy_base_fields(new_enemy, memo)
-        # module_object 不可深拷貝，置 None
         new_enemy.module_object = None
         return new_enemy

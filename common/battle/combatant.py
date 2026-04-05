@@ -3,8 +3,22 @@
 Player / Enemy / Boss / Ally 都繼承此類。
 純數據 + 通用戰鬥方法，不含任何 IO 或 AI 邏輯。
 所有訊息一律透過 EventBus 發送。
+
+與舊版的差異：
+  - dizzy_rounds / paralysis_rounds / silence_rounds / blind_rounds 移除
+    → 狀態異常統一由 BattleState 管理
+  - buffs: list 移除
+    → 改用 self.battle_state: BattleState
+  - take_damage() / heal() 不直接修改 hp
+    → emit DamageRequestEvent / HealRequestEvent，由監聽器執行
+  - perform_attack() 不直接扣血
+    → emit DamageRequestEvent
+  - add_buff() / remove_buff() 系列移除
+    → 改用 self.battle_state.apply_buff() / remove_buff()
+    → 外部請求透過 BuffRequestEvent / BuffRemoveRequestEvent
 """
 
+from __future__ import annotations
 import copy
 import uuid
 import random
@@ -13,16 +27,18 @@ from common.event import (
     EventBus,
     AttackEvent,
     MissEvent,
-    BuffAppliedEvent,
-    BuffExpiredEvent,
-    StatusBlockedActionEvent,
+    DamageRequestEvent,
+    HealRequestEvent,
+    BuffRequestEvent,
+    BuffRemoveRequestEvent,
     WarningEvent,
 )
+from components.battle_state import BattleState
 
 
 class Combatant:
 
-    # ── 初始化 ────────────────────────────────────────────────
+    # ── 初始化 ──────────────────────────────────────────────
 
     def __init__(
         self,
@@ -57,13 +73,11 @@ class Combatant:
         # 戰鬥中的技能副本（由 BattleEngine 初始化）
         self.battle_skills: list = []
 
-        # 狀態效果
-        self.dizzy_rounds     = 0
-        self.paralysis_rounds = 0
-        self.silence_rounds   = 0
-        self.blind_rounds     = 0
+        # 戰鬥狀態（Buff / 狀態異常 / 護盾）
+        self.battle_state = BattleState(owner=name)
+
+        # 持續效果（舊版相容，逐步遷移中）
         self.sustained_effects: list = []
-        self.buffs: list = []
 
         # 由 BattleEngine 注入，構造函數不傳遞
         self.battle = None
@@ -71,40 +85,49 @@ class Combatant:
         # 唯一 ID（區分同名實例）
         self.unique_id = uuid.uuid4()
 
-    # ── 狀態判斷 ──────────────────────────────────────────────
+    # ── 狀態判斷 ────────────────────────────────────────────
 
     @property
     def is_alive(self) -> bool:
         return self.hp > 0
 
+    def can_act(self) -> bool:
+        """
+        檢查是否能行動（眩暈 / 麻痹）。
+        同時發送 StatusBlockedActionEvent 通知。
+        """
+        return not self.battle_state.check_and_emit_blocked()
+
     def can_use_skill(self) -> bool:
-        if self.silence_rounds > 0:
-            EventBus.emit(StatusBlockedActionEvent(
-                target=self.name,
-                status="silenced",
-                rounds_remaining=self.silence_rounds,
-            ))
-            return False
+        """檢查是否能使用技能（沉默）。"""
+        if self.battle_state.has_status("silenced"):
+            return not self.battle_state.check_and_emit_blocked()
         return True
 
-    # ── 傷害計算 ──────────────────────────────────────────────
+    def can_attack(self) -> bool:
+        """檢查是否能普通攻擊（致盲）。"""
+        if self.battle_state.has_status("blinded"):
+            return not self.battle_state.check_and_emit_blocked()
+        return True
+
+    # ── 傷害計算 ────────────────────────────────────────────
 
     def calculate_damage(
-        self, target, base_value,
-        skill_multiplier=1.0, is_skill=False
-    ) -> float:
-        # 暴擊判定
+        self, target: "Combatant", base_value: float,
+        skill_multiplier: float = 1.0, is_skill: bool = False,
+    ) -> tuple[float, bool]:
+        """
+        計算最終傷害值，不修改任何狀態。
+        回傳 (final_damage, is_critical)。
+        """
         is_critical     = random.random() < self.crit / 100.0
         crit_multiplier = self.crit_damage / 100.0 if is_critical else 1.0
 
-        # 理論傷害
         theoretical_damage = base_value * skill_multiplier * crit_multiplier
 
-        # 等級壓制
         level_difference  = self.level - target.level
         level_suppression = self._calc_level_suppression(level_difference)
 
-        # 最終傷害
         final_damage = (
             (theoretical_damage - target.defense)
             * (1 + (self.penetration - target.resistance) / 100.0)
@@ -129,25 +152,28 @@ class Combatant:
                 return multiplier
         return 0.5
 
-    # ── 核心戰鬥方法 ──────────────────────────────────────────
+    # ── 核心戰鬥方法 ────────────────────────────────────────
 
-    def perform_attack(self, target) -> float | None:
+    def perform_attack(self, target: "Combatant") -> float | None:
+        """
+        執行普通攻擊。
+        不直接扣血，emit DamageRequestEvent 由監聽器處理。
+        致盲時 emit MissEvent 並回傳 None。
+        """
         if not self.is_alive:
             EventBus.emit(WarningEvent(
                 message=f"{self.name} 無法行動，HP 為 0。"
             ))
             return None
 
-        if self.blind_rounds > 0:
-            EventBus.emit(StatusBlockedActionEvent(
-                target=self.name,
-                status="blinded",
-                rounds_remaining=self.blind_rounds,
+        if not self.can_attack():
+            EventBus.emit(MissEvent(
+                attacker=self.name,
+                target=target.name,
             ))
             return None
 
         damage, is_critical = self.calculate_damage(target, self.attack)
-        target.hp -= damage
 
         EventBus.emit(AttackEvent(
             attacker=self.name,
@@ -155,9 +181,42 @@ class Combatant:
             damage=round(damage, 2),
             is_critical=is_critical,
         ))
+        EventBus.emit(DamageRequestEvent(
+            source=self.name,
+            target=target.name,
+            amount=round(damage, 2),
+            damage_type="physical",
+        ))
+
         return damage
 
-    def use_skill(self, skill, target):
+    def take_damage(self, amount: float, damage_type: str = "physical") -> None:
+        """
+        請求承受傷害。
+        不直接修改 hp，emit DamageRequestEvent 由監聽器執行。
+        """
+        EventBus.emit(DamageRequestEvent(
+            source="direct",
+            target=self.name,
+            amount=amount,
+            damage_type=damage_type,
+        ))
+
+    def heal(self, amount: float, attr: str = "hp") -> None:
+        """
+        請求治療。
+        不直接修改 hp/mp，emit HealRequestEvent 由監聽器執行。
+        """
+        EventBus.emit(HealRequestEvent(
+            source="direct",
+            target=self.name,
+            amount=amount,
+            attr=attr,
+        ))
+
+    def use_skill(self, skill, target) -> None:
+        if not self.can_act():
+            return
         if not self.can_use_skill():
             return
 
@@ -172,15 +231,15 @@ class Combatant:
 
         skill.use(self, targets)
 
-    def use_equipment(self, equipment, target):
-        if equipment.category == "法宝":
+    def use_equipment(self, equipment, target) -> None:
+        if equipment.category == "法寶":
             equipment.use(self, target)
         else:
             EventBus.emit(WarningEvent(
                 message=f"{equipment.name} 不是法寶，不能使用。"
             ))
 
-    def use_medicine(self, medicine, target):
+    def use_medicine(self, medicine, target) -> None:
         if medicine.quantity > 0:
             medicine.use(self, target)
             if medicine.quantity == 0 and hasattr(self, "inventory"):
@@ -190,91 +249,81 @@ class Combatant:
                 message=f"{medicine.name} 數量不足，無法使用。"
             ))
 
-    # ── Buff 系統 ─────────────────────────────────────────────
+    # ── Buff 代理 ────────────────────────────────────────────
+    #
+    #  直接操作（Engine / 技能內部）：
+    #    self.battle_state.apply_buff(buff_obj)
+    #    self.battle_state.remove_buff("buff_name")
+    #
+    #  外部請求（物品 / 技能 emit）：
+    #    EventBus.emit(BuffRequestEvent(...))
+    #    EventBus.emit(BuffRemoveRequestEvent(...))
+    #
+    #  以下兩個方法保留給需要從 Combatant 層直接 emit 的情境。
 
-    def add_buff(self, new_buff):
-        existing = next((b for b in self.buffs if b.name == new_buff.name), None)
-        if existing:
-            existing.duration = new_buff.original_duration
-            EventBus.emit(BuffAppliedEvent(
-                target=self.name,
-                buff_name=existing.name,
-                duration=existing.duration,
-            ))
-        else:
-            new_buff.target = self
-            self.buffs.append(new_buff)
-            EventBus.emit(BuffAppliedEvent(
-                target=self.name,
-                buff_name=new_buff.name,
-                duration=new_buff.duration,
-            ))
-            new_buff.apply_effect()
+    def request_buff(
+        self,
+        buff_name: str,
+        buff_type: str,
+        duration: int,
+        effect: dict,
+        source: str = "",
+        chance: float = 1.0,
+    ) -> None:
+        """透過 Event 請求施加 Buff（由監聽器路由到 battle_state）。"""
+        EventBus.emit(BuffRequestEvent(
+            source=source or self.name,
+            target=self.name,
+            buff_name=buff_name,
+            buff_type=buff_type,
+            duration=duration,
+            effect=effect,
+            chance=chance,
+        ))
 
-    def remove_buff(self, buff_name=None, buff_type=None):
-        if buff_name:
-            removed = [b for b in self.buffs if b.name == buff_name]
-            self.buffs = [b for b in self.buffs if b.name != buff_name]
-            for b in removed:
-                b.remove_effect()
-                EventBus.emit(BuffExpiredEvent(
-                    target=self.name,
-                    buff_name=b.name,
-                ))
-        elif buff_type:
-            removed = [b for b in self.buffs if b.buff_type == buff_type]
-            self.buffs = [b for b in self.buffs if b.buff_type != buff_type]
-            for b in removed:
-                b.remove_effect()
-                EventBus.emit(BuffExpiredEvent(
-                    target=self.name,
-                    buff_name=b.name,
-                ))
-        else:
-            EventBus.emit(WarningEvent(
-                message="未指定 buff 名字或類型，無法移除。"
-            ))
+    def request_remove_buff(
+        self,
+        scope: str = "name",
+        buff_name: str = "",
+        buff_type: str = "",
+    ) -> None:
+        """透過 Event 請求移除 Buff（由監聽器路由到 battle_state）。"""
+        EventBus.emit(BuffRemoveRequestEvent(
+            source=self.name,
+            target=self.name,
+            scope=scope,
+            buff_name=buff_name,
+            buff_type=buff_type,
+        ))
 
-    def remove_buffs_by_type(self, buff_type):
-        to_remove = [b for b in self.buffs if b.buff_type == buff_type]
-        for buff in to_remove:
-            buff.remove_effect()
-            self.buffs.remove(buff)
-            EventBus.emit(BuffExpiredEvent(
-                target=self.name,
-                buff_name=buff.name,
-            ))
-
-    def remove_all_buffs(self):
-        for buff in self.buffs:
-            buff.remove_effect()
-        self.buffs.clear()
-
-    # ── 多態接口（子類必須實現）──────────────────────────────
+    # ── 多態接口（子類必須實現）────────────────────────────
 
     def choose_action(self, engine) -> None:
-        raise NotImplementedError(f"{self.__class__.__name__} 未實現 choose_action()")
+        raise NotImplementedError(
+            f"{self.__class__.__name__} 未實現 choose_action()"
+        )
 
-    # ── deepcopy 公共部分 ─────────────────────────────────────
+    # ── deepcopy ────────────────────────────────────────────
 
-    def _copy_base_fields(self, new_obj, memo):
-        new_obj.dizzy_rounds      = self.dizzy_rounds
-        new_obj.paralysis_rounds  = self.paralysis_rounds
-        new_obj.silence_rounds    = self.silence_rounds
-        new_obj.blind_rounds      = self.blind_rounds
+    def _copy_base_fields(self, new_obj: "Combatant", memo: dict) -> None:
+        """
+        子類 __deepcopy__ 呼叫，複製 Combatant 層的所有欄位。
+        battle_state 深拷貝，battle 淺引用（Engine 重新注入）。
+        """
+        new_obj.battle_state      = copy.deepcopy(self.battle_state, memo)
         new_obj.sustained_effects = copy.deepcopy(self.sustained_effects, memo)
-        new_obj.buffs             = copy.deepcopy(self.buffs, memo)
+        new_obj.battle_skills     = copy.deepcopy(self.battle_skills, memo)
         new_obj.battle            = self.battle   # 淺引用，Engine 重新注入
         new_obj.unique_id         = uuid.uuid4()  # 新實例給新 ID
 
-    # ── 顯示 ──────────────────────────────────────────────────
+    # ── 顯示 ────────────────────────────────────────────────
 
-    def __str__(self):
+    def __str__(self) -> str:
         return (
             f"{self.name} (Lv.{self.level}) "
             f"HP:{self.hp:.0f}/{self.max_hp} "
             f"MP:{self.mp:.0f}/{self.max_mp}"
         )
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<{self.__class__.__name__} {self.name} #{str(self.unique_id)[:8]}>"

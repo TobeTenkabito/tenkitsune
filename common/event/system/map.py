@@ -1,7 +1,7 @@
 """
-通用系統事件
+common.event.system.map
 ─────────────────────────────────────────────
-WarningEvent、HealEvent 等跨模組通用事件
+地圖相關事件。
 """
 
 from __future__ import annotations
@@ -10,12 +10,7 @@ from common.event.bus import BattleEvent
 
 
 @dataclass
-class WarningEvent(BattleEvent):
-    message: str
-
-@dataclass
-class HealEvent(BattleEvent):
-    target: str
-    amount: float
-    source: str
-    
+class MapWarpRequestEvent(BattleEvent):
+    """請求跳轉地圖（失敗離開秘境 / 其他傳送）。"""
+    player_location: int | str = 0
+    reason:          str       = ""   # "dungeon_loss" | "other"
