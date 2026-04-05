@@ -20,17 +20,12 @@ tenkitsune/
 ├── README.md
 ├── requirements.txt
 ├── synthesis_recipe.txt            # Defines crafting recipes for in-game items
-├── api.py                          # API module (under development)
-├── game_engine.py                  # Game engine (under development)
-├── run.py                          # Entry point to start the game
 ├── main.py                         # Main program logic
 ├── all/
 │   ├── init.py
 │   ├── dlcmanager.py               # Manages DLC content
 │   ├── gamestate.py                # Tracks game state
-│   ├── load.py                     # Handles loading of game data
 │   ├── synthesis_recipes.py        # Manages crafting system
-│   └── transfer.py                 # Data transfer utilities
 ├── chapter/                        # Story data and plot content
 ├── common/                         # Core modules and UI implementations
 │   ├── character/
@@ -44,17 +39,6 @@ tenkitsune/
 │   │   ├── dungeon_interact.py     # Dungeon interaction logic
 │   │   ├── map_interact.py         # Map interaction logic
 │   │   └── npc_interact.py         # NPC interaction logic
-│   ├── interface/
-│   │   ├── init.py
-│   │   ├── bag_interface.py        # Inventory UI
-│   │   ├── cultivation_interface.py # Cultivation system UI
-│   │   ├── dungeon_interface.py    # Dungeon UI
-│   │   ├── lottery_interface.py    # Lottery system UI
-│   │   ├── map_interface.py        # Map UI
-│   │   ├── market_interface.py     # Market UI
-│   │   ├── npc_interface.py        # NPC interaction UI
-│   │   ├── synthesis_interface.py  # Crafting system UI
-│   │   └── task_interface.py       # Task system UI
 │   ├── logic/
 │   │   ├── init.py
 │   │   ├── boss_logic_common1.py   # Common boss logic (part 1)
@@ -74,16 +58,6 @@ tenkitsune/
 │   │   ├── story.py                # Story system logic
 │   │   ├── synthesis.py            # Crafting system logic
 │   │   └── task.py                 # Task system logic
-│   └── ui/
-│       ├── init.py
-│       ├── bagui.py                # Inventory UI implementation
-│       ├── battleui.py             # Battle UI implementation
-│       ├── cultivationui.py        # Cultivation UI implementation
-│       ├── dungeonui.py            # Dungeon UI implementation
-│       ├── lotteryui.py            # Lottery UI implementation
-│       ├── mapui.py                # Map UI implementation
-│       ├── storyui.py              # Story UI implementation
-│       └── synthesisui.py          # Crafting UI implementation
 ├── data/
 │   ├── character/
 │   │   ├── ally.json               # Ally character data
