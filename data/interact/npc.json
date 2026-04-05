@@ -1,0 +1,303 @@
+{
+    "npc_library": {
+        "100": {
+            "__class__": "NPC",
+            "number": 100,
+            "name": "白玉",
+            "description": "你的师傅，九尾天狐。",
+            "race": "妖族",
+            "affection": 90,
+            "favorite_items": [],
+            "daily_dialogue": [
+                "徒儿，近日可有好好修炼？",
+                "哦？又想听故事了……真拿你没办法。待我事毕……",
+                "仙狐村的来历……当年白子璋与我相约……没什么，你幻听了……",
+                "天狐一族灵力充沛，是以三界多图之。出门在外，护己周全……",
+                "我这有两种心法：重阳功和青狐参天。你要学哪种？",
+                "有些技能和心法，你目前还不适合学习，仍需努力修炼，时机自会到来。"
+            ],
+            "task_dialogue": "Set(elts=[Constant(value='又来领取例钱了？还是说有别的事。')])",
+            "finish_task_dialogue": {
+                "1001": "这是你的例钱"
+            },
+            "tasks": [
+                "task_library[1001]",
+                "task_library[1002]",
+                "task_library[1003]"
+            ],
+            "exchange": {
+                "skill_library[251001]": {
+                    "item": "material_library[100000]",
+                    "quantity": 1
+                },
+                "skill_library[252001]": {
+                    "item": "material_library[100000]",
+                    "quantity": 1
+                },
+                "skill_library[200003]": {
+                    "item": "material_library[150003]",
+                    "quantity": 1
+                }
+            },
+            "affection_dialogues": {
+                "low": [
+                    "自当勤加修炼。",
+                    "大道无情,不可怠惰。"
+                ],
+                "medium": [
+                    "修炼有正道和魔道之别。",
+                    "所谓正道即通过自身努力，与天地灵气共鸣。魔道则是夺取他人修为来助长自身。",
+                    "在我看来，正道与魔道并无不同，一个夺天地造化，一个夺他人造化。只是后者显得更‘不道德’"
+                ],
+                "high": [
+                    "万物生灵自有其法，假使有一天我不在你身边，你也要能自立自强。",
+                    "重阳功能改善你的体质，千万要好好修炼。",
+                    "打不过别人就跑，留得青山在，不怕没柴烧。"
+                ]
+            },
+            "fight": [
+                "boss_library[690000]"
+            ],
+            "taunt_dialogue": {
+                "low": [
+                    "……",
+                    "我不太建议你出去游历……"
+                ],
+                "medium": [
+                    "可有好好修炼?",
+                    "哦?有些进步。"
+                ],
+                "high": [
+                    "仍需勤加修炼。",
+                    "后劲有些不足，我再传授你一些心法。"
+                ]
+            }
+        },
+        "101": {
+            "__class__": "NPC",
+            "number": 101,
+            "name": "三原天光",
+            "description": "这是作者",
+            "race": "妖族",
+            "affection": 50,
+            "favorite_items": [
+                "material_library[100000]"
+            ],
+            "daily_dialogue": [
+                "欢迎来到天狐修炼纪，我没记错的话，姑娘应该名唤白夙吧。",
+                "你师傅白玉先生托我传授你一些这个世界的常识。",
+                "为什么白玉先生不自己上？因为他是剧情人物，由他来解释会有违和感……什么是剧情？这不太好回答。",
+                "这是个自由的世界，你可以做到任何你想做到的事，比如战斗和探索。",
+                "这个世界分为地图和秘境，有些地图是需要特定的条件才能通过的，比如玄武关。",
+                "地图具有多种属性，你在日后的探索中自会明白。",
+                "秘境由不同层次组成，有的可能就一层，有的可能高达十八层。",
+                "战斗也要教?白玉先生的话你没有好好听阿。",
+                "战斗伤害计算公式为:(攻击者攻击*暴击修正-防御者防御)*(1+攻击者穿透-防御者抗性)*等级系数。",
+                "现在你应该明白白玉先生为什么总强调修炼，因为等级压制很厉害，最高能到50%的系数。"
+            ],
+            "task_dialogue": [
+                "来我这接任务？我还没想好给你什么任务。"
+            ],
+            "finish_task_dialogue": "",
+            "tasks": [],
+            "exchange": {
+                "skill_library[200024]": {
+                    "item": "material_library[150000]",
+                    "quantity": 1
+                }
+            },
+            "affection_dialogues": {
+                "low": [
+                    "不要和我打架，我不喜欢打架。"
+                ],
+                "medium": [
+                    "别看，我身上没有宝贝。"
+                ],
+                "high": [
+                    "怎么会有人无聊到刷作者的好感度。"
+                ]
+            },
+            "fight": [
+                "boss_library[690001]"
+            ],
+            "taunt_dialogue": {
+                "low": [
+                    "我这真没有宝贝。"
+                ],
+                "medium": [
+                    "我这真没有宝贝。"
+                ],
+                "high": [
+                    "此地无银三百两。"
+                ]
+            },
+            "lottery": 2
+        },
+        "102": {
+            "__class__": "NPC",
+            "number": 102,
+            "name": "神秘商人",
+            "description": "一个神秘的商人，总是带着各种稀有物品。",
+            "race": "人类",
+            "affection": 20,
+            "favorite_items": [
+                "material_library[100000]"
+            ],
+            "daily_dialogue": [
+                "这些物品可都是独一无二的哦。",
+                "今天你想看看什么？",
+                "嘿，有什么需要的可以问我。"
+            ],
+            "task_dialogue": "我也有一些特别的任务，你感兴趣吗？",
+            "finish_task_dialogue": "",
+            "tasks": [],
+            "exchange": {
+                "material_library[100002]": {
+                    "item": "material_library[100001]",
+                    "quantity": 10
+                },
+                "material_library[100004]": {
+                    "item": "material_library[100003]",
+                    "quantity": 5
+                }
+            },
+            "affection_dialogues": {
+                "low": [
+                    "你这个家伙，别再来烦我了！",
+                    "我不喜欢你，不要再来找我。"
+                ],
+                "medium": [
+                    "哦，你来了，最近过得好吗？",
+                    "欢迎回来，老朋友。"
+                ],
+                "high": [
+                    "嘿，老朋友！有什么需要我帮忙的吗？",
+                    "见到你总是很高兴。"
+                ]
+            },
+            "fight": [
+                "boss_library[690003]"
+            ],
+            "taunt_dialogue": {}
+        },
+        "103": {
+            "__class__": "NPC",
+            "number": 103,
+            "name": "猎户",
+            "description": "沼泽前的猎户，特地来提醒你。测试用npc",
+            "race": "人类",
+            "affection": 20,
+            "favorite_items": [
+                "material_library[100000]"
+            ],
+            "daily_dialogue": "小心前方有怪物。",
+            "task_dialogue": "我也有一些特别的任务，你感兴趣吗？",
+            "finish_task_dialogue": "",
+            "tasks": [],
+            "exchange": {
+                "material_library[100002]": {
+                    "item": "material_library[100001]",
+                    "quantity": 10
+                },
+                "material_library[100004]": {
+                    "item": "material_library[100003]",
+                    "quantity": 5
+                }
+            },
+            "affection_dialogues": {
+                "low": [],
+                "medium": [],
+                "high": []
+            }
+        },
+        "104": {
+            "__class__": "NPC",
+            "number": 104,
+            "name": "白业",
+            "description": "你的妹妹。",
+            "race": "妖族",
+            "affection": 50,
+            "favorite_items": [],
+            "daily_dialogue": "不要管我！",
+            "task_dialogue": "有好事轮得到你？",
+            "finish_task_dialogue": "",
+            "tasks": [],
+            "exchange": {},
+            "affection_dialogues": {
+                "low": [],
+                "medium": [],
+                "high": []
+            }
+        },
+        "105": {
+            "__class__": "NPC",
+            "number": 105,
+            "name": "袁逸",
+            "description": "天剑宗执剑长老",
+            "race": "人族",
+            "affection": 50,
+            "favorite_items": [],
+            "daily_dialogue": "Set(elts=[Constant(value='山外桃花又开了，你不去看看吗？')])",
+            "task_dialogue": "Set(elts=[Constant(value='听说伏魔山有些异动，我不便前往探查，道友可代为查看。')])",
+            "finish_task_dialogue": "Set(elts=[Constant(value='')])",
+            "tasks": [
+                "task_library[1010]"
+            ],
+            "exchange": {},
+            "affection_dialogues": {
+                "low": [],
+                "medium": [],
+                "high": [
+                    "江湖路远，难得共行此途。",
+                    "与你相识，恰如山中清泉，澄澈心神。",
+                    "若有一日风霜尽去，愿共赏云间明月，醉看山河。"
+                ]
+            },
+            "fight": [],
+            "taunt_dialogue": {
+                "low": [
+                    "道友还是收手为好。"
+                ],
+                "medium": [
+                    "今日交锋，只愿再无杀戮纷争。"
+                ],
+                "high": [
+                    "道友运气的方法似有不妥。"
+                ]
+            }
+        },
+        "106": {
+            "__class__": "NPC",
+            "number": 106,
+            "name": "田越",
+            "description": "道号：上阳道人。天剑宗宗主",
+            "race": "人族",
+            "affection": 50,
+            "favorite_items": [],
+            "daily_dialogue": "Set(elts=[Constant(value='道友来我天剑宗何干？'), Constant(value='是袁安之推荐你来的，既如此我这也有些道法，你可愿学？')])",
+            "task_dialogue": "Set(elts=[Constant(value='')])",
+            "finish_task_dialogue": "Set(elts=[Constant(value='')])",
+            "tasks": [
+                "task_library[1004]"
+            ],
+            "exchange": {},
+            "affection_dialogues": {
+                "low": [],
+                "medium": [],
+                "high": []
+            },
+            "fight": null,
+            "taunt_dialogue": {
+                "low": [
+                    "道友还是收手为好。"
+                ],
+                "medium": [
+                    "今日交锋，只愿再无杀戮纷争。"
+                ],
+                "high": [
+                    ""
+                ]
+            }
+        }
+    }
+}

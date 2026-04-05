@@ -1,0 +1,112 @@
+{
+    "dungeon_library": {
+        "10001": {
+            "__class__": "Dungeon",
+            "name": "大沼泽",
+            "number": 10001,
+            "description": "一个人迹罕至的大沼泽，仅供测试。",
+            "floors": [
+                "DungeonFloor()",
+                "DungeonFloor()",
+                "DungeonFloor()"
+            ],
+            "can_replay_after_completion": true,
+            "npc_affection_impact": {
+                "101": -10,
+                "102": 5
+            }
+        },
+        "10002": {
+            "__class__": "Dungeon",
+            "name": "天狐村道馆",
+            "number": 10002,
+            "description": "白玉为徒弟设计的道馆，供训练使用",
+            "floors": [
+                "DungeonFloor()",
+                "DungeonFloor()"
+            ],
+            "can_replay_after_completion": true,
+            "npc_affection_impact": {
+                "100": 2
+            }
+        },
+        "10003": {
+            "__class__": "Dungeon",
+            "name": "青鸾山深处",
+            "number": 10003,
+            "description": "这里有一条小径，似乎鲜有人知",
+            "floors": [
+                "DungeonFloor()",
+                "DungeonFloor()",
+                "DungeonFloor()"
+            ],
+            "can_replay_after_completion": false,
+            "npc_affection_impact": {}
+        },
+        "10004": {
+            "__class__": "Dungeon",
+            "name": "伏魔山路",
+            "number": 10004,
+            "description": "郁郁葱葱的树林和灌丛，已经让人辨认不出这里曾经有路了",
+            "floors": [
+                "DungeonFloor()",
+                "DungeonFloor()",
+                "DungeonFloor()"
+            ],
+            "can_replay_after_completion": true,
+            "npc_affection_impact": {}
+        },
+        "10005": {
+            "__class__": "Dungeon",
+            "name": "伏魔山庄",
+            "number": 10005,
+            "description": "废弃的山庄，断壁残垣昭示着往日的辉煌。",
+            "floors": [
+                "DungeonFloor()",
+                "DungeonFloor()",
+                "DungeonFloor()"
+            ],
+            "can_replay_after_completion": false,
+            "npc_affection_impact": {}
+        },
+        "10008": {
+            "__class__": "Dungeon",
+            "name": "东市",
+            "number": 10008,
+            "description": "靖天皇城的东市，人来人往",
+            "floors": [
+                "DungeonFloor()",
+                "DungeonFloor()",
+                "DungeonFloor()"
+            ],
+            "can_replay_after_completion": true,
+            "npc_affection_impact": {}
+        },
+        "10009": {
+            "__class__": "Dungeon",
+            "name": "西市",
+            "number": 10009,
+            "description": "靖天皇城的西市，人来人往",
+            "floors": [
+                "DungeonFloor()",
+                "DungeonFloor()",
+                "DungeonFloor()"
+            ],
+            "can_replay_after_completion": true,
+            "npc_affection_impact": {}
+        },
+        "10010": {
+            "__class__": "Dungeon",
+            "name": "皇宫",
+            "number": 10010,
+            "description": "大玄王朝权力中枢",
+            "floors": [
+                "DungeonFloor()",
+                "DungeonFloor()",
+                "DungeonFloor()"
+            ],
+            "can_replay_after_completion": true,
+            "npc_affection_impact": {}
+        }
+    }
+}

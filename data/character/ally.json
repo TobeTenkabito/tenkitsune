@@ -1,0 +1,97 @@
+{
+    "ally_library": {
+        "700001": {
+            "__class__": "Ally",
+            "number": 700001,
+            "name": "白业",
+            "description": "主角的妹妹，拥有极高的修炼天赋。",
+            "level": 50,
+            "max_hp": 5550,
+            "max_mp": 1280,
+            "hp": 5550,
+            "mp": 1280,
+            "attack": 800,
+            "defense": 1200,
+            "speed": 130,
+            "crit": 40,
+            "crit_damage": 200,
+            "resistance": 15,
+            "penetration": 10,
+            "skills": [
+                "skill_library[210010]"
+            ],
+            "equipment": [
+                "equipment_library[430006]"
+            ]
+        },
+        "700002": {
+            "__class__": "Ally",
+            "number": 700002,
+            "name": "袁逸",
+            "description": "道号“真阳子”，天剑宗长老，清修多年，早已得道。",
+            "level": 90,
+            "max_hp": 6000,
+            "max_mp": 6000,
+            "hp": 6000,
+            "mp": 6000,
+            "attack": 3000,
+            "defense": 1200,
+            "speed": 200,
+            "crit": 60,
+            "crit_damage": 250,
+            "resistance": 20,
+            "penetration": 25,
+            "skills": [
+                "skill_library[200011]",
+                "skill_library[200012]",
+                "skill_library[210013]"
+            ],
+            "equipment": [
+                "equipment_library[431001]"
+            ]
+        },
+        "700003": {
+            "__class__": "Ally",
+            "number": 700003,
+            "name": "白玉",
+            "description": "主角的师傅，九尾天狐，实力变幻莫测",
+            "level": 120,
+            "max_hp": 16000,
+            "max_mp": 16000,
+            "hp": 16000,
+            "mp": 16000,
+            "attack": 5000,
+            "defense": 1800,
+            "speed": 200,
+            "crit": 100,
+            "crit_damage": 300,
+            "resistance": 20,
+            "penetration": 30,
+            "skills": [],
+            "equipment": []
+        },
+        "700004": {
+            "__class__": "Ally",
+            "number": 700004,
+            "name": "青鸾残魂",
+            "description": "神鸟青鸾的残魂，拥有不俗的法力",
+            "level": 10,
+            "max_hp": 2000,
+            "max_mp": 16000,
+            "hp": 2000,
+            "mp": 16000,
+            "attack": 100,
+            "defense": 100,
+            "speed": 200,
+            "crit": 10,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [
+                "skill_library[220017]",
+                "skill_library[220018]"
+            ],
+            "equipment": []
+        }
+    }
+}

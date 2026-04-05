@@ -1,0 +1,74 @@
+{
+    "warp_library": {
+        "170000": {
+            "__class__": "Warp",
+            "number": 170000,
+            "name": "测试传送",
+            "description": "无",
+            "quality": "普通",
+            "price": 1,
+            "quantity": 1,
+            "target_map_number": 90
+        },
+        "170001": {
+            "__class__": "Warp",
+            "number": 170001,
+            "name": "洞天福地折跃令",
+            "description": "可以通往洞天福地的折跃令，务必好好保存。",
+            "quality": "传说",
+            "price": 1,
+            "quantity": 1,
+            "target_map_number": 0
+        },
+        "170002": {
+            "__class__": "Warp",
+            "number": 170002,
+            "name": "冥界折跃令",
+            "description": "可以通往冥界的折跃令，拥有至阴的力量。",
+            "quality": "传说",
+            "price": 1,
+            "quantity": 1,
+            "target_map_number": 60
+        },
+        "170003": {
+            "__class__": "Warp",
+            "number": 170003,
+            "name": "天界折跃令",
+            "description": "可以通往天界的折跃令，拥有天神的力量。",
+            "quality": "传说",
+            "price": 1,
+            "quantity": 1,
+            "target_map_number": 100
+        },
+        "170004": {
+            "__class__": "Warp",
+            "number": 170004,
+            "name": "仙狐村折跃令",
+            "description": "可以传送回仙狐村的折跃令，是白玉师傅特地为你制作的，逃命用。",
+            "quality": "传说",
+            "price": 1,
+            "quantity": 1,
+            "target_map_number": 1
+        },
+        "170005": {
+            "__class__": "Warp",
+            "number": 170005,
+            "name": "镇妖塔折跃令",
+            "description": "可以传送到镇妖塔的折跃令，可以花费重金购买。",
+            "quality": "传说",
+            "price": 1000000000,
+            "quantity": 1,
+            "target_map_number": 24
+        },
+        "170006": {
+            "__class__": "Warp",
+            "number": 170006,
+            "name": "极北冰川折跃令",
+            "description": "可以传送到极北冰川的折跃令，可以花费重金购买。",
+            "quality": "传说",
+            "price": 1000000000,
+            "quantity": 1,
+            "target_map_number": 20
+        }
+    }
+}

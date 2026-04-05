@@ -1,0 +1,279 @@
+{
+    "player": {
+        "number": 1,
+        "name": "°×Ùí",
+        "level": 10,
+        "base_hp": 550,
+        "base_mp": 280,
+        "base_attack": 190,
+        "base_defense": 125,
+        "base_speed": 68,
+        "base_crit": 5,
+        "base_crit_damage": 150,
+        "base_resistance": 0,
+        "base_penetration": 0,
+        "max_exp": 5000,
+        "max_hp": 550,
+        "max_mp": 280,
+        "exp": 2962.8080000000004,
+        "hp": 549.25,
+        "mp": 280,
+        "attack": 190,
+        "defense": 125,
+        "speed": 68,
+        "crit": 5,
+        "crit_damage": 150,
+        "resistance": 0,
+        "penetration": 0,
+        "map_location": 3,
+        "cultivation_point": 9,
+        "traits": {},
+        "applied_traits": [],
+        "equipment": [],
+        "skill": [],
+        "inventory": [
+            {
+                "item_type": "Material",
+                "item_number": 100000,
+                "quantity": 488
+            },
+            {
+                "item_type": "Material",
+                "item_number": 120000,
+                "quantity": 200
+            },
+            {
+                "item_type": "Material",
+                "item_number": 100001,
+                "quantity": 2
+            },
+            {
+                "item_type": "Material",
+                "item_number": 100002,
+                "quantity": 2
+            },
+            {
+                "item_type": "Material",
+                "item_number": 100003,
+                "quantity": 2
+            }
+        ],
+        "completed_tasks": [],
+        "accepted_tasks": [],
+        "ready_to_complete_tasks": [],
+        "defeated_enemies": {},
+        "highest_floor": {},
+        "dungeon_clears": {},
+        "dungeons_cleared": [],
+        "talked_to_npcs": [],
+        "npcs_removed": [],
+        "given_items": {},
+        "task_attributes": {
+            "hp": 0,
+            "mp": 0,
+            "attack": 0,
+            "defense": 0,
+            "speed": 0,
+            "crit": 0,
+            "crit_damage": 0,
+            "resistance": 0,
+            "penetration": 0
+        },
+        "dungeon_attributes": {
+            "hp": 0,
+            "mp": 0,
+            "attack": 0,
+            "defense": 0,
+            "speed": 0,
+            "crit": 0,
+            "crit_damage": 0,
+            "resistance": 0,
+            "penetration": 0
+        },
+        "cultivation_attributes": {
+            "hp": 0,
+            "mp": 0,
+            "attack": 0,
+            "defense": 0,
+            "speed": 0,
+            "crit": 0,
+            "crit_damage": 0,
+            "resistance": 0,
+            "penetration": 0
+        },
+        "medicine_attributes": {
+            "hp": 0,
+            "mp": 0,
+            "attack": 0,
+            "defense": 0,
+            "speed": 0,
+            "crit": 0,
+            "crit_damage": 0,
+            "resistance": 0,
+            "penetration": 0
+        },
+        "skill_attributes": {
+            "mp": 0,
+            "attack": 0,
+            "defense": 0,
+            "speed": 0,
+            "crit": 0,
+            "crit_damage": 0,
+            "resistance": 0,
+            "penetration": 0
+        },
+        "cultivation_system": {
+            "current_xinfa_line": null,
+            "current_xinfa_level": 0,
+            "used_points": 0,
+            "unused_points": 9,
+            "cultivation_data": {
+                "½ð": {
+                    "level": 0,
+                    "attributes_per_level": {
+                        "1": {
+                            "cultivation_attack": 28,
+                            "cultivation_crit": 1
+                        },
+                        "2": {
+                            "cultivation_attack": 84,
+                            "cultivation_crit": 2
+                        },
+                        "3": {
+                            "cultivation_attack": 168,
+                            "cultivation_crit": 3
+                        },
+                        "4": {
+                            "cultivation_attack": 280,
+                            "cultivation_crit": 4
+                        },
+                        "5": {
+                            "cultivation_attack": 420,
+                            "cultivation_crit": 5
+                        }
+                    }
+                },
+                "Ä¾": {
+                    "level": 0,
+                    "attributes_per_level": {
+                        "1": {
+                            "cultivation_speed": 8,
+                            "cultivation_penetration": 1
+                        },
+                        "2": {
+                            "cultivation_speed": 24,
+                            "cultivation_penetration": 2
+                        },
+                        "3": {
+                            "cultivation_speed": 48,
+                            "cultivation_penetration": 3
+                        },
+                        "4": {
+                            "cultivation_speed": 80,
+                            "cultivation_penetration": 4
+                        },
+                        "5": {
+                            "cultivation_speed": 120,
+                            "cultivation_penetration": 5
+                        }
+                    }
+                },
+                "Ë®": {
+                    "level": 0,
+                    "attributes_per_level": {
+                        "1": {
+                            "cultivation_mp": 32,
+                            "cultivation_crit_damage": 1
+                        },
+                        "2": {
+                            "cultivation_mp": 96,
+                            "cultivation_crit_damage": 2
+                        },
+                        "3": {
+                            "cultivation_mp": 192,
+                            "cultivation_crit_damage": 3
+                        },
+                        "4": {
+                            "cultivation_mp": 320,
+                            "cultivation_crit_damage": 4
+                        },
+                        "5": {
+                            "cultivation_mp": 480,
+                            "cultivation_crit_damage": 5
+                        }
+                    }
+                },
+                "»ð": {
+                    "level": 0,
+                    "attributes_per_level": {
+                        "1": {
+                            "cultivation_hp": 64,
+                            "cultivation_crit_damage": 1
+                        },
+                        "2": {
+                            "cultivation_hp": 192,
+                            "cultivation_crit_damage": 2
+                        },
+                        "3": {
+                            "cultivation_hp": 384,
+                            "cultivation_crit_damage": 3
+                        },
+                        "4": {
+                            "cultivation_hp": 640,
+                            "cultivation_crit_damage": 4
+                        },
+                        "5": {
+                            "cultivation_hp": 960,
+                            "cultivation_crit_damage": 5
+                        }
+                    }
+                },
+                "ÍÁ": {
+                    "level": 0,
+                    "attributes_per_level": {
+                        "1": {
+                            "cultivation_defense": 20,
+                            "cultivation_resistance": 1
+                        },
+                        "2": {
+                            "cultivation_defense": 60,
+                            "cultivation_resistance": 2
+                        },
+                        "3": {
+                            "cultivation_defense": 120,
+                            "cultivation_resistance": 3
+                        },
+                        "4": {
+                            "cultivation_defense": 200,
+                            "cultivation_resistance": 4
+                        },
+                        "5": {
+                            "cultivation_defense": 300,
+                            "cultivation_resistance": 5
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "npcs_affection": {
+        "100": 90,
+        "101": 50,
+        "102": 20,
+        "103": 20,
+        "104": 50,
+        "105": 50,
+        "106": 50
+    },
+    "story_progress": {
+        "current_chapter": 1,
+        "current_node": 1,
+        "chapters_completed": {
+            "1": false,
+            "2": false,
+            "3": false,
+            "4": false
+        },
+        "completed_nodes": []
+    }
+}

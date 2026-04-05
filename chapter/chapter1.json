@@ -1,0 +1,65 @@
+{
+  "chapter_number": 1,
+  "nodes": [
+    {
+      "node_id": 1,
+      "description": [
+        "群山沉寂，鬼影森罗；阴云蔽日，妖风啸谷。",
+        "千仞绝壁，苍藤缠绕；万丈深渊，幽泉涌动。"
+      ],
+      "actions": [
+        {
+          "type": "add_item",
+          "item_id": 100001,
+          "quantity": 1
+        }
+      ],
+      "next_node_id": 2
+    },
+    {
+      "node_id": 2,
+      "description": "这是第一章第二个节点",
+      "actions": [
+        {
+          "type": "start_battle",
+          "battle_id": 1
+        }
+      ],
+      "next_node_id": 3
+    },
+    {
+      "node_id": 3,
+      "description": "这是第三个节点",
+      "choices": [
+        {
+          "description": "进入第一章第五个节点",
+          "next_node_id": 5
+        },
+        {
+          "description": "否则进入第四个节点",
+          "next_node_id": 4
+        }
+      ]
+    },
+    {
+      "node_id": 4,
+      "description": "这是第四个节点。",
+      "actions": [
+        {
+          "type": "end"
+        }
+      ],
+      "next_node_id": null
+    },
+    {
+      "node_id": 5,
+      "description": "这是第5个节点。",
+      "actions": [
+        {
+          "type": "end"
+        }
+      ],
+      "next_node_id": null
+    }
+  ]
+}

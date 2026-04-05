@@ -1,0 +1,50 @@
+{
+  "chapter_number": 2,
+  "nodes": [
+    {
+      "node_id": 1,
+      "description": [
+        "this is the chapter2 1 node 1 sentence",
+        "this is the chapter2 1 node 2 sentence",
+        "this is the chapter2 1 node 3 sentence"
+      ],
+      "next_node_id": 2
+    },
+    {
+      "node_id": 2,
+      "description": [
+        "this is the chapter2 2 node 1 sentence",
+        "this is the chapter2 2 node 2 sentence",
+        "this is the chapter2 2 node 3 sentence"
+      ],
+      "choices": [
+        {
+          "description": "to 4",
+          "next_node_id": 4
+        },
+        {
+          "description": "to 3",
+          "next_node_id": 3
+        }
+      ]
+    },
+    {
+      "node_id": 3,
+      "description": "this is none",
+      "actions": [
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "node_id": 4,
+      "description": "this is none",
+      "actions": [
+        {
+          "type": "end"
+        }
+      ]
+    }
+  ]
+}

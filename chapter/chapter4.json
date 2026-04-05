@@ -1,0 +1,24 @@
+{
+  "chapter_number": 4,
+  "nodes": [
+    {
+      "node_id": 1,
+      "description": [],
+      "choices": [
+        {"description": "",
+          "next_node_id": 2
+        },
+        {"description": "",
+          "next_node_id": 3}
+      ]
+    },
+    {
+      "node_id": 2,
+      "description": ""
+    },
+    {
+      "node_id": 3,
+      "description": ""
+    }
+  ]
+}

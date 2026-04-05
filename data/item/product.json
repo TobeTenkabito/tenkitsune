@@ -1,0 +1,50 @@
+{
+    "product_library": {
+        "310000": {
+            "__class__": "Product",
+            "number": 310000,
+            "name": "爆竹",
+            "description": "爆竹声中一岁除，春风送暖入屠苏",
+            "quality": "普通",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "enemy",
+            "target_scope": "single",
+            "effect_changes": {
+                "hp": -100
+            }
+        },
+        "310001": {
+            "__class__": "Product",
+            "number": 310001,
+            "name": "测试召唤令",
+            "description": "仅供测试，召唤白玉",
+            "quality": "普通",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "all",
+            "effect_changes": {
+                "summon": {
+                    "number": 700003
+                }
+            }
+        },
+        "310002": {
+            "__class__": "Product",
+            "number": 310002,
+            "name": "青鸾精魄",
+            "description": "青鸾神鸟的一丝残魂，可以用其召唤队友青鸾。",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1,
+            "target_type": "ally",
+            "target_scope": "all",
+            "effect_changes": {
+                "summon": {
+                    "number": 700004
+                }
+            }
+        }
+    }
+}

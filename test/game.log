@@ -1,0 +1,249 @@
+2025-04-25 18:10:13,474 - INFO - Displaying title screen
+2025-04-25 18:10:13,476 - INFO - Debug mode enabled
+2025-04-25 18:10:13,476 - INFO - Debug mode enabled
+2025-04-25 18:10:13,476 - INFO - Debug mode disabled
+2025-04-25 18:10:13,476 - INFO - Debug mode disabled
+2025-04-25 18:10:23,226 - INFO - Displaying title screen
+2025-04-25 18:10:55,015 - INFO - Displaying title screen
+2025-04-25 18:10:55,015 - INFO - Debug mode enabled
+2025-04-25 18:10:55,015 - INFO - Debug mode enabled
+2025-04-25 18:10:55,015 - INFO - Debug mode disabled
+2025-04-25 18:10:55,015 - INFO - Debug mode disabled
+2025-04-25 18:15:20,629 - INFO - Displaying title screen
+2025-04-25 18:15:20,629 - INFO - Debug mode enabled
+2025-04-25 18:15:20,629 - INFO - Debug mode enabled
+2025-04-25 18:15:20,631 - INFO - Debug mode disabled
+2025-04-25 18:15:20,631 - INFO - Debug mode disabled
+2025-04-25 18:18:54,785 - INFO - Displaying title screen
+2025-04-25 18:18:54,786 - INFO - Debug mode enabled
+2025-04-25 18:18:54,786 - INFO - Debug mode enabled
+2025-04-25 18:18:54,786 - INFO - Debug mode disabled
+2025-04-25 18:18:54,786 - INFO - Debug mode disabled
+2025-04-25 18:34:34,981 - INFO - Entering dungeon 1
+2025-04-25 18:34:35,008 - INFO - Entering floor 1 of dungeon 1
+2025-04-25 18:34:35,010 - INFO - Fetching dungeon menu
+2025-04-25 18:34:35,018 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:34:35,018 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:34:35,018 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:34:35,018 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:34:35,018 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:34:35,018 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:34:35,018 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:34:35,018 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:34:35,021 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:34:35,021 - INFO - Fetching task system menu
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,025 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:34:35,026 - INFO - Entering dungeon 1 on map 1
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,027 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:34:35,034 - INFO - Exploring map 1
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,036 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:34:35,037 - INFO - Interacting with NPC 1 on map 1
+2025-04-25 18:34:35,040 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:34:35,040 - WARNING - 采集 草药 失败
+2025-04-25 18:34:35,042 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:34:35,044 - INFO - Entering dungeon 1 on map 1
+2025-04-25 18:34:35,046 - INFO - Exploring map 1
+2025-04-25 18:34:35,046 - WARNING - 缺少通行证
+2025-04-25 18:34:35,048 - INFO - Exploring map 1
+2025-04-25 18:34:35,050 - INFO - Fetching map menu
+2025-04-25 18:34:35,051 - INFO - Interacting with NPC 1 on map 1
+2025-04-25 18:34:35,054 - INFO - Starting battle 0 on map 1
+2025-04-25 18:34:35,057 - INFO - Starting battle 0 on map 1
+2025-04-25 18:37:37,379 - INFO - Entering dungeon 1
+2025-04-25 18:37:37,395 - INFO - Entering floor 1 of dungeon 1
+2025-04-25 18:37:37,398 - INFO - Fetching dungeon menu
+2025-04-25 18:37:37,405 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:37:37,405 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:37:37,405 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:37:37,405 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:37:37,405 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:37:37,405 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:37:37,405 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:37:37,405 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:37:37,406 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:37:37,406 - INFO - Fetching task system menu
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,410 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:37:37,413 - INFO - Entering dungeon 1 on map 1
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,415 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:37:37,416 - INFO - Exploring map 1
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,418 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:37:37,419 - INFO - Interacting with NPC 1 on map 1
+2025-04-25 18:37:37,421 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:37:37,421 - WARNING - 采集 草药 失败
+2025-04-25 18:37:37,423 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:37:37,425 - INFO - Entering dungeon 1 on map 1
+2025-04-25 18:37:37,428 - INFO - Exploring map 1
+2025-04-25 18:37:37,429 - WARNING - 缺少通行证
+2025-04-25 18:37:37,430 - INFO - Exploring map 1
+2025-04-25 18:37:37,436 - INFO - Fetching map menu
+2025-04-25 18:37:37,438 - INFO - Interacting with NPC 1 on map 1
+2025-04-25 18:37:37,441 - INFO - Starting battle 0 on map 1
+2025-04-25 18:37:37,445 - INFO - Starting battle 0 on map 1
+2025-04-25 18:43:31,756 - INFO - Entering dungeon 1
+2025-04-25 18:43:31,774 - INFO - Entering floor 1 of dungeon 1
+2025-04-25 18:43:31,777 - INFO - Fetching dungeon menu
+2025-04-25 18:43:31,785 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:43:31,785 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:43:31,785 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:43:31,785 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:43:31,785 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:43:31,785 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:43:31,785 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:43:31,785 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:43:31,786 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:43:31,786 - INFO - Fetching task system menu
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,789 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:43:31,790 - INFO - Entering dungeon 1 on map 1
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,792 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:43:31,793 - INFO - Exploring map 1
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,795 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:43:31,796 - INFO - Interacting with NPC 1 on map 1
+2025-04-25 18:43:31,798 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:43:31,798 - WARNING - 采集 草药 失败
+2025-04-25 18:43:31,800 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:43:31,801 - INFO - Entering dungeon 1 on map 1
+2025-04-25 18:43:31,804 - INFO - Exploring map 1
+2025-04-25 18:43:31,804 - WARNING - 缺少通行证
+2025-04-25 18:43:31,806 - INFO - Exploring map 1
+2025-04-25 18:43:31,807 - INFO - Fetching map menu
+2025-04-25 18:43:31,809 - INFO - Interacting with NPC 1 on map 1
+2025-04-25 18:43:31,813 - INFO - Starting battle 0 on map 1
+2025-04-25 18:43:31,816 - INFO - Starting battle 0 on map 1
+2025-04-25 18:44:51,887 - INFO - Entering dungeon 1
+2025-04-25 18:44:51,901 - INFO - Entering floor 1 of dungeon 1
+2025-04-25 18:44:51,904 - INFO - Fetching dungeon menu
+2025-04-25 18:44:51,913 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:44:51,913 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:44:51,913 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:44:51,913 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:44:51,913 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:44:51,913 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:44:51,913 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:44:51,913 - INFO - Processing map choice 3 with data {'map_id': 1, 'item_name': '草药'}
+2025-04-25 18:44:51,919 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:44:51,919 - INFO - Fetching task system menu
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,922 - INFO - Processing map choice 5 with data {'map_id': 1, 'dungeon_id': 1}
+2025-04-25 18:44:51,928 - INFO - Entering dungeon 1 on map 1
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,930 - INFO - Processing map choice 1 with data {'map_id': 1}
+2025-04-25 18:44:51,931 - INFO - Exploring map 1
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,934 - INFO - Processing map choice 2 with data {'map_id': 1, 'npc_id': 1}
+2025-04-25 18:44:51,939 - INFO - Interacting with NPC 1 on map 1
+2025-04-25 18:44:51,941 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:44:51,941 - WARNING - 采集 草药 失败
+2025-04-25 18:44:51,943 - INFO - Collecting item 草药 on map 1
+2025-04-25 18:44:51,945 - INFO - Entering dungeon 1 on map 1
+2025-04-25 18:44:51,947 - INFO - Exploring map 1
+2025-04-25 18:44:51,947 - WARNING - 缺少通行证
+2025-04-25 18:44:51,949 - INFO - Exploring map 1
+2025-04-25 18:44:51,952 - INFO - Fetching map menu
+2025-04-25 18:44:51,954 - INFO - Interacting with NPC 1 on map 1
+2025-04-25 18:44:51,959 - INFO - Starting battle 0 on map 1
+2025-04-25 18:44:51,963 - INFO - Starting battle 0 on map 1

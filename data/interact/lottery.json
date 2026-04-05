@@ -1,0 +1,56 @@
+{
+    "lottery_library": {
+        "1": {
+            "__class__": "Lottery",
+            "name": "装备材料池",
+            "rewards": [
+                {
+                    "probability": 0.03,
+                    "item": "material_library[100026]"
+                },
+                {
+                    "probability": 0.1,
+                    "item": "material_library[100059]"
+                },
+                {
+                    "probability": 0.17,
+                    "item": "material_library[100060]"
+                },
+                {
+                    "probability": 0.3,
+                    "item": "material_library[100034]"
+                },
+                {
+                    "probability": 0.4,
+                    "item": "material_library[100016]"
+                }
+            ]
+        },
+        "2": {
+            "__class__": "Lottery",
+            "name": "npc测试",
+            "rewards": [
+                {
+                    "probability": 0.03,
+                    "item": "material_library[100004]"
+                },
+                {
+                    "probability": 0.1,
+                    "item": "material_library[100005]"
+                },
+                {
+                    "probability": 0.17,
+                    "item": "material_library[100006]"
+                },
+                {
+                    "probability": 0.3,
+                    "item": "material_library[100007]"
+                },
+                {
+                    "probability": 0.4,
+                    "item": "material_library[100008]"
+                }
+            ]
+        }
+    }
+}

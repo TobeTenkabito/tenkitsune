@@ -1,0 +1,652 @@
+{
+    "material_library": {
+        "100000": {
+            "__class__": "Material",
+            "number": 100000,
+            "name": "铜板",
+            "description": "铜铁比五五开的铜板，是市面上的主流货币",
+            "quality": "普通",
+            "price": 1,
+            "quantity": 1
+        },
+        "110000": {
+            "__class__": "Material",
+            "number": 110000,
+            "name": "灵石",
+            "description": "具有灵力的石头，是修仙界的通用货币",
+            "quality": "优秀",
+            "price": 1000,
+            "quantity": 1
+        },
+        "120000": {
+            "__class__": "Material",
+            "number": 120000,
+            "name": "北斗白石",
+            "description": "传说来自天外，不知有什么用处，但听说有人在收购此石",
+            "quality": "传说",
+            "price": 1,
+            "quantity": 1
+        },
+        "100001": {
+            "__class__": "Material",
+            "number": 100001,
+            "name": "玄铁",
+            "description": "品质上好的铁，可以用作绝大多数装备的打造",
+            "quality": "普通",
+            "price": 20,
+            "quantity": 1
+        },
+        "100002": {
+            "__class__": "Material",
+            "number": 100002,
+            "name": "丝绸",
+            "description": "品质上好的丝绸，可以用作绝大多数装备的打造",
+            "quality": "普通",
+            "price": 100,
+            "quantity": 1
+        },
+        "100003": {
+            "__class__": "Material",
+            "number": 100003,
+            "name": "檀木",
+            "description": "品质上好的檀木，可以用作绝大多数装备的打造",
+            "quality": "普通",
+            "price": 20,
+            "quantity": 1
+        },
+        "100004": {
+            "__class__": "Material",
+            "number": 100004,
+            "name": "天地精华",
+            "description": "相传是天地间最纯净的物质，拥有净化一切的能力",
+            "quality": "传说",
+            "price": 1,
+            "quantity": 1
+        },
+        "100005": {
+            "__class__": "Material",
+            "number": 100005,
+            "name": "极恶石",
+            "description": "贪、嗔、痴",
+            "quality": "传说",
+            "price": 1,
+            "quantity": 1
+        },
+        "100006": {
+            "__class__": "Material",
+            "number": 100006,
+            "name": "贪之石",
+            "description": "凝聚了天地间的贪念，是邪恶的集大成者",
+            "quality": "史诗",
+            "price": 1,
+            "quantity": 1
+        },
+        "100007": {
+            "__class__": "Material",
+            "number": 100007,
+            "name": "嗔之石",
+            "description": "凝聚了天地间的嗔念，是邪恶的集大成者",
+            "quality": "史诗",
+            "price": 1,
+            "quantity": 1
+        },
+        "100008": {
+            "__class__": "Material",
+            "number": 100008,
+            "name": "痴之石",
+            "description": "凝聚了天地间的痴念，是邪恶的集大成者",
+            "quality": "史诗",
+            "price": 1,
+            "quantity": 1
+        },
+        "100009": {
+            "__class__": "Material",
+            "number": 100009,
+            "name": "草药",
+            "description": "炼丹最基础的草药，路边随处可见但有不菲的潜在价值",
+            "quality": "普通",
+            "price": 10,
+            "quantity": 1
+        },
+        "100010": {
+            "__class__": "Material",
+            "number": 100010,
+            "name": "甘露",
+            "description": "其凝如脂，其甘如怡",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1
+        },
+        "100011": {
+            "__class__": "Material",
+            "number": 100011,
+            "name": "花儿",
+            "description": "路边的花儿，不知道有什么用",
+            "quality": "普通",
+            "price": 1,
+            "quantity": 1
+        },
+        "100012": {
+            "__class__": "Material",
+            "number": 100012,
+            "name": "桃花",
+            "description": "桃之夭夭，灼灼其华",
+            "quality": "普通",
+            "price": 1,
+            "quantity": 1
+        },
+        "100013": {
+            "__class__": "Material",
+            "number": 100013,
+            "name": "白酒",
+            "description": "普通的酒",
+            "quality": "普通",
+            "price": 50,
+            "quantity": 1
+        },
+        "100014": {
+            "__class__": "Material",
+            "number": 100014,
+            "name": "木头",
+            "description": "好的木头可以做棺材",
+            "quality": "普通",
+            "price": 20,
+            "quantity": 1
+        },
+        "100015": {
+            "__class__": "Material",
+            "number": 100015,
+            "name": "树枝",
+            "description": "路边随处可见，不知有什么用",
+            "quality": "普通",
+            "price": 1,
+            "quantity": 1
+        },
+        "100016": {
+            "__class__": "Material",
+            "number": 100016,
+            "name": "离火",
+            "description": "修士最常用的火，可以炼制绝大部分物品",
+            "quality": "优秀",
+            "price": 100,
+            "quantity": 1
+        },
+        "100017": {
+            "__class__": "Material",
+            "number": 100017,
+            "name": "冷火",
+            "description": "正常的火让人感觉温暖，冷火让人感到寒冷",
+            "quality": "精良",
+            "price": 6000,
+            "quantity": 1
+        },
+        "100018": {
+            "__class__": "Material",
+            "number": 100018,
+            "name": "阳炎",
+            "description": "从羲和处取得的火，可以再提纯",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1
+        },
+        "100019": {
+            "__class__": "Material",
+            "number": 100019,
+            "name": "神火",
+            "description": "阳炎的进一步提纯，温度极高",
+            "quality": "传说",
+            "price": 1000000,
+            "quantity": 1
+        },
+        "100020": {
+            "__class__": "Material",
+            "number": 100020,
+            "name": "木炭",
+            "description": "煤炭不易获取，木炭还不容易烧？",
+            "quality": "普通",
+            "price": 750,
+            "quantity": 1
+        },
+        "100021": {
+            "__class__": "Material",
+            "number": 100021,
+            "name": "精钢",
+            "description": "降低碳含量得到的金属",
+            "quality": "精良",
+            "price": 8000,
+            "quantity": 1
+        },
+        "100022": {
+            "__class__": "Material",
+            "number": 100022,
+            "name": "幽火",
+            "description": "冥界的火，十分寒冷",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1
+        },
+        "100023": {
+            "__class__": "Material",
+            "number": 100023,
+            "name": "冥火",
+            "description": "幽火的进一步提纯，生魂勿近",
+            "quality": "传说",
+            "price": 1000000,
+            "quantity": 1
+        },
+        "100024": {
+            "__class__": "Material",
+            "number": 100024,
+            "name": "阴阳火(阴)",
+            "description": "用羲和阳炎提纯与冥界幽火提纯混合而成，属性偏阴，十分不稳定",
+            "quality": "神器",
+            "price": 10000000,
+            "quantity": 1
+        },
+        "100025": {
+            "__class__": "Material",
+            "number": 100025,
+            "name": "阴阳火(阳)",
+            "description": "用羲和阳炎提纯与冥界幽火提纯混合而成，属性偏阳，十分不稳定",
+            "quality": "神器",
+            "price": 10000000,
+            "quantity": 1
+        },
+        "100026": {
+            "__class__": "Material",
+            "number": 100026,
+            "name": "金罡晶",
+            "description": "天下至刚之物",
+            "quality": "神器",
+            "price": 10000000,
+            "quantity": 1
+        },
+        "100027": {
+            "__class__": "Material",
+            "number": 100027,
+            "name": "硫铁矿",
+            "description": "以硫化铁为主的铁矿，用途多样",
+            "quality": "普通",
+            "price": 1000,
+            "quantity": 1
+        },
+        "100028": {
+            "__class__": "Material",
+            "number": 100027,
+            "name": "黄铜矿",
+            "description": "以硫化铜为主的铜矿，用途多样",
+            "quality": "普通",
+            "price": 1000,
+            "quantity": 1
+        },
+        "100029": {
+            "__class__": "Material",
+            "number": 100029,
+            "name": "熟铁",
+            "description": "经过炼化得到的铁，纯度较高",
+            "quality": "优秀",
+            "price": 3000,
+            "quantity": 1
+        },
+        "100030": {
+            "__class__": "Material",
+            "number": 100030,
+            "name": "熟铜",
+            "description": "经过炼化得到的铜，纯度较高",
+            "quality": "优秀",
+            "price": 3000,
+            "quantity": 1
+        },
+        "100031": {
+            "__class__": "Material",
+            "number": 100031,
+            "name": "硫磺",
+            "description": "炼化后的矿物残渣",
+            "quality": "优秀",
+            "price": 4000,
+            "quantity": 1
+        },
+        "100032": {
+            "__class__": "Material",
+            "number": 100032,
+            "name": "硝石",
+            "description": "路边随处可见的石头",
+            "quality": "普通",
+            "price": 100,
+            "quantity": 1
+        },
+        "100033": {
+            "__class__": "Material",
+            "number": 100033,
+            "name": "黑火药",
+            "description": "会爆炸，谨慎使用，不能用来对付修仙者",
+            "quality": "优秀",
+            "price": 10000,
+            "quantity": 1
+        },
+        "100034": {
+            "__class__": "Material",
+            "number": 100034,
+            "name": "白金",
+            "description": "也叫陨铁，来自三界之外，含量极少",
+            "quality": "精良",
+            "price": 50000,
+            "quantity": 1
+        },
+        "100035": {
+            "__class__": "Material",
+            "number": 100035,
+            "name": "锡矿石",
+            "description": "以氧化锡为主",
+            "quality": "普通",
+            "price": 1000,
+            "quantity": 1
+        },
+        "100036": {
+            "__class__": "Material",
+            "number": 100036,
+            "name": "辰砂",
+            "description": "含汞矿物，听说人界皇帝喜欢用此物炼制长生不老药",
+            "quality": "普通",
+            "price": 1000,
+            "quantity": 1
+        },
+        "100037": {
+            "__class__": "Material",
+            "number": 100037,
+            "name": "闪锌矿",
+            "description": "以硫化锌为主的矿石",
+            "quality": "普通",
+            "price": 1000,
+            "quantity": 1
+        },
+        "100038": {
+            "__class__": "Material",
+            "number": 100038,
+            "name": "石灰石",
+            "description": "可以用来炼石灰",
+            "quality": "普通",
+            "price": 500,
+            "quantity": 1
+        },
+        "100039": {
+            "__class__": "Material",
+            "number": 100039,
+            "name": "银矿石",
+            "description": "可以进行提纯",
+            "quality": "优秀",
+            "price": 9000,
+            "quantity": 1
+        },
+        "100040": {
+            "__class__": "Material",
+            "number": 100039,
+            "name": "金矿石",
+            "description": "可以进行提纯",
+            "quality": "精良",
+            "price": 90000,
+            "quantity": 1
+        },
+        "100041": {
+            "__class__": "Material",
+            "number": 100041,
+            "name": "白银",
+            "description": "人界官方使用的货币",
+            "quality": "精良",
+            "price": 10000,
+            "quantity": 1
+        },
+        "100042": {
+            "__class__": "Material",
+            "number": 100042,
+            "name": "黄金",
+            "description": "人界官方使用的货币，比银锭更值钱",
+            "quality": "史诗",
+            "price": 100000,
+            "quantity": 1
+        },
+        "100043": {
+            "__class__": "Material",
+            "number": 100043,
+            "name": "青铜",
+            "description": "铜锡合金",
+            "quality": "优秀",
+            "price": 5000,
+            "quantity": 1
+        },
+        "100044": {
+            "__class__": "Material",
+            "number": 100044,
+            "name": "黄铜",
+            "description": "铜锌合金",
+            "quality": "优秀",
+            "price": 5000,
+            "quantity": 1
+        },
+        "100045": {
+            "__class__": "Material",
+            "number": 100045,
+            "name": "锡",
+            "description": "金属的一种",
+            "quality": "优秀",
+            "price": 3000,
+            "quantity": 1
+        },
+        "100046": {
+            "__class__": "Material",
+            "number": 100046,
+            "name": "锌",
+            "description": "金属的一种",
+            "quality": "优秀",
+            "price": 3000,
+            "quantity": 1
+        },
+        "100047": {
+            "__class__": "Material",
+            "number": 100047,
+            "name": "铅矿石",
+            "description": "以硫化铅为主的矿石",
+            "quality": "普通",
+            "price": 1000,
+            "quantity": 1
+        },
+        "100048": {
+            "__class__": "Material",
+            "number": 100048,
+            "name": "铅",
+            "description": "金属的一种",
+            "quality": "优秀",
+            "price": 3000,
+            "quantity": 1
+        },
+        "100049": {
+            "__class__": "Material",
+            "number": 100049,
+            "name": "盐矿",
+            "description": "以氯化钠为主的矿石",
+            "quality": "普通",
+            "price": 100,
+            "quantity": 1
+        },
+        "100050": {
+            "__class__": "Material",
+            "number": 100050,
+            "name": "粗盐",
+            "description": "以氯化钠为主",
+            "quality": "优秀",
+            "price": 2,
+            "quantity": 1
+        },
+        "100051": {
+            "__class__": "Material",
+            "number": 100051,
+            "name": "精盐",
+            "description": "经过提纯的粗盐",
+            "quality": "精良",
+            "price": 3,
+            "quantity": 1
+        },
+        "100052": {
+            "__class__": "Material",
+            "number": 100052,
+            "name": "稻米",
+            "description": "是很多食物的原料",
+            "quality": "普通",
+            "price": 1,
+            "quantity": 1
+        },
+        "100053": {
+            "__class__": "Material",
+            "number": 100053,
+            "name": "面粉",
+            "description": "是很多食物的原料",
+            "quality": "普通",
+            "price": 1,
+            "quantity": 1
+        },
+        "100054": {
+            "__class__": "Material",
+            "number": 100054,
+            "name": "竹子",
+            "description": "禾本科植物，用途多样",
+            "quality": "普通",
+            "price": 100,
+            "quantity": 1
+        },
+        "100055": {
+            "__class__": "Material",
+            "number": 100055,
+            "name": "梧桐木",
+            "description": "锦葵科植物，用途多样",
+            "quality": "普通",
+            "price": 1000,
+            "quantity": 1
+        },
+        "100056": {
+            "__class__": "Material",
+            "number": 100056,
+            "name": "黑曜石",
+            "description": "发黑光的石头",
+            "quality": "优秀",
+            "price": 2000,
+            "quantity": 1
+        },
+        "100057": {
+            "__class__": "Material",
+            "number": 100057,
+            "name": "青鸾神羽",
+            "description": "青色羽毛，上面绣有鸟文图案",
+            "quality": "优秀",
+            "price": 2000,
+            "quantity": 1
+        },
+        "100058": {
+            "__class__": "Material",
+            "number": 100058,
+            "name": "兽皮",
+            "description": "野兽的兽皮",
+            "quality": "普通",
+            "price": 2000,
+            "quantity": 1
+        },
+        "100059": {
+            "__class__": "Material",
+            "number": 100059,
+            "name": "天柱冰铁",
+            "description": "取自不周山的寒铁，是打造神兵利器的最佳材料",
+            "quality": "传说",
+            "price": 2000,
+            "quantity": 1
+        },
+        "100060": {
+            "__class__": "Material",
+            "number": 100060,
+            "name": "昆仑寒玉",
+            "description": "取自昆仑山的宝玉，拥有无上灵气",
+            "quality": "史诗",
+            "price": 2000,
+            "quantity": 1
+        },
+        "140000": {
+            "__class__": "Material",
+            "number": 140000,
+            "name": "xx模具",
+            "description": "该物品可以在xx处让其帮你打造xx装备",
+            "quality": "传说",
+            "price": 2000,
+            "quantity": 1
+        },
+        "150000": {
+            "__class__": "Material",
+            "number": 150000,
+            "name": "湮灭方程技能书",
+            "description": "该物品可以在三原天光处学习传说品质技能湮灭方程",
+            "quality": "传说",
+            "price": 2000,
+            "quantity": 1
+        },
+        "150001": {
+            "__class__": "Material",
+            "number": 150001,
+            "name": "十六万寒霜剑阵技能书",
+            "description": "该物品可以在白山龙王处学习神器品质技能十六万寒霜剑阵",
+            "quality": "神器",
+            "price": 2000,
+            "quantity": 1
+        },
+        "150002": {
+            "__class__": "Material",
+            "number": 150002,
+            "name": "太虚紫电技能书",
+            "description": "该物品可以在xx处学习传说品质技能太虚紫电",
+            "quality": "神器",
+            "price": 2000,
+            "quantity": 1
+        },
+        "150003": {
+            "__class__": "Material",
+            "number": 150003,
+            "name": "紫电清霜技能书",
+            "description": "该物品可以在白玉处学习优秀品质技能紫电清霜",
+            "quality": "优秀",
+            "price": 2,
+            "quantity": 1
+        },
+        "160000": {
+            "__class__": "Material",
+            "number": 160000,
+            "name": "测试通行证",
+            "description": "持有该物品时，可以通过某地图",
+            "quality": "优秀",
+            "price": 2000,
+            "quantity": 1
+        },
+        "160001": {
+            "__class__": "Material",
+            "number": 160001,
+            "name": "测试通行证2",
+            "description": "持有该物品时，可以通过某地图",
+            "quality": "优秀",
+            "price": 2000,
+            "quantity": 1
+        },
+        "160002": {
+            "__class__": "Material",
+            "number": 160002,
+            "name": "天剑宗通行令",
+            "description": "天剑宗的宗门令牌，持有时可以进入天剑宗。",
+            "quality": "优秀",
+            "price": 2000,
+            "quantity": 1
+        },
+        "160003": {
+            "__class__": "Material",
+            "number": 160003,
+            "name": "玄武关通关文书",
+            "description": "通关玄武关的材料文牒，在玄王朝具有法律效力",
+            "quality": "优秀",
+            "price": 2000,
+            "quantity": 1
+        }
+    }
+}

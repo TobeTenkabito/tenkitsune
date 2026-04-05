@@ -1,0 +1,676 @@
+{
+    "enemy_library": {
+        "500000": {
+            "__class__": "Enemy",
+            "number": 500000,
+            "name": "训练用木偶",
+            "description": "白玉制作的训练木偶，仅供训练使用。",
+            "level": 1,
+            "max_hp": 100000,
+            "max_mp": 10000,
+            "hp": 100000,
+            "mp": 10000,
+            "attack": 100,
+            "defense": 0,
+            "speed": 50,
+            "crit": 0,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 100
+        },
+        "500001": {
+            "__class__": "Enemy",
+            "number": 500001,
+            "name": "精魂",
+            "description": "游荡在路边的精魂，可以对常人实施干扰。",
+            "level": 1,
+            "max_hp": 80,
+            "max_mp": 30,
+            "hp": 80,
+            "mp": 30,
+            "attack": 15,
+            "defense": 8,
+            "speed": 12,
+            "crit": 4,
+            "crit_damage": 140,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 100
+        },
+        "500002": {
+            "__class__": "Enemy",
+            "number": 500002,
+            "name": "怨灵",
+            "description": "死者残留的意志，比精魂更具攻击性。",
+            "level": 2,
+            "max_hp": 100,
+            "max_mp": 50,
+            "hp": 100,
+            "mp": 50,
+            "attack": 30,
+            "defense": 15,
+            "speed": 10,
+            "crit": 6,
+            "crit_damage": 160,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 100
+        },
+        "500003": {
+            "__class__": "Enemy",
+            "number": 500003,
+            "name": "盗贼",
+            "description": "一般路过的盗贼，拥有打家劫舍程度的能力。",
+            "level": 5,
+            "max_hp": 500,
+            "max_mp": 100,
+            "hp": 500,
+            "mp": 100,
+            "attack": 50,
+            "defense": 30,
+            "speed": 50,
+            "crit": 5,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240006]",
+                "skill_library[240003]"
+            ],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 200
+        },
+        "500004": {
+            "__class__": "Enemy",
+            "number": 500004,
+            "name": "采花贼",
+            "description": "不仅喜欢掳掠财物，还喜欢轻薄少女。",
+            "level": 8,
+            "max_hp": 800,
+            "max_mp": 150,
+            "hp": 800,
+            "mp": 150,
+            "attack": 90,
+            "defense": 50,
+            "speed": 50,
+            "crit": 5,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240006]",
+                "skill_library[240003]"
+            ],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 300
+        },
+        "500005": {
+            "__class__": "Enemy",
+            "number": 500005,
+            "name": "初级修仙者",
+            "description": "刚步入修仙界的修仙者，拥有最基本的降妖除魔能力。",
+            "level": 10,
+            "max_hp": 1000,
+            "max_mp": 200,
+            "hp": 1000,
+            "mp": 200,
+            "attack": 120,
+            "defense": 100,
+            "speed": 100,
+            "crit": 10,
+            "crit_damage": 150,
+            "resistance": 5,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240006]",
+                "skill_library[240009]"
+            ],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 500
+        },
+        "500006": {
+            "__class__": "Enemy",
+            "number": 500006,
+            "name": "中级修仙者",
+            "description": "步入修仙界有一段时间的修仙者，多为结丹期修士，是修士间的中坚力量。",
+            "level": 30,
+            "max_hp": 5000,
+            "max_mp": 500,
+            "hp": 5000,
+            "mp": 500,
+            "attack": 200,
+            "defense": 150,
+            "speed": 110,
+            "crit": 20,
+            "crit_damage": 150,
+            "resistance": 5,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240006]",
+                "skill_library[240009]"
+            ],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(500, 1000)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 1000
+        },
+        "500007": {
+            "__class__": "Enemy",
+            "number": 500007,
+            "name": "高级修仙者",
+            "description": "多为化神期修士，在修仙界能独当一面。",
+            "level": 51,
+            "max_hp": 18000,
+            "max_mp": 2000,
+            "hp": 18000,
+            "mp": 2000,
+            "attack": 500,
+            "defense": 300,
+            "speed": 150,
+            "crit": 40,
+            "crit_damage": 200,
+            "resistance": 10,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240006]",
+                "skill_library[240009]"
+            ],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(5000, 10000)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 10000
+        },
+        "500008": {
+            "__class__": "Enemy",
+            "number": 500008,
+            "name": "士兵",
+            "description": "玄王朝的普通士兵，是军队的基层力量。",
+            "level": 10,
+            "max_hp": 1000,
+            "max_mp": 100,
+            "hp": 1000,
+            "mp": 150,
+            "attack": 100,
+            "defense": 100,
+            "speed": 60,
+            "crit": 5,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 300
+        },
+        "500009": {
+            "__class__": "Enemy",
+            "number": 500009,
+            "name": "十夫长",
+            "description": "管理十个士兵的下层军官，有不俗的战斗力。",
+            "level": 11,
+            "max_hp": 1000,
+            "max_mp": 150,
+            "hp": 1000,
+            "mp": 150,
+            "attack": 110,
+            "defense": 100,
+            "speed": 60,
+            "crit": 5,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 500
+        },
+        "500010": {
+            "__class__": "Enemy",
+            "number": 500010,
+            "name": "百夫长",
+            "description": "管理一百个士兵的下层军官，有不俗的战斗力。",
+            "level": 11,
+            "max_hp": 1000,
+            "max_mp": 150,
+            "hp": 1000,
+            "mp": 150,
+            "attack": 115,
+            "defense": 100,
+            "speed": 60,
+            "crit": 5,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 1000
+        },
+        "500011": {
+            "__class__": "Enemy",
+            "number": 500011,
+            "name": "千夫长",
+            "description": "管理一百个士兵的中层军官，通常是军队的中坚力量。",
+            "level": 11,
+            "max_hp": 1000,
+            "max_mp": 150,
+            "hp": 1000,
+            "mp": 150,
+            "attack": 120,
+            "defense": 100,
+            "speed": 60,
+            "crit": 5,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 1200
+        },
+        "500012": {
+            "__class__": "Enemy",
+            "number": 500012,
+            "name": "改良训练用木偶",
+            "description": "白玉制作的训练木偶，强度更低，仅供训练使用。",
+            "level": 1,
+            "max_hp": 500,
+            "max_mp": 10000,
+            "hp": 500,
+            "mp": 10000,
+            "attack": 50,
+            "defense": 0,
+            "speed": 50,
+            "crit": 0,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(100, 500)"
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 100
+        },
+        "500013": {
+            "__class__": "Enemy",
+            "number": 500013,
+            "name": "豺狼",
+            "description": "磨牙吮血，杀人如麻",
+            "level": 1,
+            "max_hp": 200,
+            "max_mp": 10000,
+            "hp": 200,
+            "mp": 10000,
+            "attack": 100,
+            "defense": 0,
+            "speed": 100,
+            "crit": 0,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100058,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 100
+        },
+        "500014": {
+            "__class__": "Enemy",
+            "number": 500014,
+            "name": "玄武铁军",
+            "description": "玄王朝玄武关的精锐步兵，能以一当十",
+            "level": 20,
+            "max_hp": 2000,
+            "max_mp": 10000,
+            "hp": 2000,
+            "mp": 10000,
+            "attack": 200,
+            "defense": 320,
+            "speed": 100,
+            "crit": 0,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240010]"
+            ],
+            "drops": [],
+            "chance_drops": [],
+            "exp_drops": 1000
+        },
+        "500015": {
+            "__class__": "Enemy",
+            "number": 500015,
+            "name": "玄武弩手",
+            "description": "玄王朝玄武关的精锐弩手，能以一当十",
+            "level": 20,
+            "max_hp": 1000,
+            "max_mp": 10000,
+            "hp": 1000,
+            "mp": 10000,
+            "attack": 300,
+            "defense": 300,
+            "speed": 100,
+            "crit": 5,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240011]"
+            ],
+            "drops": [],
+            "chance_drops": [],
+            "exp_drops": 1000
+        },
+        "500016": {
+            "__class__": "Enemy",
+            "number": 500016,
+            "name": "玄武轻骑",
+            "description": "玄王朝玄武关的精锐骑兵，一人配备三匹马，能日行百里",
+            "level": 22,
+            "max_hp": 2500,
+            "max_mp": 10000,
+            "hp": 2500,
+            "mp": 10000,
+            "attack": 250,
+            "defense": 300,
+            "speed": 120,
+            "crit": 5,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240012]"
+            ],
+            "drops": [],
+            "chance_drops": [],
+            "exp_drops": 1000
+        },
+        "500017": {
+            "__class__": "Enemy",
+            "number": 500017,
+            "name": "神武军",
+            "description": "玄王朝保卫皇城的主力部队，战斗力十分彪悍",
+            "level": 28,
+            "max_hp": 3000,
+            "max_mp": 10000,
+            "hp": 3000,
+            "mp": 10000,
+            "attack": 250,
+            "defense": 360,
+            "speed": 120,
+            "crit": 20,
+            "crit_damage": 150,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [
+                "skill_library[240013]"
+            ],
+            "drops": [],
+            "chance_drops": [],
+            "exp_drops": 1000
+        },
+        "510000": {
+            "__class__": "Enemy",
+            "number": 510000,
+            "name": "测试者",
+            "description": "测试npc战斗功能的开发人员",
+            "level": 51,
+            "max_hp": 1000,
+            "max_mp": 10000,
+            "hp": 1000,
+            "mp": 1000,
+            "attack": 100,
+            "defense": 100,
+            "speed": 50,
+            "crit": 0,
+            "crit_damage": 0,
+            "resistance": 0,
+            "penetration": 0,
+            "skills": [],
+            "drops": [
+                [
+                    100000,
+                    "random.randint(5000, 10000)"
+                ],
+                [
+                    100001,
+                    1
+                ],
+                [
+                    100002,
+                    1
+                ],
+                [
+                    100003,
+                    1
+                ]
+            ],
+            "chance_drops": [],
+            "exp_drops": 10000
+        }
+    }
+}
