@@ -10,8 +10,8 @@ import random
 
 from common.module.item import Equipment, Material, Product, Medicine, Warp, Skill
 from core.registry import registry
-from common.battle.event import (
-    BattleEventBus,
+from common.event import (
+    EventBus,
     DropEvent,
     WarningEvent,
 )
@@ -31,7 +31,7 @@ class DropProcessor:
         for item_id, total_quantity in drop_summary.items():
             prototype = DropProcessor._get_item(item_id)
             if prototype is None:
-                BattleEventBus.emit(WarningEvent(
+                EventBus.emit(WarningEvent(
                     message=f"無法識別的掉落物 ID: {item_id}"
                 ))
                 continue
@@ -42,7 +42,7 @@ class DropProcessor:
             )
 
         if result:
-            BattleEventBus.emit(DropEvent(
+            EventBus.emit(DropEvent(
                 enemy=enemy.name,
                 items=[{"name": name, "quantity": qty} for name, qty in result],
             ))

@@ -2,12 +2,12 @@
 ActionMenu
 負責玩家回合的所有輸入互動。
 不直接修改戰場狀態，不直接 print，
-狀態提示一律透過 BattleEventBus 發送。
+狀態提示一律透過 EventBus 發送。
 """
 
 from common.module.item import Skill, Equipment, Medicine, Product
-from common.battle.event import (
-    BattleEventBus,
+from common.event import (
+    EventBus,
     StatusBlockedActionEvent,
     WarningEvent,
 )
@@ -71,12 +71,12 @@ class ActionMenu:
                 if all(e.hp <= 0 for e in battle.enemies):
                     return "end_battle"
                 else:
-                    BattleEventBus.emit(WarningEvent(
+                    EventBus.emit(WarningEvent(
                         message="敵人尚未全部被擊敗，無法結束戰鬥。"
                     ))
 
             else:
-                BattleEventBus.emit(WarningEvent(
+                EventBus.emit(WarningEvent(
                     message="無效的選項，請重新輸入。"
                 ))
 
@@ -85,7 +85,7 @@ class ActionMenu:
     def _attack(self, player, battle) -> bool:
         restrictions = battle.turn_manager.get_action_restrictions(player)
         if "blinded" in restrictions:
-            BattleEventBus.emit(StatusBlockedActionEvent(
+            EventBus.emit(StatusBlockedActionEvent(
                 target=player.name,
                 status="blinded",
                 rounds_remaining=player.blind_rounds,
@@ -100,7 +100,7 @@ class ActionMenu:
     def _use_skill(self, player, battle) -> bool:
         restrictions = battle.turn_manager.get_action_restrictions(player)
         if "silenced" in restrictions:
-            BattleEventBus.emit(StatusBlockedActionEvent(
+            EventBus.emit(StatusBlockedActionEvent(
                 target=player.name,
                 status="silenced",
                 rounds_remaining=player.silence_rounds,
@@ -109,7 +109,7 @@ class ActionMenu:
 
         skills = [s for s in player.battle_skills if isinstance(s, Skill)]
         if not skills:
-            BattleEventBus.emit(WarningEvent(message="你沒有可用的技能。"))
+            EventBus.emit(WarningEvent(message="你沒有可用的技能。"))
             return False
 
         skill = self.choose_item(skills)
@@ -128,7 +128,7 @@ class ActionMenu:
             if isinstance(e, Equipment) and e.category == "法宝"
         ]
         if not equipments:
-            BattleEventBus.emit(WarningEvent(message="你沒有可用的法寶。"))
+            EventBus.emit(WarningEvent(message="你沒有可用的法寶。"))
             return False
 
         equipment = self.choose_item(equipments)
@@ -144,7 +144,7 @@ class ActionMenu:
     def _use_medicine(self, player, battle) -> bool:
         medicines = [i for i in player.inventory if isinstance(i, Medicine)]
         if not medicines:
-            BattleEventBus.emit(WarningEvent(message="你沒有可用的藥品。"))
+            EventBus.emit(WarningEvent(message="你沒有可用的藥品。"))
             return False
 
         medicine = self.choose_item(medicines)
@@ -160,7 +160,7 @@ class ActionMenu:
     def _use_product(self, player, battle) -> bool:
         products = [i for i in player.inventory if isinstance(i, Product)]
         if not products:
-            BattleEventBus.emit(WarningEvent(message="你沒有可用的道具。"))
+            EventBus.emit(WarningEvent(message="你沒有可用的道具。"))
             return False
 
         product = self.choose_item(products)
@@ -195,13 +195,13 @@ class ActionMenu:
                     return None
                 if choice == "1":
                     return targets
-                BattleEventBus.emit(WarningEvent(message="無效的選項。"))
+                EventBus.emit(WarningEvent(message="無效的選項。"))
 
             else:
                 if target_type == "enemy":
                     candidates = [e for e in battle.enemies if e.hp > 0]
                     if not candidates:
-                        BattleEventBus.emit(WarningEvent(message="沒有可選的敵人目標。"))
+                        EventBus.emit(WarningEvent(message="沒有可選的敵人目標。"))
                         return None
                     print("\n選擇攻擊的敵人：")
                     for i, e in enumerate(candidates, 1):
@@ -212,7 +212,7 @@ class ActionMenu:
                         return None
                     if choice.isdigit() and 1 <= int(choice) <= len(candidates):
                         return candidates[int(choice) - 1]
-                    BattleEventBus.emit(WarningEvent(message="無效的選項。"))
+                    EventBus.emit(WarningEvent(message="無效的選項。"))
 
                 elif target_type == "ally":
                     candidates = [battle.player] + [a for a in battle.allies if a.hp > 0]
@@ -225,7 +225,7 @@ class ActionMenu:
                         return None
                     if choice.isdigit() and 1 <= int(choice) <= len(candidates):
                         return candidates[int(choice) - 1]
-                    BattleEventBus.emit(WarningEvent(message="無效的選項。"))
+                    EventBus.emit(WarningEvent(message="無效的選項。"))
 
     def choose_item(self, items: list):
         while True:
@@ -241,7 +241,7 @@ class ActionMenu:
                 return None
             if choice.isdigit() and 1 <= int(choice) <= len(items):
                 return items[int(choice) - 1]
-            BattleEventBus.emit(WarningEvent(message="無效的選項。"))
+            EventBus.emit(WarningEvent(message="無效的選項。"))
 
     # ── 狀態顯示 ──────────────────────────────────────────────
     # action.py 的 UI 渲染部分（選單本身）仍保留 print，

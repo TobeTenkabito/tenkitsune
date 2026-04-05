@@ -6,8 +6,8 @@ BuffProcessor
   3. 到期移除並恢復屬性
 """
 
-from common.battle.event import (
-    BattleEventBus,
+from common.event import (
+    EventBus,
     BuffTickEvent,
     BuffExpiredEvent,
     WarningEvent,
@@ -31,7 +31,7 @@ class BuffProcessor:
     def _process_participant(participant) -> None:
         for buff in participant.buffs[:]:
             if buff.target is None:
-                BattleEventBus.emit(WarningEvent(
+                EventBus.emit(WarningEvent(
                     message=f"Buff '{buff.name}' 沒有目標，跳過。"
                 ))
                 continue
@@ -46,12 +46,12 @@ class BuffProcessor:
             if expired or buff.is_expired():
                 buff.remove_effect()
                 participant.buffs.remove(buff)
-                BattleEventBus.emit(BuffExpiredEvent(
+                EventBus.emit(BuffExpiredEvent(
                     target=participant.name,
                     buff_name=buff.name,
                 ))
             else:
-                BattleEventBus.emit(BuffTickEvent(
+                EventBus.emit(BuffTickEvent(
                     target=participant.name,
                     buff_name=buff.name,
                     duration_remaining=buff.duration,
@@ -63,7 +63,7 @@ class BuffProcessor:
         for participant in participants:
             if hasattr(participant, "remove_all_buffs"):
                 participant.remove_all_buffs()
-                BattleEventBus.emit(BuffExpiredEvent(
+                EventBus.emit(BuffExpiredEvent(
                     target=participant.name,
                     buff_name="（全部）",
                 ))

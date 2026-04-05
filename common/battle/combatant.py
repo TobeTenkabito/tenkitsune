@@ -2,15 +2,15 @@
 所有參戰者的共同基類。
 Player / Enemy / Boss / Ally 都繼承此類。
 純數據 + 通用戰鬥方法，不含任何 IO 或 AI 邏輯。
-所有訊息一律透過 BattleEventBus 發送。
+所有訊息一律透過 EventBus 發送。
 """
 
 import copy
 import uuid
 import random
 
-from common.battle.event import (
-    BattleEventBus,
+from common.event import (
+    EventBus,
     AttackEvent,
     MissEvent,
     BuffAppliedEvent,
@@ -79,7 +79,7 @@ class Combatant:
 
     def can_use_skill(self) -> bool:
         if self.silence_rounds > 0:
-            BattleEventBus.emit(StatusBlockedActionEvent(
+            EventBus.emit(StatusBlockedActionEvent(
                 target=self.name,
                 status="silenced",
                 rounds_remaining=self.silence_rounds,
@@ -115,8 +115,6 @@ class Combatant:
         # 保底傷害
         final_damage = max(0.05 * self.attack, final_damage)
 
-        # 暴擊事件由 perform_attack / use_skill 層發送，
-        # 這裡只返回數值 + 暴擊標記，避免重複發送。
         return final_damage, is_critical
 
     @staticmethod
@@ -135,13 +133,13 @@ class Combatant:
 
     def perform_attack(self, target) -> float | None:
         if not self.is_alive:
-            BattleEventBus.emit(WarningEvent(
+            EventBus.emit(WarningEvent(
                 message=f"{self.name} 無法行動，HP 為 0。"
             ))
             return None
 
         if self.blind_rounds > 0:
-            BattleEventBus.emit(StatusBlockedActionEvent(
+            EventBus.emit(StatusBlockedActionEvent(
                 target=self.name,
                 status="blinded",
                 rounds_remaining=self.blind_rounds,
@@ -151,7 +149,7 @@ class Combatant:
         damage, is_critical = self.calculate_damage(target, self.attack)
         target.hp -= damage
 
-        BattleEventBus.emit(AttackEvent(
+        EventBus.emit(AttackEvent(
             attacker=self.name,
             target=target.name,
             damage=round(damage, 2),
@@ -178,7 +176,7 @@ class Combatant:
         if equipment.category == "法宝":
             equipment.use(self, target)
         else:
-            BattleEventBus.emit(WarningEvent(
+            EventBus.emit(WarningEvent(
                 message=f"{equipment.name} 不是法寶，不能使用。"
             ))
 
@@ -188,7 +186,7 @@ class Combatant:
             if medicine.quantity == 0 and hasattr(self, "inventory"):
                 self.inventory.remove(medicine)
         else:
-            BattleEventBus.emit(WarningEvent(
+            EventBus.emit(WarningEvent(
                 message=f"{medicine.name} 數量不足，無法使用。"
             ))
 
@@ -198,7 +196,7 @@ class Combatant:
         existing = next((b for b in self.buffs if b.name == new_buff.name), None)
         if existing:
             existing.duration = new_buff.original_duration
-            BattleEventBus.emit(BuffAppliedEvent(
+            EventBus.emit(BuffAppliedEvent(
                 target=self.name,
                 buff_name=existing.name,
                 duration=existing.duration,
@@ -206,7 +204,7 @@ class Combatant:
         else:
             new_buff.target = self
             self.buffs.append(new_buff)
-            BattleEventBus.emit(BuffAppliedEvent(
+            EventBus.emit(BuffAppliedEvent(
                 target=self.name,
                 buff_name=new_buff.name,
                 duration=new_buff.duration,
@@ -219,7 +217,7 @@ class Combatant:
             self.buffs = [b for b in self.buffs if b.name != buff_name]
             for b in removed:
                 b.remove_effect()
-                BattleEventBus.emit(BuffExpiredEvent(
+                EventBus.emit(BuffExpiredEvent(
                     target=self.name,
                     buff_name=b.name,
                 ))
@@ -228,12 +226,12 @@ class Combatant:
             self.buffs = [b for b in self.buffs if b.buff_type != buff_type]
             for b in removed:
                 b.remove_effect()
-                BattleEventBus.emit(BuffExpiredEvent(
+                EventBus.emit(BuffExpiredEvent(
                     target=self.name,
                     buff_name=b.name,
                 ))
         else:
-            BattleEventBus.emit(WarningEvent(
+            EventBus.emit(WarningEvent(
                 message="未指定 buff 名字或類型，無法移除。"
             ))
 
@@ -242,7 +240,7 @@ class Combatant:
         for buff in to_remove:
             buff.remove_effect()
             self.buffs.remove(buff)
-            BattleEventBus.emit(BuffExpiredEvent(
+            EventBus.emit(BuffExpiredEvent(
                 target=self.name,
                 buff_name=buff.name,
             ))

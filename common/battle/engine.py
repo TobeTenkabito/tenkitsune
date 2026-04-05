@@ -1,7 +1,7 @@
 """
 BattleEngine
 戰鬥主循環，組裝所有子模組。
-所有戰鬥訊息一律透過 BattleEventBus 發送。
+所有戰鬥訊息一律透過 EventBus 發送。
 """
 
 import copy
@@ -14,8 +14,9 @@ from common.battle.buff_processor import BuffProcessor
 from common.battle.drop_processor import DropProcessor
 from common.battle.auto_battle    import AutoBattleAI
 from common.battle.action         import ActionMenu
-from common.battle.event import (
-    BattleEventBus,
+
+from common.event import (
+    EventBus,
     TurnStartEvent,
     DeathEvent,
     ExpGainedEvent,
@@ -85,7 +86,7 @@ class BattleEngine:
         while status == "ongoing":
             self._turn_count += 1
 
-            BattleEventBus.emit(TurnStartEvent(
+            EventBus.emit(TurnStartEvent(
                 turn=self._turn_count,
                 order=[p.name for p in self.turn_manager.order],
             ))
@@ -170,8 +171,8 @@ class BattleEngine:
     # ── 狀態檢查 ──────────────────────────────────────────────
 
     def _check_status(self) -> str:
-        player_down = self.player is None or self.player.hp <= 0
-        allies_down = all(a.hp <= 0 for a in self.allies)
+        player_down  = self.player is None or self.player.hp <= 0
+        allies_down  = all(a.hp <= 0 for a in self.allies)
         enemies_down = len(self.enemies) == 0
 
         if player_down and allies_down:
@@ -185,12 +186,11 @@ class BattleEngine:
     def _remove_dead(self):
         for enemy in self.enemies[:]:
             if enemy.hp <= 0:
-                BattleEventBus.emit(DeathEvent(name=enemy.name, is_enemy=True))
+                EventBus.emit(DeathEvent(name=enemy.name, is_enemy=True))
 
                 if self.player:
-                    prev_exp = self.player.exp
                     self.player.gain_exp(enemy.exp_drops)
-                    BattleEventBus.emit(ExpGainedEvent(
+                    EventBus.emit(ExpGainedEvent(
                         player=self.player.name,
                         amount=enemy.exp_drops,
                         total_exp=self.player.exp,
@@ -203,12 +203,12 @@ class BattleEngine:
 
         for ally in self.allies[:]:
             if ally.hp <= 0:
-                BattleEventBus.emit(DeathEvent(name=ally.name, is_enemy=False))
+                EventBus.emit(DeathEvent(name=ally.name, is_enemy=False))
 
         self.allies = [a for a in self.allies if a.hp > 0]
 
         if self.player and self.player.hp <= 0:
-            BattleEventBus.emit(DeathEvent(name=self.player.name, is_enemy=False))
+            EventBus.emit(DeathEvent(name=self.player.name, is_enemy=False))
 
     # ── 結算 ──────────────────────────────────────────────────
 
@@ -221,7 +221,7 @@ class BattleEngine:
 
         total_exp = sum(e.exp_drops for e in self.defeated_enemies)
 
-        BattleEventBus.emit(BattleResultEvent(
+        EventBus.emit(BattleResultEvent(
             result=status,
             turn_count=self._turn_count,
             defeated_enemies=[e.name for e in self.defeated_enemies],

@@ -5,8 +5,8 @@ AutoBattleAI
 """
 import random
 
-from common.battle.event import (
-    BattleEventBus,
+from common.event import (
+    EventBus,
     WarningEvent,
 )
 
@@ -85,14 +85,13 @@ class AutoBattleAI:
 
             if source_attr in ("attack", "defense"):
                 try:
-                    # calculate_damage 現在返回 (damage, is_critical)
                     damage, _ = user.calculate_damage(
                         single_target, base_value,
                         skill_multiplier=multiplier, is_skill=True
                     )
                     total_value += max(0.0, damage)
                 except Exception as e:
-                    BattleEventBus.emit(WarningEvent(message=f"AutoAI 計算傷害出錯：{e}"))
+                    EventBus.emit(WarningEvent(message=f"AutoAI 計算傷害出錯：{e}"))
             else:
                 change = base_value * multiplier
                 total_value += max(0.0, change) if skill.target_type == "enemy" else max(0.0, -change)
@@ -106,7 +105,7 @@ class AutoBattleAI:
                 )
                 total_value -= abs(cost_value)
             except Exception as e:
-                BattleEventBus.emit(WarningEvent(message=f"AutoAI 計算消耗出錯：{e}"))
+                EventBus.emit(WarningEvent(message=f"AutoAI 計算消耗出錯：{e}"))
 
         return total_value
 
@@ -121,7 +120,7 @@ class AutoBattleAI:
                 if cost_value > getattr(player, cost_attr, 0):
                     return False
             except Exception as e:
-                BattleEventBus.emit(WarningEvent(message=f"AutoAI 消耗檢查出錯：{e}"))
+                EventBus.emit(WarningEvent(message=f"AutoAI 消耗檢查出錯：{e}"))
                 return False
         return True
 

@@ -7,8 +7,8 @@ TurnManager
 """
 import random
 
-from common.battle.event import (
-    BattleEventBus,
+from common.event import (
+    EventBus,
     TurnOrderUpdatedEvent,
     StatusBlockedActionEvent,
     StatusExpiredEvent,
@@ -33,7 +33,7 @@ class TurnManager:
             if not hasattr(p, "speed"):
                 raise ValueError(f"{p.name} 缺少 speed 屬性，無法計算回合順序。")
         self.order = sorted(participants, key=lambda x: x.speed, reverse=True)
-        BattleEventBus.emit(TurnOrderUpdatedEvent(
+        EventBus.emit(TurnOrderUpdatedEvent(
             order=[p.name for p in self.order]
         ))
         return self.order
@@ -46,7 +46,7 @@ class TurnManager:
             + [e for e in enemies if e.hp > 0]
         )
         self.order = sorted(participants, key=lambda x: x.speed, reverse=True)
-        BattleEventBus.emit(TurnOrderUpdatedEvent(
+        EventBus.emit(TurnOrderUpdatedEvent(
             order=[p.name for p in self.order]
         ))
         return self.order
@@ -64,13 +64,13 @@ class TurnManager:
         # 眩暈
         if getattr(participant, "dizzy_rounds", 0) > 0:
             participant.dizzy_rounds -= 1
-            BattleEventBus.emit(StatusBlockedActionEvent(
+            EventBus.emit(StatusBlockedActionEvent(
                 target=participant.name,
                 status="stunned",
                 rounds_remaining=participant.dizzy_rounds,
             ))
             if participant.dizzy_rounds == 0:
-                BattleEventBus.emit(StatusExpiredEvent(
+                EventBus.emit(StatusExpiredEvent(
                     target=participant.name,
                     status="stunned",
                 ))
@@ -80,13 +80,13 @@ class TurnManager:
         if getattr(participant, "paralysis_rounds", 0) > 0:
             participant.paralysis_rounds -= 1
             if random.random() < 0.5:
-                BattleEventBus.emit(StatusBlockedActionEvent(
+                EventBus.emit(StatusBlockedActionEvent(
                     target=participant.name,
                     status="paralyzed",
                     rounds_remaining=participant.paralysis_rounds,
                 ))
                 if participant.paralysis_rounds == 0:
-                    BattleEventBus.emit(StatusExpiredEvent(
+                    EventBus.emit(StatusExpiredEvent(
                         target=participant.name,
                         status="paralyzed",
                     ))
@@ -111,7 +111,7 @@ class TurnManager:
         if getattr(participant, "silence_rounds", 0) > 0:
             participant.silence_rounds -= 1
             if participant.silence_rounds == 0:
-                BattleEventBus.emit(StatusExpiredEvent(
+                EventBus.emit(StatusExpiredEvent(
                     target=participant.name,
                     status="silenced",
                 ))
@@ -119,7 +119,7 @@ class TurnManager:
         if getattr(participant, "blind_rounds", 0) > 0:
             participant.blind_rounds -= 1
             if participant.blind_rounds == 0:
-                BattleEventBus.emit(StatusExpiredEvent(
+                EventBus.emit(StatusExpiredEvent(
                     target=participant.name,
                     status="blinded",
                 ))
