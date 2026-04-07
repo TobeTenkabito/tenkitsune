@@ -1,0 +1,72 @@
+F:\tenkitsune\common\battle>tree /f
+F:.
+    action.py
+    auto_battle.py
+    buff_processor.py
+    combatant.py
+    drop_processor.py
+    engine.py
+    turn_manager.py
+
+F:\tenkitsune\common\event>tree /f
+F:.
+│  battle.py
+│  bus.py
+│  handlers.py
+│  player.py
+│  quest.py
+│  __init__.py
+│
+└─system
+        cultivation.py
+        dungeon.py
+        map.py
+        npc.py
+        synthesis.py
+        task.py
+        __init__.py
+
+F:\tenkitsune\common\system>tree /f
+F:.
+    cultivation_system.py
+    dungeon_system.py
+    map_system.py
+    npc_system.py
+    task_system.py
+
+F:\tenkitsune\core>tree /f
+F:.
+│  data_loader.py
+│  drop_resolver.py
+│  ecs.py
+│  event_bus.py
+│  parser.py
+│  registry.py
+│
+├─handlers
+
+
+core/handlers/
+├── __init__.py                  ← 统一注册入口
+│
+├── # ══ 战斗层（随 BattleEngine 生灭）══
+├── combat_handler.py            ← Damage / Heal
+├── buff_handler.py              ← BuffRequest / BuffRemove
+├── status_handler.py            ← StatusApplied / Expired
+│
+├── # ══ 实体层（全局常驻）══
+├── npc_handler.py               ← DeathEvent → NPC状态
+│                                   QuestComplete → NPC对话解锁
+│
+├── # ══ 业务层（全局常驻）══
+├── quest_handler.py             ← DeathEvent / BattleResult
+│                                   → Quest进度 / 完成 / 失败
+│
+├── # ══ 容器层（全局常驻）══
+├── dungeon_handler.py           ← BattleResult → 秘境状态
+├── map_handler.py               ← WarpRequest → 地图切换
+│                                   NpcStateChanged → 地图更新
+│
+└── # ══ 玩家层（全局常驻）══
+    player_handler.py            ← ExpGained / QuestComplete
+                                    → 玩家属性 / 奖励发放

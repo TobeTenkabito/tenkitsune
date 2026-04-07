@@ -1,7 +1,7 @@
 """
 BattleEngine
-戰鬥主循環，組裝所有子模組。
-所有戰鬥訊息一律透過 EventBus 發送。
+战斗主循环，组装所有子模块。
+所有战斗消息一律通过 EventBus 发送。
 """
 
 import copy
@@ -24,26 +24,29 @@ from common.event import (
     WarningEvent,
 )
 
+# ── 新增：战斗层 Handler 上下文 ──────────────────────────────
+from core.handlers import BattleHandlerContext
+
 
 class BattleEngine:
 
     def __init__(self, player, allies: list, enemies: list):
-        # ── 戰場成員 ──────────────────────────────────────────
+        # ── 战场成员 ──────────────────────────────────────────
         self.player  = player
         self.allies  = [copy.deepcopy(a) for a in allies]
         self.enemies = [copy.deepcopy(e) for e in enemies]
 
         if not self.player and not self.enemies:
-            raise ValueError("沒有玩家或敵人，無法開始戰鬥。")
+            raise ValueError("没有玩家或敌人，无法开始战斗。")
 
-        # ── 子模組 ────────────────────────────────────────────
+        # ── 子模块 ────────────────────────────────────────────
         self.turn_manager   = TurnManager()
         self.buff_processor = BuffProcessor()
         self.drop_processor = DropProcessor()
         self.auto_ai        = AutoBattleAI()
         self.action_menu    = ActionMenu()
 
-        # ── 戰鬥狀態 ──────────────────────────────────────────
+        # ── 战斗状态 ──────────────────────────────────────────
         self.auto_battle      = False
         self.defeated_enemies = []
         self._turn_count      = 0
@@ -51,13 +54,16 @@ class BattleEngine:
         # ── 注入 battle 引用 ──────────────────────────────────
         self._inject_battle_ref()
 
-        # ── 複製戰鬥用技能 ────────────────────────────────────
+        # ── 复制战斗用技能 ────────────────────────────────────
         self._copy_battle_skills()
 
-        # ── 建立初始回合順序 ──────────────────────────────────
+        # ── 建立初始回合顺序 ──────────────────────────────────
         self.turn_manager.build_order(self.player, self.allies, self.enemies)
 
-    # ── 初始化輔助 ────────────────────────────────────────────
+        # ── 注册战斗层 Handler（修改1：新增）─────────────────
+        self._handler_ctx = BattleHandlerContext(self)
+
+    # ── 初始化辅助 ────────────────────────────────────────────
 
     def _inject_battle_ref(self):
         for p in self._all_participants():
@@ -74,11 +80,11 @@ class BattleEngine:
             + self.enemies
         )
 
-    # ── 主循環 ────────────────────────────────────────────────
+    # ── 主循环 ────────────────────────────────────────────────
 
     def run(self) -> str:
         """
-        執行完整戰鬥。
+        执行完整战斗。
         返回："win" / "loss"
         """
         status = "ongoing"
@@ -91,28 +97,28 @@ class BattleEngine:
                 order=[p.name for p in self.turn_manager.order],
             ))
 
-            # 1. 處理所有 Buff
+            # 1. 处理所有 Buff（含计时递减）
             self.buff_processor.apply_buffs(self._all_participants())
 
-            # 2. 同步玩家屬性上限
+            # 2. 同步玩家属性上限
             if self.player:
                 self.player.update_stats()
             self._clamp_hp_mp(self._all_participants())
 
-            # 3. 依回合順序行動
+            # 3. 依回合顺序行动
             status = self._run_turn()
             if status != "ongoing":
                 break
 
-            # 4. 移除死亡角色 + 更新順序
+            # 4. 移除死亡角色 + 更新顺序
             self._remove_dead()
             self.turn_manager.update_order(self.player, self.allies, self.enemies)
 
-        # ── 戰鬥結束後處理 ────────────────────────────────────
+        # ── 战斗结束后处理 ────────────────────────────────────
         self._finalize(status)
         return status
 
-    # ── 回合執行 ──────────────────────────────────────────────
+    # ── 回合执行 ──────────────────────────────────────────────
 
     def _run_turn(self) -> str:
         i = 0
@@ -125,25 +131,26 @@ class BattleEngine:
                 i += 1
                 continue
 
-            # 狀態異常計時
+            # 状态异常查询（修改2：删除 tick_minor_status 调用）
             action_state = self.turn_manager.tick_status(participant)
             if action_state in ("stunned", "paralyzed"):
                 i += 1
                 continue
 
-            # 行動
+            # 行动
             result = self._participant_act(participant)
 
             if result == "back":
-                continue   # 不消耗回合，重新選擇
+                continue
 
             if result == "end_battle":
                 return "win"
 
-            # 行動後遞減沉默 / 致盲
-            self.turn_manager.tick_minor_status(participant)
+            # 修改2：删除 tick_minor_status(participant)
+            # 沉默 / 致盲计时已由 buff_processor.apply_buffs()
+            # 在每回合开始统一处理，无需在行动后单独递减
 
-            # 檢查戰鬥狀態
+            # 检查战斗状态
             status = self._check_status()
             if status != "ongoing":
                 return status
@@ -168,7 +175,7 @@ class BattleEngine:
             participant.choose_action(self)
             return "acted"
 
-    # ── 狀態檢查 ──────────────────────────────────────────────
+    # ── 状态检查 ──────────────────────────────────────────────
 
     def _check_status(self) -> str:
         player_down  = self.player is None or self.player.hp <= 0
@@ -181,7 +188,7 @@ class BattleEngine:
             return "win"
         return "ongoing"
 
-    # ── 死亡處理 ──────────────────────────────────────────────
+    # ── 死亡处理 ──────────────────────────────────────────────
 
     def _remove_dead(self):
         for enemy in self.enemies[:]:
@@ -195,7 +202,6 @@ class BattleEngine:
                         amount=enemy.exp_drops,
                         total_exp=self.player.exp,
                     ))
-                    self.player.check_tasks_for_kill(enemy)
 
                 self.drop_processor.process(self.player, enemy)
                 self.defeated_enemies.append(enemy)
@@ -210,7 +216,7 @@ class BattleEngine:
         if self.player and self.player.hp <= 0:
             EventBus.emit(DeathEvent(name=self.player.name, is_enemy=False))
 
-    # ── 結算 ──────────────────────────────────────────────────
+    # ── 结算 ──────────────────────────────────────────────────
 
     def _finalize(self, status: str):
         self.buff_processor.clear_all(self._all_participants())
@@ -228,11 +234,14 @@ class BattleEngine:
             total_exp=total_exp,
         ))
 
+        # 修改3：注销战斗层 Handler
+        self._handler_ctx.teardown()
+
         if status == "win" and self.player:
             self.player.update_tasks_after_battle()
             self.player.display_inventory()
 
-    # ── 輔助 ──────────────────────────────────────────────────
+    # ── 辅助 ──────────────────────────────────────────────────
 
     @staticmethod
     def _clamp_hp_mp(participants: list):
