@@ -1,16 +1,10 @@
 """
 戰鬥狀態組件
 ─────────────────────────────────────────────
-管理戰鬥中的臨時狀態：Buff、狀態異常、護盾等
-不持久化，每場戰鬥開始時重置
-
-與舊版的差異：
-  - BuffEntry dataclass 移除，改用 Buff 類統一管理
-  - apply_buff() 接收完整 Buff 物件，呼叫 on_apply() 鉤子
-  - tick_buffs() 呼叫 on_tick()，到期後呼叫 on_expire()
-  - 狀態異常（stunned 等）由 Buff.on_apply() 透過 StatusAppliedEvent 管理
-    BattleState 本身不再直接維護 _statuses dict
-    但保留 has_status() / is_blocked() 供查詢，從 _buffs 推導
+修改記錄：
+  - BLOCKING_STATUSES 拆分為 TURN_BLOCKING_STATUSES / ACTION_BLOCKING_STATUSES
+  - is_blocked() / check_and_emit_blocked() 只檢查會跳過整個回合的狀態
+    （stunned / paralyzed），不再把 silenced / blinded 歸入「跳過回合」
 """
 
 from __future__ import annotations
@@ -26,16 +20,23 @@ from common.module.buff import Buff, _MECHANIC_ATTRIBUTES
 
 
 # ══════════════════════════════════════════════
-#  阻止行動的狀態集合
+#  狀態集合定義
 # ══════════════════════════════════════════════
 
-BLOCKING_STATUSES = {"stunned", "paralyzed", "silenced", "blinded"}
+# 完全阻斷回合（stunned / paralyzed → 跳過整個回合）
+TURN_BLOCKING_STATUSES = {"stunned", "paralyzed"}
+
+# 只阻斷特定行動（silenced → 不能用技能；blinded → 普攻必定 Miss）
+ACTION_BLOCKING_STATUSES = {"silenced", "blinded"}
+
+# 所有機制類狀態的聯集（供 summary / has_status 使用）
+BLOCKING_STATUSES = TURN_BLOCKING_STATUSES | ACTION_BLOCKING_STATUSES
 
 
 class BattleState:
     def __init__(self, owner: str = "unknown"):
         self.owner  = owner
-        self._buffs: dict[str, Buff] = {}   # buff_name → Buff
+        self._buffs: dict[str, Buff] = {}
         self.shield: float = 0.0
 
     # ══════════════════════════════════════════
@@ -81,7 +82,6 @@ class BattleState:
         for name in expired:
             buff = self._buffs.pop(name)
             buff.on_expire()
-            # 機制類狀態額外發送 StatusExpiredEvent
             attribute = buff.effect.get("attribute")
             if attribute in _MECHANIC_ATTRIBUTES:
                 EventBus.emit(StatusExpiredEvent(
@@ -90,10 +90,7 @@ class BattleState:
                 ))
 
     def remove_buff(self, buff_name: str) -> bool:
-        """
-        主動移除指定 Buff，呼叫 on_expire()。
-        回傳是否成功移除。
-        """
+        """主動移除指定 Buff，呼叫 on_expire()。"""
         if buff_name not in self._buffs:
             EventBus.emit(WarningEvent(
                 message=f"{self.owner} 沒有 Buff【{buff_name}】"
@@ -111,10 +108,7 @@ class BattleState:
         return True
 
     def remove_buffs_by_type(self, buff_type: str) -> int:
-        """
-        移除指定類型的所有 Buff（"buff" / "debuff"）。
-        回傳移除數量。
-        """
+        """移除指定類型的所有 Buff，回傳移除數量。"""
         targets = [
             name for name, b in self._buffs.items()
             if b.buff_type == buff_type
@@ -131,14 +125,15 @@ class BattleState:
     def has_buff(self, name: str) -> bool:
         return name in self._buffs
 
+    @property
+    def active_buffs(self) -> list[Buff]:
+        return list(self._buffs.values())
+
     def get_buff(self, name: str) -> Buff | None:
         return self._buffs.get(name)
 
     def total_buff_modifier(self, attribute: str) -> float:
-        """
-        加總所有 Buff 對某屬性的修正值。
-        只計算非 tick 的屬性加成類 Buff。
-        """
+        """加總所有 Buff 對某屬性的修正值（非 tick、非機制類）。"""
         total = 0.0
         for buff in self._buffs.values():
             if (
@@ -154,10 +149,7 @@ class BattleState:
     # ══════════════════════════════════════════
 
     def has_status(self, status: str) -> bool:
-        """
-        檢查是否有指定機制類狀態。
-        從 _buffs 中找 effect.attribute == status 的 Buff。
-        """
+        """檢查是否有指定機制類狀態。"""
         return any(
             b.effect.get("attribute") == status
             for b in self._buffs.values()
@@ -166,20 +158,21 @@ class BattleState:
     def is_blocked(self, status: str | None = None) -> bool:
         """
         檢查是否被阻止行動。
-        status=None → 任意阻止性狀態
-        status=xxx  → 特定狀態
+        status=None → 只檢查會跳過整個回合的狀態（stunned / paralyzed）
+        status=xxx  → 檢查特定狀態
         """
         if status:
             return self.has_status(status)
-        return any(self.has_status(s) for s in BLOCKING_STATUSES)
+        return any(self.has_status(s) for s in TURN_BLOCKING_STATUSES)
 
     def check_and_emit_blocked(self) -> bool:
         """
-        若有阻止行動的狀態，發送 StatusBlockedActionEvent 並回傳 True。
-        在行動前呼叫，True 表示本回合跳過。
+        只檢查會跳過整個回合的狀態（stunned / paralyzed）。
+        有阻斷狀態時發送 StatusBlockedActionEvent 並回傳 True。
+        silenced / blinded 不在此處理，由 can_use_skill() / can_attack() 負責。
         """
         from common.event import StatusBlockedActionEvent
-        for status in BLOCKING_STATUSES:
+        for status in TURN_BLOCKING_STATUSES:
             if self.has_status(status):
                 buff = next(
                     b for b in self._buffs.values()
@@ -201,7 +194,7 @@ class BattleState:
         """護盾吸收傷害，回傳剩餘傷害。"""
         if self.shield <= 0:
             return damage
-        absorbed   = min(self.shield, damage)
+        absorbed    = min(self.shield, damage)
         self.shield -= absorbed
         return damage - absorbed
 

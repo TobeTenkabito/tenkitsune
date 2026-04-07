@@ -20,49 +20,18 @@ class BuffProcessor:
     def apply_buffs(participants: list) -> None:
         """
         對所有參與者執行一輪 buff 處理。
-        participants: 戰場上所有角色（player + allies + enemies）
+        直接委托給 BattleState.tick_buffs()，避免重複邏輯。
         """
         for participant in participants:
-            if not hasattr(participant, "buffs"):
-                continue
-            BuffProcessor._process_participant(participant)
-
-    @staticmethod
-    def _process_participant(participant) -> None:
-        for buff in participant.buffs[:]:
-            if buff.target is None:
-                EventBus.emit(WarningEvent(
-                    message=f"Buff '{buff.name}' 沒有目標，跳過。"
-                ))
-                continue
-
-            # 1. 觸發持續效果
-            buff.apply_effect()
-
-            # 2. 計時遞減
-            expired = buff.decrement_duration()
-
-            # 3. 到期處理
-            if expired or buff.is_expired():
-                buff.remove_effect()
-                participant.buffs.remove(buff)
-                EventBus.emit(BuffExpiredEvent(
-                    target=participant.name,
-                    buff_name=buff.name,
-                ))
-            else:
-                EventBus.emit(BuffTickEvent(
-                    target=participant.name,
-                    buff_name=buff.name,
-                    duration_remaining=buff.duration,
-                ))
+            if hasattr(participant, "battle_state"):
+                participant.battle_state.tick_buffs()
 
     @staticmethod
     def clear_all(participants: list) -> None:
         """戰鬥結束後強制清除所有 buff。"""
         for participant in participants:
-            if hasattr(participant, "remove_all_buffs"):
-                participant.remove_all_buffs()
+            if hasattr(participant, "battle_state"):
+                participant.battle_state.remove_all_buffs()
                 EventBus.emit(BuffExpiredEvent(
                     target=participant.name,
                     buff_name="（全部）",

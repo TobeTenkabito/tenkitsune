@@ -1,57 +1,75 @@
 """
 Player
 ─────────────────────────────────────────────
-继承 Combatant，组合 Stats / Inventory / SkillSet / BattleState
+繼承 Combatant，組合 Stats / Inventory / SkillSet
+battle_state 由 Combatant.__init__ 建立，不重複創建
 
-修复记录：
-  - 补全所有 Stats 代理属性（hp / mp / speed 等）
-  - 补全战斗接口（battle_skills / can_act / perform_attack / use_skill）
-  - 补全任务接口（check_tasks_for_kill / update_tasks_after_battle）
-  - 补全结算接口（reset_medicine_effects / reset_skill_bonuses）
-  - 补全背包显示接口（display_inventory）
+與舊版的差異：
+  - 繼承 Combatant，刪除所有重複方法
+  - can_act / take_damage / heal / perform_attack / calculate_damage 全部刪除
+    → 繼承 Combatant 版本，自動獲得致盲檢查、AttackEvent、等級壓制、事件路由
+  - crit / crit_damage 單位對齊 Combatant（百分比整數）
+  - use_skill 覆寫：加入 MP 消耗邏輯
+  - use_medicine 覆寫：正確調用 inventory.remove(name)
+  - use_equipment 覆寫：返回 bool
+  - heal() 刪除，繼承 Combatant 版本走事件路由
+  - 護盾吸收移至 CombatHandler 統一處理
 """
 
 from __future__ import annotations
-import copy
 
+from common.battle.combatant import Combatant
 from common.event import (
     EventBus,
     WarningEvent,
     EquipmentEquippedEvent,
-    DamageRequestEvent,
-    HealRequestEvent,
-    BuffRequestEvent,
 )
-from components.stats       import Stats
-from components.inventory   import Inventory
-from components.skills      import SkillSet
-from components.battle_state import BattleState
+from components.stats     import Stats
+from components.inventory import Inventory
+from components.skills    import SkillSet
 
 
-class Player:
+class Player(Combatant):
+
     def __init__(self, name: str):
-        self.name         = name
-        self.stats        = Stats(owner=name)
-        self.inventory    = Inventory(owner=name)
-        self.skill_set    = SkillSet(owner=name)
-        self.battle_state = BattleState(owner=name)
+        super().__init__(
+            number      = 0,
+            name        = name,
+            description = "",
+            level       = 1,
+            hp          = 100.0,
+            mp          = 50.0,
+            max_hp      = 100.0,
+            max_mp      = 50.0,
+            attack      = 10.0,
+            defense     = 5.0,
+            speed       = 10.0,
+            crit        = 5.0,      # Combatant 期望百分比整數
+            crit_damage = 150.0,    # 同上
+            resistance  = 0.0,
+            penetration = 0.0,
+            skills      = [],
+            equipment   = [],
+        )
 
-        # 装备栏：每个部位只能装一件
-        self._equipment: dict[str, object] = {}   # category → item
+        # ── 玩家獨有組件 ──────────────────────────
+        self.stats     = Stats(owner=name)
+        self.inventory = Inventory(owner=name)
+        self.skill_set = SkillSet(owner=name)
+        # battle_state 已由 Combatant.__init__ 建立，不重複創建
 
-        # 战斗期间由 BattleEngine 注入
-        self.battle       = None
-        self.battle_skills: list = []   # BattleEngine._copy_battle_skills 写入
+        # 裝備欄：每個部位只能裝一件
+        self._equipment: dict[str, object] = {}
 
-        # 任务列表（由外部系统写入）
+        # 任務列表（由外部系統寫入）
         self.accepted_tasks: list = []
 
-        # 战斗期间的临时加成（由药品 / 技能写入，结算时清除）
+        # 戰鬥期間的臨時加成（由藥品 / 技能寫入，結算時清除）
         self._medicine_effects: dict = {}
         self._skill_bonuses:    dict = {}
 
     # ══════════════════════════════════════════
-    #  Stats 代理属性（BattleEngine 直接访问）
+    #  Stats 代理（覆蓋 Combatant 的普通字段）
     # ══════════════════════════════════════════
 
     @property
@@ -88,15 +106,11 @@ class Player:
 
     @property
     def attack(self) -> float:
-        base = self.stats.attack
-        mod  = self.battle_state.total_buff_modifier("attack") if self.battle else 0.0
-        return base + mod
+        return self.stats.attack + self.battle_state.total_buff_modifier("attack")
 
     @property
     def defense(self) -> float:
-        base = self.stats.defense
-        mod  = self.battle_state.total_buff_modifier("defense") if self.battle else 0.0
-        return base + mod
+        return self.stats.defense + self.battle_state.total_buff_modifier("defense")
 
     @property
     def speed(self) -> float:
@@ -104,11 +118,13 @@ class Player:
 
     @property
     def crit(self) -> float:
-        return self.stats.crit_rate
+        # Combatant.calculate_damage 期望百分比整數（5.0 = 5%）
+        return self.stats.crit_rate * 100.0
 
     @property
     def crit_damage(self) -> float:
-        return self.stats.crit_multi
+        # Combatant.calculate_damage 期望百分比整數（150.0 = 150%）
+        return self.stats.crit_multi * 100.0
 
     @property
     def resistance(self) -> float:
@@ -134,134 +150,108 @@ class Player:
     def is_alive(self) -> bool:
         return self.stats.is_alive
 
-    # skills 属性：供 BattleEngine._copy_battle_skills 读取
     @property
     def skills(self) -> list:
+        """供 BattleEngine._copy_battle_skills 讀取。"""
         return self.skill_set.get_equipped()
 
     # ══════════════════════════════════════════
-    #  战斗接口（与 Combatant 对齐）
+    #  覆寫：use_skill（加入 MP 消耗）
     # ══════════════════════════════════════════
 
-    def can_act(self) -> bool:
-        """检查是否能行动（眩晕 / 麻痹）。"""
-        return not self.battle_state.is_blocked()
-
-    def take_damage(self, amount: float) -> float:
-        """护盾优先吸收，再扣 HP。"""
-        remaining = self.battle_state.absorb(amount)
-        return self.stats.take_damage(remaining)
-
-    def heal(self, amount: float) -> float:
-        return self.stats.heal(amount)
-
-    def gain_exp(self, amount: int) -> None:
-        self.stats.gain_exp(amount)
-
-    def perform_attack(self, target) -> None:
-        """
-        普通攻击：计算伤害后 emit DamageRequestEvent。
-        由 CombatHandler 执行实际扣血。
-        """
-        import random
-        damage = self.attack
-        is_crit = random.random() < self.crit
-        if is_crit:
-            damage *= self.crit_damage
-
-        # 防御减伤
-        target_def = getattr(target, "defense", 0)
-        pen        = self.penetration / 100.0
-        effective_def = target_def * (1 - pen)
-        final_damage  = max(1.0, damage - effective_def)
-
-        EventBus.emit(DamageRequestEvent(
-            source=self.name,
-            target=target.name,
-            amount=final_damage,
-            is_crit=is_crit,
-        ))
-
     def use_skill(self, skill, target) -> None:
-        """使用技能，消耗 MP 后委托给 skill.execute()。"""
+        """
+        覆寫 Combatant.use_skill。
+        在狀態檢查基礎上加入 MP 消耗邏輯。
+        """
+        if not self.can_act():
+            return
+        if not self.can_use_skill():
+            return
         cost_mp = skill.cost.get("mp", 0)
         if not self.stats.consume_mp(cost_mp):
             return
-        skill.execute(self, target)
+        skill.use(self, target)
+
+    # ══════════════════════════════════════════
+    #  覆寫：use_medicine / use_equipment
+    # ══════════════════════════════════════════
 
     def use_medicine(self, medicine, target) -> None:
+        """
+        覆寫 Combatant.use_medicine。
+        正確調用 inventory.remove(name)（Combatant 版本傳對象，類型有誤）。
+        """
         medicine.use(self, target)
         self.inventory.remove(medicine.name, quantity=1)
 
     def use_product(self, product, target) -> None:
+        """使用丹藥 / 煉製品（玩家獨有）。"""
         product.use(self, target)
         self.inventory.remove(product.name, quantity=1)
 
-    def calculate_damage(
-        self,
-        target,
-        base_value: float,
-        skill_multiplier: float = 1.0,
-        is_skill: bool = False,
-    ) -> tuple[float, bool]:
+    def use_equipment(self, equipment, target=None) -> bool:
         """
-        供 AutoBattleAI._calculate_skill_value 调用。
-        返回 (damage, is_crit)。
+        覆寫 Combatant.use_equipment，返回 bool。
+        只允許使用法寶類裝備。
         """
-        import random
-        is_crit = random.random() < self.crit
-        damage  = base_value * skill_multiplier
-        if is_crit:
-            damage *= self.crit_damage
+        if getattr(equipment, "category", None) != "法寶":
+            EventBus.emit(WarningEvent(
+                message=f"【{equipment.name}】不是法寶，不能使用"
+            ))
+            return False
+        equipment.use(self, target)
+        return True
 
-        target_def    = getattr(target, "defense", 0)
-        pen           = self.penetration / 100.0
-        effective_def = target_def * (1 - pen)
-        final         = max(1.0, damage - effective_def)
-        return final, is_crit
+    # ══════════════════════════════════════════
+    #  經驗 / 升級
+    # ══════════════════════════════════════════
+
+    def gain_exp(self, amount: int) -> None:
+        self.stats.gain_exp(amount)
 
     def update_stats(self) -> None:
         """
-        同步属性上限（BattleEngine 每回合调用）。
-        装备加成、Buff 加成在 property 里实时计算，
-        这里只做 HP/MP 的 clamp。
+        clamp HP/MP 上限（BattleEngine 每回合調用）。
+        裝備加成、Buff 加成在 property 裡實時計算，
+        這裡只做 HP/MP 的 clamp。
         """
         self.stats.hp = min(self.stats.hp, self.stats.max_hp)
         self.stats.mp = min(self.stats.mp, self.stats.max_mp)
 
     # ══════════════════════════════════════════
-    #  任务接口
+    #  任務接口
     # ══════════════════════════════════════════
 
     def check_tasks_for_kill(self, enemy) -> None:
         """
-        击杀敌人后检查任务进度。
-        注意：QuestHandler 也会通过 DeathEvent 调用 register_kill，
-        因此这里只做「任务完成条件检查」，不重复计数。
+        擊殺後檢查任務完成狀態。
+        注意：不在此處呼叫 register_kill()，
+        擊殺計數統一由 QuestHandler 監聽 DeathEvent 處理，避免雙重計數。
         """
         for task in list(self.accepted_tasks):
             if task.check_completion(self):
                 task.complete(self)
 
     def update_tasks_after_battle(self) -> None:
-        """战斗结束后统一检查所有任务完成状态。"""
+        """戰鬥結束後統一檢查所有任務完成狀態。"""
         for task in list(self.accepted_tasks):
             if task.check_completion(self):
                 task.complete(self)
 
     # ══════════════════════════════════════════
-    #  结算接口（BattleEngine._finalize 调用）
+    #  結算接口（BattleEngine._finalize 調用）
     # ══════════════════════════════════════════
 
     def reset_medicine_effects(self) -> None:
-        """清除战斗中药品的临时加成。"""
+        """清除戰鬥中藥品的臨時加成。"""
         for attr, delta in self._medicine_effects.items():
             if hasattr(self.stats, attr):
                 setattr(self.stats, attr, getattr(self.stats, attr) - delta)
         self._medicine_effects.clear()
 
     def reset_skill_bonuses(self) -> None:
-        """清除战斗中技能的临时加成。"""
+        """清除戰鬥中技能的臨時加成。"""
         for attr, delta in self._skill_bonuses.items():
             if hasattr(self.stats, attr):
                 setattr(self.stats, attr, getattr(self.stats, attr) - delta)
@@ -278,14 +268,18 @@ class Player:
         print(self.inventory.summary())
 
     # ══════════════════════════════════════════
-    #  装备接口
+    #  裝備欄接口（玩家獨有：部位裝備欄）
     # ══════════════════════════════════════════
 
     def equip(self, item) -> bool:
+        """
+        裝備物品到部位欄。
+        同部位舊裝備自動放回背包。
+        """
         category = getattr(item, "category", None)
         if category is None:
             EventBus.emit(WarningEvent(
-                message=f"【{item.name}】没有 category，无法装备"
+                message=f"【{item.name}】沒有 category，無法裝備"
             ))
             return False
 
@@ -302,9 +296,10 @@ class Player:
         return True
 
     def unequip(self, category: str) -> bool:
+        """卸下指定部位裝備，放回背包。"""
         if category not in self._equipment:
             EventBus.emit(WarningEvent(
-                message=f"{self.name} 没有装备【{category}】部位"
+                message=f"{self.name} 沒有裝備【{category}】部位"
             ))
             return False
         item = self._equipment.pop(category)
@@ -314,17 +309,19 @@ class Player:
     def get_equipment(self, category: str) -> object | None:
         return self._equipment.get(category)
 
-    def use_equipment(self, equipment, target=None) -> bool:
-        if getattr(equipment, "category", None) != "法宝":
-            EventBus.emit(WarningEvent(
-                message=f"【{equipment.name}】不是法宝，不能使用"
-            ))
-            return False
-        equipment.use(self, target)
-        return True
+    # ══════════════════════════════════════════
+    #  choose_action（實現 Combatant 抽象方法）
+    # ══════════════════════════════════════════
+
+    def choose_action(self, engine) -> None:
+        """
+        玩家回合由 ActionMenu 或 AutoBattleAI 驅動，
+        不走 choose_action 路徑，這裡只是滿足接口要求。
+        """
+        pass
 
     # ══════════════════════════════════════════
-    #  显示
+    #  顯示
     # ══════════════════════════════════════════
 
     def summary(self) -> str:
@@ -341,4 +338,11 @@ class Player:
         return "\n".join(lines)
 
     def __str__(self) -> str:
-        return f"Player({self.name}, Lv.{self.level}, HP:{self.hp}/{self.max_hp})"
+        return (
+            f"Player({self.name}, Lv.{self.level}, "
+            f"HP:{self.hp:.0f}/{self.max_hp}, "
+            f"MP:{self.mp:.0f}/{self.max_mp})"
+        )
+
+    def __repr__(self) -> str:
+        return f"<Player {self.name} #{str(self.unique_id)[:8]}>"

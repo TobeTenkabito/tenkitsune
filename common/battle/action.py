@@ -83,13 +83,7 @@ class ActionMenu:
     # ── 行動方法 ──────────────────────────────────────────────
 
     def _attack(self, player, battle) -> bool:
-        restrictions = battle.turn_manager.get_action_restrictions(player)
-        if "blinded" in restrictions:
-            EventBus.emit(StatusBlockedActionEvent(
-                target=player.name,
-                status="blinded",
-                rounds_remaining=player.blind_rounds,
-            ))
+        if not player.can_attack():  # ← 替换 blind_rounds
             return False
         target = self.choose_target(battle, "enemy", "single")
         if target:
@@ -98,29 +92,57 @@ class ActionMenu:
         return False
 
     def _use_skill(self, player, battle) -> bool:
-        restrictions = battle.turn_manager.get_action_restrictions(player)
-        if "silenced" in restrictions:
-            EventBus.emit(StatusBlockedActionEvent(
-                target=player.name,
-                status="silenced",
-                rounds_remaining=player.silence_rounds,
-            ))
+        if not player.can_use_skill():  # ← 替换 silence_rounds
             return False
-
         skills = [s for s in player.battle_skills if isinstance(s, Skill)]
         if not skills:
             EventBus.emit(WarningEvent(message="你沒有可用的技能。"))
             return False
-
         skill = self.choose_item(skills)
         if not skill:
             return False
-
         target = self.choose_target(battle, skill.target_type, skill.target_scope)
         if target:
             player.use_skill(skill, target)
             return True
         return False
+
+    def _use_medicine(self, player, battle) -> bool:
+        medicines = [  # ← 修复迭代
+            slot.item
+            for slot in player.inventory._slots.values()
+            if isinstance(slot.item, Medicine)
+        ]
+        if not medicines:
+            EventBus.emit(WarningEvent(message="你沒有可用的藥品。"))
+            return False
+        medicine = self.choose_item(medicines)
+        if not medicine:
+            return False
+        target = self.choose_target(battle, "ally", "single")
+        if target:
+            player.use_medicine(medicine, target)
+            return True
+        return False
+
+    def _use_product(self, player, battle) -> bool:
+        products = [  # ← 修复迭代
+            slot.item
+            for slot in player.inventory._slots.values()
+            if isinstance(slot.item, Product)
+        ]
+        if not products:
+            EventBus.emit(WarningEvent(message="你沒有可用的道具。"))
+            return False
+        product = self.choose_item(products)
+        if not product:
+            return False
+        target = self.choose_target(battle, product.target_type, product.target_scope)
+        if target:
+            player.use_product(product, target)
+            return True
+        return False
+
 
     def _use_equipment(self, player, battle) -> bool:
         equipments = [
@@ -138,38 +160,6 @@ class ActionMenu:
         target = self.choose_target(battle, equipment.target_type, equipment.target_scope)
         if target:
             player.use_equipment(equipment, target)
-            return True
-        return False
-
-    def _use_medicine(self, player, battle) -> bool:
-        medicines = [i for i in player.inventory if isinstance(i, Medicine)]
-        if not medicines:
-            EventBus.emit(WarningEvent(message="你沒有可用的藥品。"))
-            return False
-
-        medicine = self.choose_item(medicines)
-        if not medicine:
-            return False
-
-        target = self.choose_target(battle, "ally", "single")
-        if target:
-            player.use_medicine(medicine, target)
-            return True
-        return False
-
-    def _use_product(self, player, battle) -> bool:
-        products = [i for i in player.inventory if isinstance(i, Product)]
-        if not products:
-            EventBus.emit(WarningEvent(message="你沒有可用的道具。"))
-            return False
-
-        product = self.choose_item(products)
-        if not product:
-            return False
-
-        target = self.choose_target(battle, product.target_type, product.target_scope)
-        if target:
-            player.use_product(product, target)
             return True
         return False
 

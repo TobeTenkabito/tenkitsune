@@ -178,9 +178,9 @@ class BattleEngine:
     # ── 状态检查 ──────────────────────────────────────────────
 
     def _check_status(self) -> str:
-        player_down  = self.player is None or self.player.hp <= 0
-        allies_down  = all(a.hp <= 0 for a in self.allies)
-        enemies_down = len(self.enemies) == 0
+        player_down = self.player is None or self.player.hp <= 0
+        allies_down = all(a.hp <= 0 for a in self.allies)
+        enemies_down = all(e.hp <= 0 for e in self.enemies)  # ← 修复
 
         if player_down and allies_down:
             return "loss"

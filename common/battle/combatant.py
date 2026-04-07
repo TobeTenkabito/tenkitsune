@@ -243,7 +243,7 @@ class Combatant:
         if medicine.quantity > 0:
             medicine.use(self, target)
             if medicine.quantity == 0 and hasattr(self, "inventory"):
-                self.inventory.remove(medicine)
+                self.inventory.remove(medicine.name)  # ← 传名字
         else:
             EventBus.emit(WarningEvent(
                 message=f"{medicine.name} 數量不足，無法使用。"
